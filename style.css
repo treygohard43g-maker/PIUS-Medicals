@@ -1,0 +1,80 @@
+/* =========================================
+   PIUS MEDICALS
+   Main Website Styles
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #ffffff;
+    color: #172033;
+    line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    font: inherit;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* =========================================
+   TEMPORARY HOMEPAGE
+========================================= */
+
+body {
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 800;
+    color: #123c69;
+    margin-bottom: 12px;
+}
+
+body > p {
+    font-size: 18px;
+    color: #667085;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 32px;
+    }
+
+    body > p {
+        font-size: 16px;
+    }
+
+}
