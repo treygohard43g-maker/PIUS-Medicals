@@ -161,37 +161,112 @@ body {
 /* =========================================
    MOBILE MENU
 ========================================= */
+/* =========================================
+   MOBILE MENU — MODERN ANIMATION
+========================================= */
 
 .mobile-menu {
     position: absolute;
-
-    top: 84px;
-
+    top: 78px;
     left: 16px;
 
     width: min(310px, calc(100% - 32px));
 
+    padding: 10px;
+
     background: #ffffff;
+
+    border-radius: 16px;
 
     border: 1px solid #e5edf4;
 
-    border-radius: 17px;
-
-    padding: 10px;
-
     box-shadow:
-        0 22px 55px rgba(7, 31, 56, 0.22);
-
-    display: none;
+        0 20px 50px rgba(11, 42, 74, 0.25);
 
     z-index: 1000;
 
-    animation:
-        menuDrop 0.18s ease-out;
+    /* Hidden state */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px) scale(0.98);
+
+    transition:
+        opacity 0.22s ease,
+        transform 0.22s ease,
+        visibility 0.22s ease;
 }
 
+
+/* OPEN STATE */
+
 .mobile-menu.open {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+
+/* MENU LINKS */
+
+.mobile-menu a {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 13px 14px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    color: #172033;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease;
+}
+
+
+/* HOVER / TAP FEEL */
+
+.mobile-menu a:hover {
+    background: #eef7ff;
+    color: #0b2a4a;
+    transform: translateX(3px);
+}
+
+
+/* ICONS */
+
+.mobile-menu i {
+    width: 20px;
+
+    text-align: center;
+
+    color: #1677c8;
+
+    transition: transform 0.18s ease;
+}
+
+
+.mobile-menu a:hover i {
+    transform: scale(1.08);
+}
+
+
+/* DIVIDER */
+
+.menu-divider {
+    height: 1px;
+
+    background: #e5eaf0;
+
+    margin: 8px 4px;
 }
 
 @keyframes menuDrop {
