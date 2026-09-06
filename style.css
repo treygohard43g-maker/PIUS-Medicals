@@ -349,3 +349,60 @@ body > p {
     }
 
 }
+
+/* =========================================
+   MOBILE MENU
+========================================= */
+
+.mobile-menu {
+    display: none;
+
+    width: min(100% - 28px, 500px);
+    margin: 0 auto 14px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5ebf2;
+    border-radius: 16px;
+
+    box-shadow: 0 12px 35px rgba(18, 60, 105, 0.10);
+
+    overflow: hidden;
+}
+
+.mobile-menu.open {
+    display: block;
+}
+
+.mobile-menu a {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 15px 17px;
+
+    color: #405166;
+    font-size: 14px;
+    font-weight: 600;
+
+    border-bottom: 1px solid #eef2f6;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu a i {
+    width: 20px;
+    color: #1677c8;
+    text-align: center;
+}
+
+.mobile-menu a:hover {
+    background: #f4f9fd;
+    color: #1677c8;
+}
