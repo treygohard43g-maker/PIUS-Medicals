@@ -11,7 +11,10 @@
 const menuButton = document.querySelector(".menu-button");
 const mobileMenu = document.querySelector("#mobileMenu");
 
+
 if (menuButton && mobileMenu) {
+
+    /* OPEN / CLOSE MENU */
 
     menuButton.addEventListener("click", function (event) {
 
@@ -19,7 +22,8 @@ if (menuButton && mobileMenu) {
 
         mobileMenu.classList.toggle("open");
 
-        const isOpen = mobileMenu.classList.contains("open");
+        const isOpen =
+            mobileMenu.classList.contains("open");
 
         menuButton.setAttribute(
             "aria-expanded",
@@ -51,10 +55,11 @@ if (menuButton && mobileMenu) {
     });
 
 
-    /* CLOSE AFTER SELECTING A MENU LINK */
+    /* CLOSE AFTER CLICKING A MENU LINK */
 
     const menuLinks =
         mobileMenu.querySelectorAll("a");
+
 
     menuLinks.forEach(function (link) {
 
@@ -68,6 +73,27 @@ if (menuButton && mobileMenu) {
             );
 
         });
+
+    });
+
+
+    /* CLOSE WITH ESCAPE KEY */
+
+    document.addEventListener("keydown", function (event) {
+
+        if (
+            event.key === "Escape" &&
+            mobileMenu.classList.contains("open")
+        ) {
+
+            mobileMenu.classList.remove("open");
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
 
     });
 
