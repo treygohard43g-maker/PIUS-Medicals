@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pius Medical Accessories | Dashboard</title>
+
+    <meta
+        name="description"
+        content="Pius Medical Accessories customer dashboard."
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body class="dashboard-page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="dashboard-header">
+
+        <div class="header-left">
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                type="button"
+                aria-label="Open menu"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+
+            <a
+                href="dashboard.html"
+                class="dashboard-logo"
+            >
+
+                <span class="medical-cross">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+
+                <span>
+                    PIUS MEDICAL ACCESSORIES
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <!-- SEARCH -->
+
+            <div class="dashboard-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="search"
+                    id="productSearch"
+                    placeholder="Search products..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+
+            <!-- CART -->
+
+            <button
+                class="cart-btn"
+                id="cartBtn"
+                type="button"
+                aria-label="Shopping cart"
+            >
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span
+                    class="cart-count"
+                    id="cartCount"
+                >
+                    0
+                </span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         SIDE MENU
+    ========================================== -->
+
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    ></div>
+
+
+    <aside
+        class="side-menu"
+        id="sideMenu"
+    >
+
+        <div class="side-menu-header">
+
+            <div>
+
+                <span class="medical-cross small">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+
+                <strong>
+                    PIUS MEDICAL
+                </strong>
+
+            </div>
+
+
+            <button
+                id="closeMenuBtn"
+                class="close-menu-btn"
+                type="button"
+                aria-label="Close menu"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <nav class="dashboard-nav">
+
+            <a
+                href="dashboard.html"
+                class="active"
+            >
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+
+            <a href="products.html">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>Products</span>
+            </a>
+
+
+            <a href="orders.html">
+                <i class="fa-solid fa-box"></i>
+                <span>Orders</span>
+            </a>
+
+
+            <a href="profile.html">
+                <i class="fa-solid fa-user"></i>
+                <span>My Profile</span>
+            </a>
+
+
+            <a href="favorites.html">
+                <i class="fa-solid fa-heart"></i>
+                <span>Saved / Favorites</span>
+            </a>
+
+
+            <a
+                href="cart.html"
+                id="menuCartLink"
+            >
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Cart</span>
+
+                <span
+                    class="menu-cart-count"
+                    id="menuCartCount"
+                >
+                    0
+                </span>
+
+            </a>
+
+
+            <a href="support.html">
+
+                <i class="fa-solid fa-headset"></i>
+
+                <span>
+                    Support
+                </span>
+
+            </a>
+
+
+            <a href="tracking.html">
+
+                <i class="fa-solid fa-location-dot"></i>
+
+                <span>
+                    Track Delivery
+                </span>
+
+            </a>
+
+
+            <button
+                class="logout-menu-btn"
+                id="logoutBtn"
+                type="button"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- WELCOME -->
+
+        <section class="dashboard-welcome">
+
+            <div>
+
+                <p class="dashboard-small-title">
+                    PIUS MEDICAL ACCESSORIES
+                </p>
+
+                <h1>
+                    Welcome back,
+                    <span id="userName">
+                        Customer
+                    </span>
+                </h1>
+
+                <p>
+                    Find quality medical equipment,
+                    healthcare accessories and more.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             QUICK ACTIONS
+        ====================================== -->
+
+        <section class="quick-actions-section">
+
+            <div class="section-heading">
+
+                <h2>
+                    Quick Access
+                </h2>
+
+            </div>
+
+
+            <div class="quick-actions-grid">
+
+
+                <a
+                    href="products.html"
+                    class="quick-action-card"
+                >
+
+                    <span class="quick-action-icon">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </span>
+
+                    <strong>
+                        Products
+                    </strong>
+
+                    <small>
+                        Browse equipment
+                    </small>
+
+                </a>
+
+
+
+                <a
+                    href="orders.html"
+                    class="quick-action-card"
+                >
+
+                    <span class="quick-action-icon">
+                        <i class="fa-solid fa-box"></i>
+                    </span>
+
+                    <strong>
+                        My Orders
+                    </strong>
+
+                    <small>
+                        View your orders
+                    </small>
+
+                </a>
+
+
+
+                <a
+                    href="tracking.html"
+                    class="quick-action-card"
+                >
+
+                    <span class="quick-action-icon">
+                        <i class="fa-solid fa-truck"></i>
+                    </span>
+
+                    <strong>
+                        Delivery
+                    </strong>
+
+                    <small>
+                        Track your order
+                    </small>
+
+                </a>
+
+
+
+                <a
+                    href="support.html"
+                    class="quick-action-card"
+                >
+
+                    <span class="quick-action-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </span>
+
+                    <strong>
+                        Support
+                    </strong>
+
+                    <small>
+                        Talk to our staff
+                    </small>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             HEALTH & WELLNESS
+        ====================================== -->
+
+        <section class="health-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        HEALTH & WELLNESS
+                    </p>
+
+                    <h2>
+                        Monitor Your Health
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="health-dashboard-card">
+
+                <div class="health-card-icon">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                </div>
+
+
+                <div class="health-card-content">
+
+                    <h3>
+                        Your Health Hub
+                    </h3>
+
+                    <p>
+                        Connect compatible medical devices
+                        and monitor your health measurements
+                        from one place.
+                    </p>
+
+
+                    <div class="health-features">
+
+                        <span>
+                            <i class="fa-solid fa-heart"></i>
+                            Heart Rate
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-lungs"></i>
+                            SpO₂
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-temperature-half"></i>
+                            Temperature
+                        </span>
+
+                        <span>
+                            <i class="fa-solid fa-heart-pulse"></i>
+                            Blood Pressure
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        class="health-button"
+                        type="button"
+                        id="healthHubBtn"
+                    >
+
+                        Open Health Hub
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             PRODUCT CATEGORIES
+        ====================================== -->
+
+        <section class="categories-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        SHOP
+                    </p>
+
+                    <h2>
+                        Medical Categories
+                    </h2>
+
+                </div>
+
+
+                <a
+                    href="products.html"
+                    class="view-all-link"
+                >
+                    View All
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <div class="category-grid">
+
+
+                <a
+                    href="products.html?category=hospital-equipment"
+                    class="category-card"
+                >
+
+                    <div class="category-icon">
+                        <i class="fa-solid fa-bed-pulse"></i>
+                    </div>
+
+                    <h3>
+                        Hospital Equipment
+                    </h3>
+
+                    <p>
+                        Medical machines and equipment
+                    </p>
+
+                </a>
+
+
+
+                <a
+                    href="products.html?category=diagnostic"
+                    class="category-card"
+                >
+
+                    <div class="category-icon">
+                        <i class="fa-solid fa-stethoscope"></i>
+                    </div>
+
+                    <h3>
+                        Diagnostic Equipment
+                    </h3>
+
+                    <p>
+                        Tools for health monitoring
+                    </p>
+
+                </a>
+
+
+
+                <a
+                    href="products.html?category=supplies"
+                    class="category-card"
+                >
+
+                    <div class="category-icon">
+                        <i class="fa-solid fa-syringe"></i>
+                    </div>
+
+                    <h3>
+                        Medical Supplies
+                    </h3>
+
+                    <p>
+                        Everyday healthcare supplies
+                    </p>
+
+                </a>
+
+
+
+                <a
+                    href="products.html?category=mobility"
+                    class="category-card"
+                >
+
+                    <div class="category-icon">
+                        <i class="fa-solid fa-wheelchair"></i>
+                    </div>
+
+                    <h3>
+                        Mobility & Care
+                    </h3>
+
+                    <p>
+                        Patient care and mobility products
+                    </p>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             FEATURED PRODUCTS
+        ====================================== -->
+
+        <section class="products-preview-section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <p class="section-label">
+                        FEATURED
+                    </p>
+
+                    <h2>
+                        Featured Products
+                    </h2>
+
+                </div>
+
+
+                <a
+                    href="products.html"
+                    class="view-all-link"
+                >
+                    View All
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <div
+                class="product-grid"
+                id="productGrid"
+            >
+
+                <!-- Products will be loaded here -->
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================
+             SUPPORT
+        ====================================== -->
+
+        <section class="support-dashboard-section">
+
+            <div class="support-dashboard-card">
+
+                <div class="support-icon">
+
+                    <i class="fa-solid fa-headset"></i>
+
+                </div>
+
+
+                <div>
+
+                    <p class="section-label">
+                        NEED HELP?
+                    </p>
+
+                    <h2>
+                        Talk to Pius Medical Staff
+                    </h2>
+
+                    <p>
+                        Have a question about a product,
+                        order or delivery? Our staff can
+                        assist you.
+                    </p>
+
+                    <a
+                        href="support.html"
+                        class="support-button"
+                    >
+                        Contact Support
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         DASHBOARD JAVASCRIPT
+    ========================================== -->
+
+    <script
+        type="module"
+        src="dashboard.js"
+    ></script>
+
+</body>
+
+</html>
