@@ -4207,3 +4207,365 @@ input:focus-visible {
         font-size: 14px;
     }
 }
+/* =========================================
+   PIUS MEDICAL ACCESSORIES
+   PREMIUM EMPTY CART
+========================================= */
+
+.cart-empty {
+    width: 100%;
+    min-height: 430px;
+    padding: 55px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #f9fcfd 55%,
+            #f3f8fa 100%
+        );
+
+    border: 1px solid #e3ebef;
+    border-radius: 24px;
+
+    box-shadow:
+        0 18px 45px rgba(15, 23, 42, 0.07),
+        0 4px 12px rgba(15, 23, 42, 0.035);
+
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* Subtle top shine */
+
+.cart-empty::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        #176b87,
+        #3b9ab5,
+        #176b87
+    );
+
+    opacity: 0.9;
+}
+
+
+/* Soft decorative glow */
+
+.cart-empty::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+
+    top: -90px;
+    right: -70px;
+
+    border-radius: 50%;
+
+    background: rgba(33, 133, 163, 0.06);
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   EMPTY CART ICON
+========================================= */
+
+.cart-empty-icon {
+    width: 88px;
+    height: 88px;
+
+    margin-bottom: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eef8fb,
+            #e1f1f5
+        );
+
+    border: 1px solid #d6e8ee;
+
+    color: #176b87;
+
+    font-size: 35px;
+
+    box-shadow:
+        0 12px 28px rgba(23, 107, 135, 0.12);
+
+    position: relative;
+    z-index: 1;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.cart-empty:hover .cart-empty-icon {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 16px 32px rgba(23, 107, 135, 0.16);
+}
+
+
+/* =========================================
+   EMPTY CART HEADING
+========================================= */
+
+.cart-empty h2 {
+    margin: 0 0 13px;
+
+    color: #16242d;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 32px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+
+    letter-spacing: -0.7px;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================
+   EMPTY CART DESCRIPTION
+========================================= */
+
+.cart-empty p {
+    max-width: 430px;
+
+    margin: 0 0 29px;
+
+    color: #6a7b84;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    font-weight: 400;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================
+   CONTINUE SHOPPING BUTTON
+========================================= */
+
+.cart-empty .continue-shopping-btn {
+    min-height: 52px;
+
+    padding: 0 28px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #176b87,
+            #2185a3
+        );
+
+    color: #ffffff;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.15px;
+
+    text-decoration: none;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-shadow:
+        0 10px 24px rgba(23, 107, 135, 0.22);
+
+    position: relative;
+    z-index: 1;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.cart-empty .continue-shopping-btn:hover {
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #125d76,
+            #176f8b
+        );
+
+    box-shadow:
+        0 15px 30px rgba(23, 107, 135, 0.28);
+}
+
+
+.cart-empty .continue-shopping-btn:active {
+    transform: translateY(0);
+}
+
+
+/* Arrow */
+
+.cart-empty .continue-shopping-btn i {
+    font-size: 13px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.cart-empty .continue-shopping-btn:hover i {
+    transform: translateX(-3px);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .cart-empty {
+        min-height: 390px;
+
+        padding: 45px 22px;
+
+        border-radius: 20px;
+    }
+
+
+    .cart-empty-icon {
+        width: 78px;
+        height: 78px;
+
+        font-size: 31px;
+
+        margin-bottom: 22px;
+    }
+
+
+    .cart-empty h2 {
+        font-size: 28px;
+
+        letter-spacing: -0.5px;
+    }
+
+
+    .cart-empty p {
+        max-width: 340px;
+
+        font-size: 15px;
+
+        line-height: 1.65;
+
+        margin-bottom: 25px;
+    }
+
+
+    .cart-empty .continue-shopping-btn {
+        width: 100%;
+
+        max-width: 280px;
+
+        min-height: 50px;
+    }
+}
+
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media (max-width: 400px) {
+
+    .cart-empty {
+        min-height: 360px;
+
+        padding:
+            38px
+            17px;
+    }
+
+
+    .cart-empty-icon {
+        width: 70px;
+        height: 70px;
+
+        font-size: 28px;
+
+        margin-bottom: 20px;
+    }
+
+
+    .cart-empty h2 {
+        font-size: 25px;
+    }
+
+
+    .cart-empty p {
+        font-size: 14px;
+    }
+
+
+    .cart-empty .continue-shopping-btn {
+        max-width: 100%;
+
+        font-size: 14px;
+    }
+}
+
