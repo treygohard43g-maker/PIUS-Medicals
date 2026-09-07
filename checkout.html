@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Checkout | Pius Medical Accessories</title>
+
+    <meta
+        name="description"
+        content="Secure checkout for Pius Medical Accessories."
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body class="checkout-page">
+
+    <!-- HEADER -->
+    <header class="dashboard-header checkout-header">
+
+        <div class="header-left">
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open menu"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="dashboard-logo">
+
+                <span class="medical-cross small">
+                    <span></span>
+                    <span></span>
+                </span>
+
+                <span>
+                    PIUS MEDICAL ACCESSORIES
+                </span>
+
+            </div>
+
+        </div>
+
+        <div class="header-actions">
+
+            <button
+                class="cart-btn"
+                id="cartBtn"
+                aria-label="Cart"
+            >
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span
+                    class="cart-count"
+                    id="cartCount"
+                >
+                    0
+                </span>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MENU OVERLAY -->
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    ></div>
+
+
+    <!-- SIDE MENU -->
+    <aside
+        class="side-menu"
+        id="sideMenu"
+    >
+
+        <div class="side-menu-header">
+
+            <div class="dashboard-logo">
+
+                <span class="medical-cross small">
+                    <span></span>
+                    <span></span>
+                </span>
+
+                <span>
+                    PIUS MEDICAL
+                </span>
+
+            </div>
+
+            <button
+                class="close-menu-btn"
+                id="closeMenuBtn"
+                aria-label="Close menu"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <nav class="dashboard-nav">
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+            <a href="products.html">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>Products</span>
+            </a>
+
+            <a href="orders.html">
+                <i class="fa-solid fa-box"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="profile.html">
+                <i class="fa-solid fa-user"></i>
+                <span>My Profile</span>
+            </a>
+
+            <a href="favorites.html">
+                <i class="fa-solid fa-heart"></i>
+                <span>Saved / Favorites</span>
+            </a>
+
+            <a
+                href="cart.html"
+                class="menu-cart-link"
+            >
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>Cart</span>
+
+                <span
+                    class="menu-cart-count"
+                    id="menuCartCount"
+                >
+                    0
+                </span>
+            </a>
+
+            <a href="support.html">
+                <i class="fa-solid fa-headset"></i>
+                <span>Support</span>
+            </a>
+
+            <a href="tracking.html">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Track Delivery</span>
+            </a>
+
+            <button
+                class="logout-menu-btn"
+                id="logoutBtn"
+            >
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="checkout-main">
+
+        <div class="checkout-heading">
+
+            <div>
+
+                <span class="checkout-eyebrow">
+                    SECURE CHECKOUT
+                </span>
+
+                <h1>
+                    Complete Your Order
+                </h1>
+
+                <p>
+                    Review your order, provide your delivery
+                    information and choose your payment method.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="checkout-layout">
+
+
+            <!-- LEFT SIDE -->
+            <section class="checkout-left">
+
+
+                <!-- CUSTOMER INFORMATION -->
+                <div class="checkout-card">
+
+                    <div class="checkout-card-header">
+
+                        <div class="checkout-step">
+                            1
+                        </div>
+
+                        <div>
+                            <h2>
+                                Customer Information
+                            </h2>
+
+                            <p>
+                                Enter the information we need for your order.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="checkout-form-grid">
+
+                        <div class="checkout-field">
+
+                            <label for="fullName">
+                                Full Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="fullName"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                            >
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="phone">
+                                Phone Number
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                placeholder="+234..."
+                                autocomplete="tel"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DELIVERY -->
+                <div class="checkout-card">
+
+                    <div class="checkout-card-header">
+
+                        <div class="checkout-step">
+                            2
+                        </div>
+
+                        <div>
+                            <h2>
+                                Delivery Address
+                            </h2>
+
+                            <p>
+                                Where should we deliver your order?
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="checkout-form-grid">
+
+                        <div class="checkout-field checkout-full">
+
+                            <label for="address">
+                                Street Address
+                            </label>
+
+                            <input
+                                type="text"
+                                id="address"
+                                placeholder="House number and street"
+                                autocomplete="street-address"
+                            >
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="city">
+                                City
+                            </label>
+
+                            <input
+                                type="text"
+                                id="city"
+                                placeholder="City"
+                                autocomplete="address-level2"
+                            >
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="state">
+                                State
+                            </label>
+
+                            <input
+                                type="text"
+                                id="state"
+                                placeholder="State"
+                                autocomplete="address-level1"
+                            >
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="country">
+                                Country
+                            </label>
+
+                            <input
+                                type="text"
+                                id="country"
+                                value="Nigeria"
+                                autocomplete="country-name"
+                            >
+
+                        </div>
+
+
+                        <div class="checkout-field">
+
+                            <label for="postalCode">
+                                Postal Code
+                            </label>
+
+                            <input
+                                type="text"
+                                id="postalCode"
+                                placeholder="Postal code"
+                                autocomplete="postal-code"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DELIVERY METHOD -->
+                <div class="checkout-card">
+
+                    <div class="checkout-card-header">
+
+                        <div class="checkout-step">
+                            3
+                        </div>
+
+                        <div>
+                            <h2>
+                                Delivery Method
+                            </h2>
+
+                            <p>
+                                Select how you want your order delivered.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="delivery-options">
+
+                        <label class="delivery-option active">
+
+                            <input
+                                type="radio"
+                                name="deliveryMethod"
+                                value="standard"
+                                checked
+                            >
+
+                            <span class="delivery-radio"></span>
+
+                            <span class="delivery-info">
+
+                                <strong>
+                                    Standard Delivery
+                                </strong>
+
+                                <small>
+                                    Delivery fee calculated based on location
+                                </small>
+
+                            </span>
+
+                            <strong>
+                                Calculated
+                            </strong>
+
+                        </label>
+
+
+                        <label class="delivery-option">
+
+                            <input
+                                type="radio"
+                                name="deliveryMethod"
+                                value="express"
+                            >
+
+                            <span class="delivery-radio"></span>
+
+                            <span class="delivery-info">
+
+                                <strong>
+                                    Express Delivery
+                                </strong>
+
+                                <small>
+                                    Faster delivery where available
+                                </small>
+
+                            </span>
+
+                            <strong>
+                                Calculated
+                            </strong>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+                <div class="checkout-card">
+
+                    <div class="checkout-card-header">
+
+                        <div class="checkout-step">
+                            4
+                        </div>
+
+                        <div>
+                            <h2>
+                                Payment Method
+                            </h2>
+
+                            <p>
+                                Choose how you would like to pay.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="payment-options">
+
+
+                        <label class="payment-option active">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="card"
+                                checked
+                            >
+
+                            <span class="payment-radio"></span>
+
+                            <span class="payment-icon">
+                                <i class="fa-regular fa-credit-card"></i>
+                            </span>
+
+                            <span class="payment-info">
+
+                                <strong>
+                                    Debit / Credit Card
+                                </strong>
+
+                                <small>
+                                    Secure online card payment
+                                </small>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="bank"
+                            >
+
+                            <span class="payment-radio"></span>
+
+                            <span class="payment-icon">
+                                <i class="fa-solid fa-building-columns"></i>
+                            </span>
+
+                            <span class="payment-info">
+
+                                <strong>
+                                    Bank Transfer
+                                </strong>
+
+                                <small>
+                                    Pay directly from your bank
+                                </small>
+
+                            </span>
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="pod"
+                            >
+
+                            <span class="payment-radio"></span>
+
+                            <span class="payment-icon">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                            </span>
+
+                            <span class="payment-info">
+
+                                <strong>
+                                    Pay on Delivery
+                                </strong>
+
+                                <small>
+                                    Available where supported
+                                </small>
+
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="payment-security">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <div>
+
+                            <strong>
+                                Secure Payment
+                            </strong>
+
+                            <p>
+                                Your payment information will be
+                                handled through a secure payment
+                                provider. We do not store your
+                                complete card details.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- RIGHT SIDE -->
+            <aside class="checkout-right">
+
+
+                <!-- ORDER SUMMARY -->
+                <div class="checkout-summary-card">
+
+                    <div class="checkout-summary-header">
+
+                        <div>
+                            <span>
+                                YOUR ORDER
+                            </span>
+
+                            <h2>
+                                Order Summary
+                            </h2>
+                        </div>
+
+                        <i class="fa-solid fa-bag-shopping"></i>
+
+                    </div>
+
+
+                    <div
+                        class="checkout-order-items"
+                        id="checkoutOrderItems"
+                    >
+                        <!-- Loaded by checkout.js -->
+                    </div>
+
+
+                    <div class="checkout-summary-lines">
+
+                        <div class="checkout-summary-row">
+
+                            <span>
+                                Subtotal
+                            </span>
+
+                            <strong id="checkoutSubtotal">
+                                $0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="checkout-summary-row">
+
+                            <span>
+                                Delivery
+                            </span>
+
+                            <strong id="checkoutDelivery">
+                                Calculated
+                            </strong>
+
+                        </div>
+
+
+                        <div class="checkout-summary-divider"></div>
+
+
+                        <div class="checkout-summary-total">
+
+                            <span>
+                                Total
+                            </span>
+
+                            <strong id="checkoutTotal">
+                                $0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="place-order-btn"
+                        id="placeOrderBtn"
+                    >
+                        <span>
+                            Continue to Payment
+                        </span>
+
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+
+                    <div class="checkout-secure-note">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <span>
+                            Secure checkout
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HELP -->
+                <div class="checkout-help-card">
+
+                    <div class="checkout-help-icon">
+                        <i class="fa-solid fa-headset"></i>
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Need Help?
+                        </h3>
+
+                        <p>
+                            Our support team is available to help
+                            with your order.
+                        </p>
+
+                        <a href="support.html">
+                            Contact Support
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="cart.html"
+                    class="back-cart-link"
+                >
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Cart
+                </a>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+
+    <div
+        class="dashboard-cart-message"
+        id="checkoutMessage"
+    ></div>
+
+
+    <script type="module" src="checkout.js"></script>
+
+</body>
+
+</html>
