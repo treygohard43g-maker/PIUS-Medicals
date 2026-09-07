@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Login | Pius Medical Accessories</title>
+
+    <meta
+        name="description"
+        content="Login to your Pius Medical Accessories account."
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         LOGIN PAGE
+    ========================== -->
+
+    <div class="auth-page">
+
+        <!-- NAVY HEADER -->
+        <header class="auth-header">
+
+            <a href="index.html" class="auth-logo">
+                <span class="logo-icon">✚</span>
+                <span>Pius Medical Accessories</span>
+            </a>
+
+            <a href="index.html" class="home-link">
+                Home
+            </a>
+
+        </header>
+
+
+        <!-- LOGIN AREA -->
+        <main class="auth-container">
+
+            <div class="auth-card">
+
+                <div class="auth-card-header">
+
+                    <div class="auth-icon">
+                        ✚
+                    </div>
+
+                    <h1>Welcome Back</h1>
+
+                    <p>
+                        Sign in to your Pius Medical Accessories account.
+                    </p>
+
+                </div>
+
+
+                <!-- LOGIN FORM -->
+                <form id="loginForm">
+
+                    <!-- EMAIL -->
+                    <div class="form-group">
+
+                        <label for="loginEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            name="email"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+
+                        <div class="password-label-row">
+
+                            <label for="loginPassword">
+                                Password
+                            </label>
+
+                            <a href="#" id="forgotPassword">
+                                Forgot Password?
+                            </a>
+
+                        </div>
+
+                        <div class="password-input">
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle"
+                                aria-label="Show password"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- REMEMBER ME -->
+                    <div class="remember-row">
+
+                        <label class="remember-label">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+                            <span>Remember me</span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- ERROR MESSAGE -->
+                    <div
+                        id="loginMessage"
+                        class="login-message"
+                    ></div>
+
+
+                    <!-- LOGIN BUTTON -->
+                    <button
+                        type="submit"
+                        id="loginBtn"
+                        class="auth-button"
+                    >
+                        Login
+                    </button>
+
+                </form>
+
+
+                <!-- REGISTER -->
+                <div class="auth-divider">
+                    <span>OR</span>
+                </div>
+
+                <p class="register-text">
+                    Don't have an account?
+                    <a href="register.html">
+                        Create an Account
+                    </a>
+                </p>
+
+
+                <!-- BACK HOME -->
+                <a
+                    href="index.html"
+                    class="back-home"
+                >
+                    ← Back to Home
+                </a>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- LOGIN JAVASCRIPT -->
+    <script src="login.js"></script>
+
+</body>
+
+</html>
