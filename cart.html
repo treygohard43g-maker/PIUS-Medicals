@@ -1,1 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cart | Pius Medical Accessories</title>
+
+    <meta
+        name="description"
+        content="Your shopping cart - Pius Medical Accessories"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body class="cart-page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="dashboard-header cart-header">
+
+        <div class="header-left">
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                type="button"
+                aria-label="Open menu"
+            >
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+
+            <a
+                href="dashboard.html"
+                class="dashboard-logo"
+            >
+
+                <span class="medical-cross">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+
+                <span>
+                    PIUS MEDICAL ACCESSORIES
+                </span>
+
+            </a>
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <button
+                class="cart-btn active"
+                id="cartBtn"
+                type="button"
+                aria-label="Shopping cart"
+            >
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span
+                    class="cart-count"
+                    id="cartCount"
+                >
+                    0
+                </span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MENU OVERLAY
+    ========================================== -->
+
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    ></div>
+
+
+
+    <!-- =========================================
+         SIDE MENU
+    ========================================== -->
+
+    <aside
+        class="side-menu"
+        id="sideMenu"
+    >
+
+        <div class="side-menu-header">
+
+            <div class="dashboard-logo">
+
+                <span class="medical-cross small">
+                    <i class="fa-solid fa-plus"></i>
+                </span>
+
+                <span>
+                    PIUS MEDICAL
+                </span>
+
+            </div>
+
+
+            <button
+                class="close-menu-btn"
+                id="closeMenuBtn"
+                type="button"
+                aria-label="Close menu"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+        <nav class="dashboard-nav">
+
+            <a href="dashboard.html">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+
+
+            <a href="products.html">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>Products</span>
+            </a>
+
+
+            <a href="orders.html">
+                <i class="fa-solid fa-box"></i>
+                <span>Orders</span>
+            </a>
+
+
+            <a href="profile.html">
+                <i class="fa-solid fa-user"></i>
+                <span>My Profile</span>
+            </a>
+
+
+            <a href="favorites.html">
+                <i class="fa-solid fa-heart"></i>
+                <span>Saved / Favorites</span>
+            </a>
+
+
+            <a
+                href="cart.html"
+                class="active"
+            >
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <span>
+                    Cart
+                </span>
+
+                <span
+                    class="menu-cart-count"
+                    id="menuCartCount"
+                >
+                    0
+                </span>
+
+            </a>
+
+
+            <a href="support.html">
+                <i class="fa-solid fa-comments"></i>
+                <span>Support</span>
+            </a>
+
+
+            <a href="tracking.html">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Track Delivery</span>
+            </a>
+
+
+            <button
+                class="logout-menu-btn"
+                id="logoutBtn"
+                type="button"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="cart-main">
+
+
+        <!-- PAGE HEADING -->
+
+        <section class="cart-heading">
+
+            <span class="section-label">
+                SHOPPING CART
+            </span>
+
+            <h1>
+                Your Cart
+            </h1>
+
+            <p>
+                Review your selected medical accessories
+                before checkout.
+            </p>
+
+        </section>
+
+
+
+        <!-- =====================================
+             CART CONTENT
+        ====================================== -->
+
+        <section class="cart-layout">
+
+
+            <!-- CART ITEMS -->
+
+            <div class="cart-items-section">
+
+                <div
+                    class="cart-items"
+                    id="cartItems"
+                ></div>
+
+
+                <!-- EMPTY CART -->
+
+                <div
+                    class="cart-empty"
+                    id="cartEmpty"
+                    style="display: none;"
+                >
+
+                    <div class="cart-empty-icon">
+
+                        <i class="fa-solid fa-cart-shopping"></i>
+
+                    </div>
+
+                    <h2>
+                        Your cart is empty
+                    </h2>
+
+                    <p>
+                        You haven't added any medical
+                        accessories yet.
+                    </p>
+
+                    <a
+                        href="dashboard.html"
+                        class="continue-shopping-btn"
+                    >
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Continue Shopping
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================
+                 ORDER SUMMARY
+            ================================== -->
+
+            <aside class="cart-summary">
+
+                <div class="cart-summary-header">
+
+                    <span>
+                        ORDER SUMMARY
+                    </span>
+
+                    <i class="fa-solid fa-receipt"></i>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="cartSubtotal">
+                        $0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-row">
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <strong id="cartDelivery">
+                        Calculated at checkout
+                    </strong>
+
+                </div>
+
+
+                <div class="summary-divider"></div>
+
+
+                <div class="summary-total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="cartTotal">
+                        $0.00
+                    </strong>
+
+                </div>
+
+
+                <button
+                    class="checkout-btn"
+                    id="checkoutBtn"
+                    type="button"
+                >
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    Proceed to Checkout
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+
+                <a
+                    href="dashboard.html"
+                    class="continue-shopping"
+                >
+
+                    <i class="fa-solid fa-arrow-left"></i>
+
+                    Continue Shopping
+
+                </a>
+
+
+                <div class="secure-checkout">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <span>
+                        Secure checkout
+                    </span>
+
+                </div>
+
+            </aside>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================================
+         CART JAVASCRIPT
+    ========================================== -->
+
+    <script type="module" src="cart.js"></script>
+
+</body>
+
+</html>
