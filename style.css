@@ -819,7 +819,21 @@ body {
         box-shadow:
             0 18px 40px rgba(0, 0, 0, 0.22);
     }
+    
+    .equipment-image {
+    width: 76%;
+    height: 100%;
+    padding: 12px;
+}
 
+.doctor-image {
+    width: 42%;
+    height: 90%;
+
+    right: -12px;
+    bottom: -18px;
+}
+    
     .intro-section {
         padding:
             48px
