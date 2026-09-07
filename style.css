@@ -3119,3 +3119,63 @@ input:focus-visible {
     outline: 3px solid rgba(22,119,200,0.25);
     outline-offset: 2px;
 }
+
+/* =========================================
+   CASH APP + PAYPAL LOGOS AT BOTTOM
+========================================= */
+
+.cashapp-paypal-brands {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.cashapp-paypal-brands img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.cashapp-paypal-brands .cashapp-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.cashapp-paypal-brands .paypal-logo {
+    width: 52px;
+    height: 52px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .cashapp-paypal-brands {
+        gap: 14px;
+        margin-top: 16px;
+        padding-top: 14px;
+    }
+
+    .cashapp-paypal-brands img {
+        width: 42px;
+        height: 42px;
+    }
+
+    .cashapp-paypal-brands .cashapp-logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .cashapp-paypal-brands .paypal-logo {
+        width: 46px;
+        height: 46px;
+    }
+
+}
