@@ -374,10 +374,10 @@ body {
     width: 100%;
     height: 100%;
 
-    object-fit: cover;
+    object-fit: contain;
     object-position: left center;
 
-    padding: 0;
+    padding: 8px;
 
     border-radius: 26px;
 
@@ -391,11 +391,11 @@ body {
 .doctor-image {
     position: absolute;
 
-    right: -5px;
-    bottom: -5px;
+    right: 5px;
+    bottom: 0;
 
-    width: 38%;
-    height: 100%;
+    width: 30%;
+    height: 90%;
 
     object-fit: contain;
     object-position: bottom right;
@@ -403,7 +403,7 @@ body {
     z-index: 5;
 
     filter:
-        drop-shadow(0 15px 20px rgba(0, 0, 0, 0.18));
+        drop-shadow(0 10px 15px rgba(0, 0, 0, 0.12));
 }
 
 /* =========================================
@@ -822,21 +822,21 @@ body {
             0 18px 40px rgba(0, 0, 0, 0.22);
     }
     
-    .equipment-image {
-    width: 100%
+  .equipment-image {
+    width: 100%;
     height: 100%;
-    padding: 0px;
-    
-    object-fit: cover;
-    objection-position: left center;
+    padding: 8px;
+
+    object-fit: contain;
+    object-position: left center;
 }
 
 .doctor-image {
-    width: 42%;
-    height: 100%;
+    width: 30%;
+    height: 88%;
 
-    right: -5px;
-    bottom: -5px;
+    right: 3px;
+    bottom: 0;
 
     object-fit: contain;
     object-position: bottom right;
