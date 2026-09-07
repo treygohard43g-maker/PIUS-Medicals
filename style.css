@@ -1,12 +1,7 @@
-/* =========================================
+/* =========================================================
    PIUS MEDICAL ACCESSORIES
-   MODERN MEDICAL LANDING PAGE
-========================================= */
-
-
-/* =========================================
-   GLOBAL
-========================================= */
+   COMPLETE WEBSITE STYLE SHEET
+   ========================================================= */
 
 * {
     margin: 0;
@@ -19,137 +14,94 @@ html {
 }
 
 body {
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+    font-family: Arial, Helvetica, sans-serif;
     background: #ffffff;
     color: #172033;
-
     overflow-x: hidden;
-
     -webkit-font-smoothing: antialiased;
 }
 
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
 
-/* =========================================
-   TOP NAVY HEADER
-========================================= */
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================================
+   LANDING PAGE
+   ========================================================= */
 
 .site-header {
     width: 100%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #071f38 0%,
-            #0b2a4a 48%,
-            #123f68 100%
-        );
-
+    background: linear-gradient(
+        135deg,
+        #071f38 0%,
+        #0b2a4a 48%,
+        #123f68 100%
+    );
     color: #ffffff;
-
     padding: 18px 0 22px;
-
     position: relative;
-
     z-index: 100;
 }
 
-
-/* =========================================
-   HEADER CONTENT
-========================================= */
-
 .header-container {
     width: min(1180px, calc(100% - 32px));
-
     min-height: 64px;
-
     margin: 0 auto;
-
     display: flex;
-
     align-items: center;
-
     gap: 15px;
 }
-
-
-/* =========================================
-   HAMBURGER BUTTON
-========================================= */
 
 .menu-button {
     width: 46px;
     height: 46px;
-
     flex-shrink: 0;
-
-    border: 1px solid rgba(255, 255, 255, 0.16);
-
+    border: 1px solid rgba(255,255,255,0.16);
     border-radius: 13px;
-
-    background:
-        rgba(255, 255, 255, 0.10);
-
+    background: rgba(255,255,255,0.10);
     color: #ffffff;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     font-size: 20px;
-
     cursor: pointer;
-
-    box-shadow:
-        0 8px 22px rgba(0, 0, 0, 0.12);
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+    transition: 0.2s ease;
 }
 
 .menu-button:hover {
-    background:
-        rgba(255, 255, 255, 0.17);
-
-    box-shadow:
-        0 10px 26px rgba(0, 0, 0, 0.18);
+    background: rgba(255,255,255,0.17);
+    transform: translateY(-1px);
 }
 
 .menu-button:active {
     transform: scale(0.96);
 }
 
-
-/* =========================================
-   BRAND
-========================================= */
-
 .brand {
     text-decoration: none;
-
     color: #ffffff;
-
     display: flex;
-
     align-items: center;
-
     min-width: 0;
 }
 
 .brand-name {
     font-size: 18px;
-
     font-weight: 500;
-
     letter-spacing: 0.4px;
-
     white-space: nowrap;
 }
 
@@ -158,1597 +110,247 @@ body {
 }
 
 
-/* =========================================
-   MOBILE MENU
-========================================= */
+/* =========================================================
+   LANDING MOBILE MENU
+   ========================================================= */
 
 .mobile-menu {
     position: absolute;
-
     top: 78px;
     left: 16px;
-
-    width:
-        min(
-            310px,
-            calc(100% - 32px)
-        );
-
+    width: min(310px, calc(100% - 32px));
     padding: 10px;
-
     background: #ffffff;
-
     border-radius: 16px;
-
     border: 1px solid #e5edf4;
-
-    box-shadow:
-        0 20px 50px rgba(11, 42, 74, 0.25);
-
+    box-shadow: 0 20px 50px rgba(11,42,74,0.25);
     z-index: 1000;
-
     opacity: 0;
-
     visibility: hidden;
-
-    transform:
-        translateY(-10px)
-        scale(0.98);
-
-    transition:
-        opacity 0.22s ease,
-        transform 0.22s ease,
-        visibility 0.22s ease;
+    transform: translateY(-10px) scale(0.98);
+    transition: 0.22s ease;
 }
 
 .mobile-menu.open {
     opacity: 1;
-
     visibility: visible;
-
-    transform:
-        translateY(0)
-        scale(1);
+    transform: translateY(0) scale(1);
 }
 
 .mobile-menu a {
     display: flex;
-
     align-items: center;
-
     gap: 13px;
-
     padding: 13px 14px;
-
     border-radius: 11px;
-
     text-decoration: none;
-
     color: #172033;
-
     font-size: 15px;
-
     font-weight: 600;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .mobile-menu a:hover {
     background: #eef7ff;
-
     color: #0b5d9f;
-
-    transform:
-        translateX(2px);
 }
 
 .mobile-menu i {
     width: 20px;
-
     text-align: center;
-
     color: #1677c8;
-
     font-size: 16px;
 }
 
 .menu-divider {
     height: 1px;
-
     background: #e7edf3;
-
     margin: 8px 4px;
 }
 
 
-/* =========================================
-   MEDICAL HERO
-========================================= */
+/* =========================================================
+   LANDING HERO
+   ========================================================= */
 
 .medical-hero {
     position: relative;
-
-    padding:
-        35px
-        20px
-        25px;
-
-    background:
-        #f5f8fb;
-
+    padding: 35px 20px 25px;
+    background: #f5f8fb;
     overflow: hidden;
 }
-
-
-/* =========================================
-   MEDICAL IMAGE CARD
-========================================= */
 
 .medical-image-container {
     position: relative;
-
-    width:
-        min(
-            1180px,
-            100%
-        );
-
+    width: min(1180px, 100%);
     height: 370px;
-
     margin: 0 auto;
-
     background: #ffffff;
-
     border-radius: 26px;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.75);
-
     overflow: hidden;
-
     box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.16),
-        0 8px 20px rgba(0, 0, 0, 0.08);
+        0 20px 40px rgba(0,0,0,0.16),
+        0 8px 20px rgba(0,0,0,0.08);
 }
-
-
-/* =========================================
-   EQUIPMENT IMAGE
-========================================= */
 
 .equipment-image {
     position: absolute;
-
     left: 0;
     top: 0;
-
     width: 100%;
     height: 100%;
-
     padding: 8px;
-
     display: block;
-
     object-fit: contain;
-
-    /*
-       Keep the equipment toward
-       the left side of the card.
-    */
-
-    object-position:
-        left center;
-
+    object-position: left center;
     z-index: 1;
 }
 
-
-/* =========================================
-   DOCTOR IMAGE
-========================================= */
-
 .doctor-image {
     position: absolute;
-
     right: 8px;
     bottom: 0;
-
     width: 24%;
     height: 88%;
-
     display: block;
-
     object-fit: contain;
     object-position: bottom right;
-
     z-index: 2;
-
-    /* Makes the outer edges blend into the card */
-    -webkit-mask-image:
-        linear-gradient(
-            to right,
-            transparent 0%,
-            black 12%,
-            black 88%,
-            transparent 100%
-        );
-
-    mask-image:
-        linear-gradient(
-            to right,
-            transparent 0%,
-            black 12%,
-            black 88%,
-            transparent 100%
-        );
-
-    filter:
-        drop-shadow(
-            0 8px 14px
-            rgba(0, 0, 0, 0.12)
-        );
+    filter: drop-shadow(
+        0 8px 14px rgba(0,0,0,0.12)
+    );
 }
-
-
-/* =========================================
-   CARD LIGHT EFFECT
-========================================= */
 
 .medical-image-container::after {
     content: "";
-
     position: absolute;
-
     inset: 0;
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(255, 255, 255, 0.10),
-            transparent 38%,
-            transparent 100%
-        );
-
+    background: linear-gradient(
+        120deg,
+        rgba(255,255,255,0.10),
+        transparent 38%
+    );
     pointer-events: none;
-
     z-index: 3;
 }
 
 
-/* =========================================
-   HERO DECORATIVE LIGHT
-========================================= */
-
-.medical-hero::before {
-    content: "";
-
-    position: absolute;
-
-    width: 360px;
-    height: 360px;
-
-    top: -170px;
-
-    right: -150px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(80, 178, 255, 0.16),
-            transparent 68%
-        );
-
-    pointer-events: none;
-}
-
-
-/* =========================================
-   INTRODUCTION SECTION
-========================================= */
+/* =========================================================
+   LANDING INTRO
+   ========================================================= */
 
 .intro-section {
     width: 100%;
-
-    background:
-        linear-gradient(
-            180deg,
-            #ffffff 0%,
-            #fbfdff 100%
-        );
-
-    padding:
-        68px
-        20px
-        90px;
+    background: linear-gradient(
+        180deg,
+        #ffffff 0%,
+        #fbfdff 100%
+    );
+    padding: 68px 20px 90px;
 }
 
 .intro-container {
-    width:
-        min(
-            780px,
-            100%
-        );
-
+    width: min(780px, 100%);
     margin: 0 auto;
-
     text-align: center;
 }
 
-
-/* =========================================
-   INTRO LABEL
-========================================= */
-
 .intro-label {
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
-
     margin-bottom: 17px;
-
-    padding:
-        8px
-        15px;
-
+    padding: 8px 15px;
     border-radius: 50px;
-
     background: #eef7ff;
-
-    border:
-        1px solid
-        #dceefe;
-
+    border: 1px solid #dceefe;
     color: #1677c8;
-
     font-size: 11px;
-
     font-weight: 700;
-
     letter-spacing: 1.5px;
-
     text-transform: uppercase;
 }
 
-
-/* =========================================
-   MAIN HEADING
-========================================= */
-
 .intro-container h1 {
     color: #0b2a4a;
-
-    font-size:
-        clamp(
-            31px,
-            5vw,
-            50px
-        );
-
+    font-size: clamp(31px, 5vw, 50px);
     line-height: 1.12;
-
     margin-bottom: 20px;
-
     font-weight: 800;
-
     letter-spacing: -0.8px;
 }
 
-
-/* =========================================
-   DESCRIPTION
-========================================= */
-
 .intro-container p {
     max-width: 680px;
-
     margin: 0 auto;
-
     color: #667085;
-
     font-size: 16px;
-
     line-height: 1.85;
-
-    font-weight: 400;
 }
 
 
-/* =========================================
-   AUTH BUTTONS
-========================================= */
+/* =========================================================
+   LANDING AUTH BUTTONS
+   ========================================================= */
 
 .auth-actions {
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     gap: 14px;
-
     margin-top: 32px;
-
     flex-wrap: wrap;
 }
 
 .signup-button,
 .login-button {
     min-width: 165px;
-
     min-height: 50px;
-
-    padding:
-        14px
-        23px;
-
+    padding: 14px 23px;
     border-radius: 12px;
-
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 9px;
-
     text-decoration: none;
-
     font-size: 15px;
-
     font-weight: 750;
-
     cursor: pointer;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
+    transition: 0.2s ease;
 }
 
 .signup-button:hover,
 .login-button:hover {
-    transform:
-        translateY(-2px);
+    transform: translateY(-2px);
 }
-
-
-/* =========================================
-   CREATE ACCOUNT BUTTON
-========================================= */
 
 .signup-button {
-    background:
-        linear-gradient(
-            135deg,
-            #1684d5,
-            #1269ae
-        );
-
+    background: linear-gradient(
+        135deg,
+        #1684d5,
+        #1269ae
+    );
     color: #ffffff;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.08);
-
+    border: none;
     box-shadow:
-        0 10px 25px
-        rgba(22, 119, 200, 0.24);
+        0 10px 25px rgba(22,119,200,0.24);
 }
-
-.signup-button:hover {
-    background:
-        linear-gradient(
-            135deg,
-            #1a8fe4,
-            #1474be
-        );
-
-    box-shadow:
-        0 14px 30px
-        rgba(22, 119, 200, 0.30);
-}
-
-
-/* =========================================
-   LOGIN BUTTON
-========================================= */
 
 .login-button {
     background: #ffffff;
-
     color: #0b2a4a;
-
-    border:
-        1px solid
-        #d7e3ed;
-
+    border: 1px solid #d7e3ed;
     box-shadow:
-        0 6px 18px
-        rgba(11, 42, 74, 0.06);
+        0 6px 18px rgba(11,42,74,0.06);
 }
 
-.login-button:hover {
-    background: #f7fbff;
-
-    border-color:
-        #bfd6e8;
-
-    box-shadow:
-        0 10px 24px
-        rgba(11, 42, 74, 0.10);
-}
-
-
-/* =========================================
-   BUTTON FOCUS
-========================================= */
-
-.signup-button:focus-visible,
-.login-button:focus-visible,
-.menu-button:focus-visible,
-.mobile-menu a:focus-visible {
-    outline:
-        3px solid
-        rgba(22, 119, 200, 0.28);
-
-    outline-offset: 3px;
-}
-
-
-/* =========================================
-   TABLET
-========================================= */
-
-@media (max-width: 900px) {
-
-    .medical-image-container {
-        height: 320px;
-    }
-
-    .doctor-image {
-        width: 25%;
-
-        height: 88%;
-    }
-
-    .intro-section {
-        padding:
-            60px
-            20px
-            75px;
-    }
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 700px) {
-
-    .site-header {
-        padding-top: 14px;
-
-        padding-bottom: 20px;
-    }
-
-    .header-container {
-        width:
-            calc(100% - 24px);
-
-        min-height: 58px;
-
-        gap: 12px;
-    }
-
-    .brand-name {
-        font-size: 16px;
-
-        letter-spacing: 0.2px;
-    }
-
-    .menu-button {
-        width: 44px;
-
-        height: 44px;
-
-        border-radius: 12px;
-    }
-
-    .mobile-menu {
-        top: 72px;
-
-        left: 12px;
-
-        width:
-            calc(100% - 24px);
-
-        border-radius: 15px;
-    }
-
-
-    /* -----------------------------
-       MEDICAL HERO MOBILE
-    ----------------------------- */
-
-    .medical-hero {
-        padding:
-            22px
-            12px
-            30px;
-    }
-
-    .medical-image-container {
-        width: 100%;
-
-        height: 250px;
-
-        border-radius: 18px;
-
-        box-shadow:
-            0 18px 40px
-            rgba(0, 0, 0, 0.20);
-    }
-
-
-    /* -----------------------------
-       EQUIPMENT MOBILE
-    ----------------------------- */
-
-    .equipment-image {
-        width: 100%;
-
-        height: 100%;
-
-        padding: 5px;
-
-        object-fit: contain;
-
-        object-position:
-            left center;
-    }
-
-
-    /* -----------------------------
-       DOCTOR MOBILE
-    ----------------------------- */
-
-    .doctor-image {
-        width: 27%;
-
-        height: 88%;
-
-        right: 3px;
-
-        bottom: 0;
-
-        object-fit: contain;
-
-        object-position:
-            bottom right;
-    }
-
-
-    /* -----------------------------
-       INTRO MOBILE
-    ----------------------------- */
-
-    .intro-section {
-        padding:
-            48px
-            18px
-            68px;
-    }
-
-    .intro-label {
-        margin-bottom: 13px;
-
-        font-size: 10px;
-
-        letter-spacing: 1.3px;
-    }
-
-    .intro-container h1 {
-        font-size: 31px;
-
-        line-height: 1.16;
-
-        letter-spacing: -0.4px;
-
-        margin-bottom: 18px;
-    }
-
-    .intro-container p {
-        font-size: 15px;
-
-        line-height: 1.75;
-    }
-
-
-    /* -----------------------------
-       BUTTONS MOBILE
-    ----------------------------- */
-
-    .auth-actions {
-        flex-direction: column;
-
-        width: 100%;
-
-        margin-top: 27px;
-
-        gap: 11px;
-    }
-
-    .signup-button,
-    .login-button {
-        width: 100%;
-
-        max-width: 340px;
-
-        min-height: 51px;
-    }
-}
-
-
-/* =========================================
-   SMALL PHONES
-========================================= */
-
-@media (max-width: 400px) {
-
-    .header-container {
-        width:
-            calc(100% - 20px);
-    }
-
-    .brand-name {
-        font-size: 14px;
-    }
-
-    .menu-button {
-        width: 42px;
-
-        height: 42px;
-
-        font-size: 18px;
-    }
-
-
-    /* -----------------------------
-       SMALL PHONE CARD
-    ----------------------------- */
-
-    .medical-hero {
-        padding-left: 10px;
-
-        padding-right: 10px;
-
-        padding-bottom: 24px;
-    }
-
-    .medical-image-container {
-        height: 220px;
-
-        border-radius: 16px;
-    }
-
-    .equipment-image {
-        padding: 3px;
-    }
-
-    .doctor-image {
-        width: 25%;
-
-        height: 86%;
-
-        right: 2px;
-    }
-
-
-    /* -----------------------------
-       SMALL PHONE INTRO
-    ----------------------------- */
-
-    .intro-section {
-        padding:
-            42px
-            16px
-            60px;
-    }
-
-    .intro-container h1 {
-        font-size: 28px;
-
-        line-height: 1.18;
-    }
-
-    .intro-container p {
-        font-size: 14px;
-
-        line-height: 1.7;
-    }
-
-    .signup-button,
-    .login-button {
-        max-width: 100%;
-
-        width: 100%;
-    }
-}
-
-
-/* =========================================
-   VERY SMALL DEVICES
-========================================= */
-
-@media (max-width: 340px) {
-
-    .brand-name {
-        font-size: 13px;
-    }
-
-    .medical-image-container {
-        height: 205px;
-    }
-
-    .doctor-image {
-        width: 24%;
-
-        height: 84%;
-    }
-
-    .intro-container h1 {
-        font-size: 26px;
-    }
-}
-
-
-/* =========================================
-   REDUCED MOTION
-========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-    html {
-        scroll-behavior: auto;
-    }
-
-    *,
-    *::before,
-    *::after {
-        animation-duration:
-            0.01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            0.01ms !important;
-    }
-}
-
-/* =========================================
-   REGISTER PAGE
-========================================= */
-
-.register-card {
-    width:
-        min(
-            500px,
-            100%
-        );
-
-    padding:
-        38px
-        34px;
-
-    background:
-        rgba(255, 255, 255, 0.97);
-
-    border:
-        1px solid
-        #e1eaf2;
-
-    border-radius: 24px;
-
-    box-shadow:
-        0 25px 60px
-        rgba(11, 42, 74, 0.12);
-}
-
-
-/* =========================================
-   COUNTRY SELECTOR
-========================================= */
-
-.country-selector {
-    position: relative;
-
-    width: 100%;
-}
-
-
-/* SELECTED COUNTRY */
-
-.country-selected {
-    width: 100%;
-
-    height: 52px;
-
-    padding:
-        0
-        15px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 12px;
-
-    border:
-        1px solid
-        #d9e3ec;
-
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    color: #172033;
-
-    cursor: pointer;
-
-    text-align: left;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.country-selected:hover {
-    border-color: #bfd6e8;
-}
-
-.country-selector.active
-.country-selected {
-    border-color: #1684d5;
-
-    box-shadow:
-        0 0 0 4px
-        rgba(22, 132, 213, 0.10);
-}
-
-
-/* FLAG */
-
-.country-flag {
-    width: 27px;
-
-    flex-shrink: 0;
-
-    font-size: 21px;
-
-    line-height: 1;
-}
-
-
-/* COUNTRY NAME */
-
-.selected-country-name {
-    flex: 1;
-
-    color: #667085;
-
-    font-size: 14px;
-
-    white-space: nowrap;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-}
-
-.country-selector.has-selection
-.selected-country-name {
-    color: #172033;
-
-    font-weight: 600;
-}
-
-
-/* ARROW */
-
-.country-arrow {
-    color: #7b8da1;
-
-    font-size: 12px;
-
-    transition:
-        transform 0.2s ease;
-}
-
-.country-selector.active
-.country-arrow {
-    transform:
-        rotate(180deg);
-}
-
-
-/* =========================================
-   COUNTRY DROPDOWN
-========================================= */
-
-.country-dropdown {
-    position: absolute;
-
-    top: calc(100% + 8px);
-
-    left: 0;
-
-    width: 100%;
-
-    padding: 10px;
-
-    background: #ffffff;
-
-    border:
-        1px solid
-        #e1eaf2;
-
-    border-radius: 16px;
-
-    box-shadow:
-        0 20px 45px
-        rgba(11, 42, 74, 0.18);
-
-    z-index: 50;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transform:
-        translateY(-8px);
-
-    transition:
-        opacity 0.18s ease,
-        visibility 0.18s ease,
-        transform 0.18s ease;
-}
-
-.country-selector.active
-.country-dropdown {
-    opacity: 1;
-
-    visibility: visible;
-
-    transform:
-        translateY(0);
-}
-
-
-/* =========================================
-   COUNTRY SEARCH
-========================================= */
-
-.country-search {
-    position: relative;
-
-    margin-bottom: 8px;
-}
-
-.country-search i {
-    position: absolute;
-
-    left: 14px;
-
-    top: 50%;
-
-    transform:
-        translateY(-50%);
-
-    color: #7b8da1;
-
-    font-size: 14px;
-}
-
-.country-search input {
-    width: 100%;
-
-    height: 44px;
-
-    padding:
-        0
-        13px
-        0
-        40px;
-
-    border:
-        1px solid
-        #dce5ed;
-
-    border-radius: 10px;
-
-    outline: none;
-
-    background: #f8fafc;
-
-    color: #172033;
-
-    font-size: 13px;
-}
-
-.country-search input:focus {
-    border-color: #1684d5;
-
-    background: #ffffff;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(22, 132, 213, 0.08);
-}
-
-
-/* =========================================
-   COUNTRY LIST
-========================================= */
-
-.country-list {
-    max-height: 230px;
-
-    overflow-y: auto;
-
-    padding-right: 3px;
-}
-
-
-/* SCROLLBAR */
-
-.country-list::-webkit-scrollbar {
-    width: 6px;
-}
-
-.country-list::-webkit-scrollbar-track {
-    background: #f1f5f9;
-
-    border-radius: 10px;
-}
-
-.country-list::-webkit-scrollbar-thumb {
-    background: #c5d3df;
-
-    border-radius: 10px;
-}
-
-
-/* COUNTRY ITEM */
-
-.country-item {
-    width: 100%;
-
-    min-height: 45px;
-
-    padding:
-        8px
-        10px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 11px;
-
-    border: none;
-
-    border-radius: 9px;
-
-    background: transparent;
-
-    color: #172033;
-
-    cursor: pointer;
-
-    text-align: left;
-
-    font-size: 13px;
-
-    transition:
-        background 0.15s ease;
-}
-
-.country-item:hover {
-    background: #eef7ff;
-}
-
-.country-item .country-item-flag {
-    width: 27px;
-
-    flex-shrink: 0;
-
-    font-size: 20px;
-
-    line-height: 1;
-}
-
-.country-item .country-item-name {
-    flex: 1;
-
-    font-weight: 600;
-}
-
-.country-item .country-item-code {
-    color: #8a98a8;
-
-    font-size: 12px;
-}
-
-
-/* =========================================
-   PHONE NUMBER
-========================================= */
-
-.phone-wrapper {
-    display: flex;
-
-    width: 100%;
-
-    height: 52px;
-
-    border:
-        1px solid
-        #d9e3ec;
-
-    border-radius: 12px;
-
-    background: #ffffff;
-
-    overflow: hidden;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.phone-wrapper:focus-within {
-    border-color: #1684d5;
-
-    box-shadow:
-        0 0 0 4px
-        rgba(22, 132, 213, 0.10);
-}
-
-
-/* PHONE CODE */
-
-.phone-code {
-    min-width: 78px;
-
-    padding:
-        0
-        12px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-right:
-        1px solid
-        #d9e3ec;
-
-    background: #f7fafc;
-
-    color: #0b2a4a;
-
-    font-size: 13px;
-
-    font-weight: 700;
-
-    white-space: nowrap;
-}
-
-
-/* PHONE INPUT */
-
-.phone-wrapper input {
-    flex: 1;
-
-    min-width: 0;
-
-    height: 100%;
-
-    padding:
-        0
-        14px;
-
-    border: none;
-
-    outline: none;
-
-    background: transparent;
-
-    color: #172033;
-
-    font-size: 14px;
-}
-
-.phone-wrapper input::placeholder {
-    color: #98a5b3;
-}
-
-
-/* =========================================
-   TERMS
-========================================= */
-
-.terms-row {
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 9px;
-
-    margin:
-        3px
-        0
-        20px;
-
-    color: #667085;
-
-    font-size: 12px;
-
-    line-height: 1.6;
-
-    cursor: pointer;
-}
-
-.terms-row input {
-    width: 16px;
-    height: 16px;
-
-    margin-top: 2px;
-
-    flex-shrink: 0;
-
-    accent-color: #1677c8;
-
-    cursor: pointer;
-}
-
-.terms-row a {
-    color: #1677c8;
-
-    font-weight: 600;
-
-    text-decoration: none;
-}
-
-.terms-row a:hover {
-    text-decoration: underline;
-}
-
-
-/* =========================================
-   REGISTER MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-    .register-card {
-        padding:
-            32px
-            22px;
-
-        border-radius: 20px;
-    }
-
-    .country-dropdown {
-        border-radius: 14px;
-    }
-
-    .country-list {
-        max-height: 210px;
-    }
-
-    .phone-code {
-        min-width: 72px;
-
-        padding:
-            0
-            8px;
-    }
-
-    .terms-row {
-        font-size: 11.5px;
-    }
-}
-
-/* =========================================
-   COUNTRY DROPDOWN - FINAL FIX
-========================================= */
-
-.country-selector {
-    position: relative !important;
-    z-index: 9999 !important;
-}
-
-.country-selected {
-    position: relative !important;
-    z-index: 2 !important;
-}
-
-
-/* CLOSED */
-
-.country-dropdown {
-    position: absolute !important;
-
-    top: calc(100% + 8px) !important;
-    left: 0 !important;
-
-    width: 100% !important;
-
-    background: #ffffff !important;
-
-    border: 1px solid #e1eaf2 !important;
-    border-radius: 16px !important;
-
-    box-shadow:
-        0 20px 45px rgba(11, 42, 74, 0.20) !important;
-
-    z-index: 99999 !important;
-
-    display: none !important;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-
-    transform: none !important;
-}
-
-
-/* OPEN */
-
-.country-selector.active .country-dropdown {
-    display: block !important;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-
-    transform: none !important;
-}
-
-
-/* SEARCH AREA */
-
-.country-search {
-    position: relative !important;
-
-    display: flex !important;
-
-    align-items: center !important;
-
-    width: 100% !important;
-
-    padding: 10px !important;
-
-    margin: 0 !important;
-
-    background: #ffffff !important;
-
-    z-index: 10 !important;
-}
-
-
-/* SEARCH INPUT */
-
-.country-search input {
-    display: block !important;
-
-    width: 100% !important;
-
-    height: 44px !important;
-
-    box-sizing: border-box !important;
-}
-
-
-/* COUNTRY LIST */
-
-.country-list {
-    display: block !important;
-
-    width: 100% !important;
-
-    max-height: 240px !important;
-
-    overflow-y: auto !important;
-
-    overflow-x: hidden !important;
-}
-
-
-/* COUNTRY BUTTONS */
-
-.country-item {
-    display: flex !important;
-
-    width: 100% !important;
-
-    min-height: 45px !important;
-
-    align-items: center !important;
-
-    cursor: pointer !important;
-
-    background: #ffffff !important;
-
-    border: none !important;
-}
-
-.country-item:hover {
-    background: #eef7ff !important;
-}
-
-
-/* =========================================
-   MAKE REGISTER CARD ALLOW DROPDOWN
-========================================= */
-
-.register-card {
-    position: relative !important;
-
-    z-index: 10 !important;
-
-    overflow: visible !important;
-}
-
-
-/* =========================================
-   REGISTER MAIN
-========================================= */
-
-.auth-main {
-    position: relative !important;
-
-    z-index: 1 !important;
-
-    overflow: visible !important;
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 600px) {
-
-    .country-dropdown {
-        max-height: 300px !important;
-    }
-
-    .country-list {
-        max-height: 220px !important;
-    }
-}
 
 /* =========================================================
-   PIUS MEDICAL ACCESSORIES
-   PREMIUM REGISTER PAGE
+   REGISTER PAGE
    ========================================================= */
-
-/* ---------- REGISTER PAGE BACKGROUND ---------- */
 
 .auth-page {
     min-height: 100vh;
-    margin: 0;
     background:
         linear-gradient(
             180deg,
@@ -1759,9 +361,6 @@ body {
     color: #172033;
 }
 
-
-/* ---------- NAVY HEADER ---------- */
-
 .auth-header {
     width: 100%;
     min-height: 78px;
@@ -1769,7 +368,8 @@ body {
     display: flex;
     align-items: center;
     padding: 0 28px;
-    box-shadow: 0 8px 25px rgba(11, 42, 74, 0.16);
+    box-shadow:
+        0 8px 25px rgba(11,42,74,0.16);
     position: relative;
     z-index: 100;
 }
@@ -1778,107 +378,59 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-
     color: #ffffff !important;
     text-decoration: none !important;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
     font-size: 22px;
     font-weight: 700;
-    letter-spacing: -0.3px;
 }
-
-.auth-brand:hover {
-    color: #ffffff !important;
-    text-decoration: none !important;
-}
-
-
-/* ---------- MAIN AREA ---------- */
 
 .auth-main {
     width: 100%;
     min-height: calc(100vh - 78px);
-
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
     padding: 45px 20px 70px;
-
-    position: relative;
-    overflow: visible;
 }
-
-
-/* ---------- REGISTER CARD ---------- */
 
 .register-card {
     width: min(520px, 100%);
-
     padding: 38px 36px 34px;
-
-    background: rgba(255, 255, 255, 0.98);
-
+    background: rgba(255,255,255,0.98);
     border: 1px solid #dce7ef;
     border-radius: 24px;
-
     box-shadow:
-        0 18px 45px rgba(11, 42, 74, 0.10),
-        0 4px 12px rgba(11, 42, 74, 0.05);
-
+        0 18px 45px rgba(11,42,74,0.10),
+        0 4px 12px rgba(11,42,74,0.05);
     position: relative;
     z-index: 10;
-
-    overflow: visible;
 }
-
-
-/* ---------- TOP ICON ---------- */
 
 .auth-icon {
     width: 48px;
     height: 48px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     margin-bottom: 14px;
-
     color: #0b2a4a;
     font-size: 27px;
 }
 
-
-/* ---------- HEADING ---------- */
-
 .register-card h1 {
     margin: 0 0 8px;
-
     color: #172033;
-
     font-size: 38px;
     line-height: 1.12;
     font-weight: 750;
-    letter-spacing: -1px;
 }
 
 .auth-subtitle {
     margin: 0 0 28px;
-
     color: #68798d;
-
     font-size: 16px;
     line-height: 1.55;
 }
-
-
-/* ---------- FORM ---------- */
 
 .auth-form {
     width: 100%;
@@ -1891,25 +443,16 @@ body {
 
 .form-group > label {
     display: block;
-
     margin-bottom: 8px;
-
     color: #25344a;
-
     font-size: 14px;
     font-weight: 650;
 }
-
-
-/* ---------- INPUT WRAPPER ---------- */
 
 .input-wrapper {
     position: relative;
     width: 100%;
 }
-
-
-/* ---------- STANDARD INPUTS ---------- */
 
 .input-wrapper input,
 .auth-form input[type="text"],
@@ -1918,55 +461,30 @@ body {
 .auth-form input[type="password"] {
     width: 100%;
     height: 52px;
-
     padding: 0 16px;
-
     background: #ffffff;
-
     border: 1.5px solid #d5e1ea;
     border-radius: 13px;
-
     color: #172033;
-
-    font-family: inherit;
     font-size: 15px;
-
     outline: none;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+    transition: 0.2s ease;
 }
 
-.input-wrapper input::placeholder {
-    color: #9aaabd;
-}
-
-.input-wrapper input:focus {
+.input-wrapper input:focus,
+.auth-form input:focus {
     border-color: #1976c8;
-
     box-shadow:
-        0 0 0 4px rgba(25, 118, 200, 0.10);
-
-    background: #ffffff;
+        0 0 0 4px rgba(25,118,200,0.10);
 }
-
-
-/* ---------- INPUT ICONS ---------- */
 
 .input-icon {
     position: absolute;
-
     left: 16px;
     top: 50%;
-
     transform: translateY(-50%);
-
     color: #7890a6;
-
     font-size: 16px;
-
     pointer-events: none;
 }
 
@@ -1974,38 +492,21 @@ body {
     padding-left: 45px;
 }
 
-
-/* ---------- PASSWORD INPUT ---------- */
-
 .password-toggle {
     position: absolute;
-
     right: 12px;
     top: 50%;
-
     width: 38px;
     height: 38px;
-
     transform: translateY(-50%);
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     border: none;
     border-radius: 50%;
-
     background: transparent;
-
     color: #6d8297;
-
-    font-size: 17px;
-
     cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease;
 }
 
 .password-toggle:hover {
@@ -2013,90 +514,56 @@ body {
     color: #0b2a4a;
 }
 
-.password-toggle:active {
-    transform: translateY(-50%) scale(0.96);
-}
 
-
-/* ---------- COUNTRY SELECTOR ---------- */
+/* =========================================================
+   COUNTRY SELECTOR
+   ========================================================= */
 
 .country-selector {
     position: relative !important;
     width: 100%;
-    z-index: 100;
+    z-index: 9999 !important;
 }
 
 .country-selected {
     width: 100%;
     min-height: 56px;
-
     display: flex;
     align-items: center;
-
     padding: 0 16px;
-
     background: #ffffff;
-
     border: 1.5px solid #cbdde9;
     border-radius: 14px;
-
     color: #172033;
-
     cursor: pointer;
-
-    font-family: inherit;
-    text-align: left;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
 }
 
-.country-selected:hover {
-    border-color: #9fc5df;
-}
-
-.country-selector.active .country-selected,
-.country-selected:focus {
+.country-selector.active .country-selected {
     border-color: #1976c8;
-
     box-shadow:
-        0 0 0 4px rgba(25, 118, 200, 0.10);
-
-    outline: none;
+        0 0 0 4px rgba(25,118,200,0.10);
 }
 
 .country-flag {
     flex: 0 0 auto;
-
     width: 38px;
-
     font-size: 27px;
-
-    line-height: 1;
 }
 
 .selected-country-name {
     flex: 1;
-
     color: #53677d;
-
     font-size: 16px;
-    font-weight: 500;
 }
 
-.country-selector.has-selection .selected-country-name {
+.country-selector.has-selection
+.selected-country-name {
     color: #172033;
 }
 
 .country-arrow {
     margin-left: 10px;
-
     color: #71879b;
-
-    font-size: 15px;
-
     transition: transform 0.2s ease;
 }
 
@@ -2104,493 +571,221 @@ body {
     transform: rotate(180deg);
 }
 
-
-/* ---------- COUNTRY DROPDOWN ---------- */
-
 .country-dropdown {
     position: absolute !important;
-
     top: calc(100% + 8px) !important;
     left: 0 !important;
-
     width: 100% !important;
-
     padding: 10px !important;
-
     background: #ffffff !important;
-
     border: 1px solid #d9e5ed !important;
     border-radius: 16px !important;
-
     box-shadow:
-        0 20px 45px rgba(11, 42, 74, 0.18) !important;
-
-    z-index: 9999 !important;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transform: translateY(-8px);
-
-    transition:
-        opacity 0.18s ease,
-        visibility 0.18s ease,
-        transform 0.18s ease;
+        0 20px 45px rgba(11,42,74,0.18) !important;
+    z-index: 99999 !important;
+    display: none !important;
 }
 
 .country-selector.active .country-dropdown {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: translateY(0);
+    display: block !important;
 }
 
-
-/* ---------- COUNTRY SEARCH ---------- */
-
 .country-search {
-    width: 100%;
-
-    display: flex;
-    align-items: center;
-
+    display: flex !important;
+    align-items: center !important;
     gap: 8px;
-
-    padding: 4px 2px 10px;
-
-    background: #ffffff;
+    width: 100% !important;
+    padding: 4px 2px 10px !important;
 }
 
 .country-search i {
     color: #7890a6;
-
-    font-size: 14px;
 }
 
 .country-search input {
-    width: 100%;
-    height: 42px;
-
-    padding: 0 12px;
-
+    width: 100% !important;
+    height: 42px !important;
+    padding: 0 12px !important;
     background: #f6f9fb;
-
     border: 1px solid #dbe6ed;
     border-radius: 10px;
-
     color: #172033;
-
-    font-family: inherit;
-    font-size: 14px;
-
     outline: none;
 }
 
-.country-search input:focus {
-    border-color: #1976c8;
-
-    box-shadow:
-        0 0 0 3px rgba(25, 118, 200, 0.08);
-}
-
-
-/* ---------- COUNTRY LIST ---------- */
-
 .country-list {
-    width: 100%;
-
-    max-height: 240px;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    padding-right: 3px;
+    display: block !important;
+    width: 100% !important;
+    max-height: 240px !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
 }
 
 .country-item {
-    width: 100%;
-    min-height: 46px;
-
-    display: flex;
+    display: flex !important;
+    width: 100% !important;
+    min-height: 46px !important;
     align-items: center;
-
     padding: 7px 10px;
-
-    border: none;
+    border: none !important;
     border-radius: 9px;
-
-    background: #ffffff;
-
+    background: #ffffff !important;
     color: #172033;
-
-    font-family: inherit;
-
-    cursor: pointer;
-
+    cursor: pointer !important;
     text-align: left;
-
-    transition: background 0.15s ease;
 }
 
 .country-item:hover {
-    background: #eef7ff;
-}
-
-.country-item:active {
-    background: #e3f1fb;
+    background: #eef7ff !important;
 }
 
 .country-item-flag {
     width: 34px;
-
     font-size: 21px;
-
-    flex: 0 0 auto;
 }
 
 .country-item-name {
     flex: 1;
-
     font-size: 14px;
-    font-weight: 500;
 }
 
 .country-item-code {
     margin-left: 10px;
-
     color: #73879a;
-
     font-size: 13px;
     font-weight: 600;
 }
 
 
-/* ---------- PHONE NUMBER ---------- */
+/* =========================================================
+   PHONE
+   ========================================================= */
 
 .phone-wrapper {
     width: 100%;
-
     display: flex;
-
     background: #ffffff;
-
     border: 1.5px solid #d5e1ea;
     border-radius: 13px;
-
     overflow: hidden;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
 }
 
 .phone-wrapper:focus-within {
     border-color: #1976c8;
-
     box-shadow:
-        0 0 0 4px rgba(25, 118, 200, 0.10);
+        0 0 0 4px rgba(25,118,200,0.10);
 }
 
 .phone-code {
     min-width: 88px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 0 12px;
-
     background: #f5f9fc;
-
     border-right: 1px solid #dbe6ed;
-
     color: #12365a;
-
     font-size: 15px;
     font-weight: 700;
 }
 
 .phone-wrapper input {
     flex: 1;
-
-    width: 100%;
     height: 52px;
-
     padding: 0 15px;
-
     border: none !important;
-    border-radius: 0 !important;
-
-    box-shadow: none !important;
-
     outline: none;
 }
 
 
-/* ---------- TERMS ---------- */
-
-.terms-group {
-    margin-top: 3px;
-    margin-bottom: 22px;
-}
+/* =========================================================
+   TERMS / REGISTER BUTTON
+   ========================================================= */
 
 .terms-label {
     display: flex;
     align-items: flex-start;
-
     gap: 10px;
-
     color: #66788c;
-
     font-size: 14px;
     line-height: 1.5;
-
     cursor: pointer;
 }
 
-.terms-label input[type="checkbox"] {
+.terms-label input {
     width: 19px;
     height: 19px;
-
-    flex: 0 0 auto;
-
-    margin-top: 1px;
-
     accent-color: #1976c8;
-
-    cursor: pointer;
 }
 
 .terms-label a {
     color: #1671bd !important;
-
     font-weight: 650;
-
     text-decoration: none !important;
 }
-
-.terms-label a:hover {
-    text-decoration: underline !important;
-}
-
-
-/* ---------- CREATE ACCOUNT BUTTON ---------- */
 
 .auth-submit {
     width: 100%;
     min-height: 52px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     gap: 9px;
-
-    padding: 0 20px;
-
     border: none;
     border-radius: 13px;
-
     background:
         linear-gradient(
             135deg,
             #0b2a4a,
             #15598a
         );
-
     color: #ffffff;
-
-    font-family: inherit;
-
     font-size: 15px;
     font-weight: 700;
-
     cursor: pointer;
-
     box-shadow:
-        0 8px 18px rgba(11, 42, 74, 0.18);
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+        0 8px 18px rgba(11,42,74,0.18);
 }
 
 .auth-submit:hover {
-    background:
-        linear-gradient(
-            135deg,
-            #09233f,
-            #0f6ba9
-        );
-
     transform: translateY(-1px);
-
-    box-shadow:
-        0 12px 24px rgba(11, 42, 74, 0.22);
 }
-
-.auth-submit:active {
-    transform: translateY(0);
-}
-
-
-/* ---------- MESSAGE ---------- */
 
 .auth-message {
     min-height: 20px;
-
     margin: 12px 0 0;
-
     font-size: 13px;
-
     text-align: center;
 }
 
-
-/* ---------- LOGIN FOOTER ---------- */
-
 .auth-footer {
     margin-top: 22px;
-
     color: #718397;
-
     font-size: 14px;
-
     text-align: center;
 }
 
 .auth-footer a {
     color: #166fb5 !important;
-
     font-weight: 700;
-
     text-decoration: none !important;
 }
-
-.auth-footer a:hover {
-    text-decoration: underline !important;
-}
-
-
-/* ---------- BACK HOME ---------- */
 
 .back-home {
     display: flex;
     align-items: center;
     justify-content: center;
-
     gap: 7px;
-
     margin-top: 17px;
-
     color: #60758a !important;
-
     font-size: 14px;
-    font-weight: 600;
-
-    text-decoration: none !important;
-
-    transition: color 0.2s ease;
-}
-
-.back-home:hover {
-    color: #0b2a4a !important;
-
     text-decoration: none !important;
 }
 
 
 /* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-    .auth-header {
-        min-height: 68px;
-        padding: 0 18px;
-    }
-
-    .auth-brand {
-        font-size: 18px;
-    }
-
-    .auth-main {
-        min-height: calc(100vh - 68px);
-
-        padding:
-            22px 12px 45px;
-    }
-
-    .register-card {
-        width: 100%;
-
-        padding:
-            28px 18px 26px;
-
-        border-radius: 20px;
-    }
-
-    .auth-icon {
-        margin-bottom: 10px;
-    }
-
-    .register-card h1 {
-        font-size: 31px;
-
-        letter-spacing: -0.7px;
-    }
-
-    .auth-subtitle {
-        font-size: 15px;
-
-        margin-bottom: 23px;
-    }
-
-    .form-group {
-        margin-bottom: 17px;
-    }
-
-    .country-selected {
-        min-height: 54px;
-    }
-
-    .country-list {
-        max-height: 250px;
-    }
-
-    .auth-submit {
-        min-height: 52px;
-    }
-}
-
-/* =========================================
-   PIUS MEDICAL ACCESSORIES
    LOGIN PAGE
-========================================= */
-
-.auth-page {
-    min-height: 100vh;
-    background: #f4f7fb;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-
-/* =========================
-   NAVY HEADER
-========================= */
-
-.auth-header {
-    width: 100%;
-    min-height: 76px;
-    background: #082c55;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 7%;
-    box-sizing: border-box;
-    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
-}
+   ========================================================= */
 
 .auth-logo {
     display: flex;
@@ -2611,8 +806,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 21px;
-    font-weight: bold;
 }
 
 .home-link {
@@ -2621,19 +814,9 @@ body {
     font-size: 15px;
     font-weight: 600;
     padding: 10px 18px;
-    border: 1px solid rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255,255,255,0.35);
     border-radius: 8px;
-    transition: 0.2s ease;
 }
-
-.home-link:hover {
-    background: rgba(255, 255, 255, 0.12);
-}
-
-
-/* =========================
-   LOGIN CONTAINER
-========================= */
 
 .auth-container {
     width: 100%;
@@ -2642,13 +825,8 @@ body {
     align-items: center;
     justify-content: center;
     padding: 45px 20px;
-    box-sizing: border-box;
+    background: #f4f7fb;
 }
-
-
-/* =========================
-   LOGIN CARD
-========================= */
 
 .auth-card {
     width: 100%;
@@ -2656,42 +834,29 @@ body {
     background: #ffffff;
     border-radius: 18px;
     padding: 38px;
-    box-sizing: border-box;
     box-shadow:
-        0 10px 35px rgba(8, 44, 85, 0.10),
-        0 2px 8px rgba(0, 0, 0, 0.05);
+        0 10px 35px rgba(8,44,85,0.10);
     border: 1px solid #e7edf4;
 }
-
-
-/* =========================
-   CARD HEADER
-========================= */
 
 .auth-card-header {
     text-align: center;
     margin-bottom: 30px;
 }
 
-.auth-icon {
+.auth-card-header .auth-icon {
     width: 58px;
     height: 58px;
     margin: 0 auto 16px;
     background: #082c55;
     color: #ffffff;
     border-radius: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 28px;
-    font-weight: bold;
 }
 
 .auth-card-header h1 {
     margin: 0 0 9px;
     color: #102a43;
     font-size: 29px;
-    font-weight: 700;
 }
 
 .auth-card-header p {
@@ -2701,74 +866,16 @@ body {
     line-height: 1.6;
 }
 
-
-/* =========================
-   FORM
-========================= */
-
-.form-group {
-    margin-bottom: 21px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    color: #243b53;
-    font-size: 14px;
-    font-weight: 600;
-}
-
-
-/* =========================
-   INPUTS
-========================= */
-
-.form-group input[type="email"],
-.password-input input {
-    width: 100%;
-    height: 50px;
-    padding: 0 15px;
-    box-sizing: border-box;
-    border: 1px solid #d8e1eb;
-    border-radius: 9px;
-    background: #ffffff;
-    color: #102a43;
-    font-size: 15px;
-    outline: none;
-    transition: 0.2s ease;
-}
-
-.form-group input::placeholder {
-    color: #9aa9b8;
-}
-
-.form-group input:focus,
-.password-input input:focus {
-    border-color: #082c55;
-    box-shadow: 0 0 0 3px rgba(8, 44, 85, 0.09);
-}
-
-
-/* =========================
-   PASSWORD
-========================= */
-
 .password-label-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
 }
 
 .password-label-row a {
     color: #082c55;
     text-decoration: none;
     font-size: 13px;
-    font-weight: 600;
-}
-
-.password-label-row a:hover {
-    text-decoration: underline;
 }
 
 .password-input {
@@ -2779,29 +886,6 @@ body {
     padding-right: 52px;
 }
 
-.password-toggle {
-    position: absolute;
-    right: 8px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 38px;
-    height: 38px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 17px;
-    opacity: 0.65;
-}
-
-.password-toggle:hover {
-    opacity: 1;
-}
-
-
-/* =========================
-   REMEMBER ME
-========================= */
-
 .remember-row {
     margin: 2px 0 20px;
 }
@@ -2810,37 +894,22 @@ body {
     display: flex !important;
     align-items: center;
     gap: 9px;
-    margin: 0 !important;
     color: #52667a !important;
     font-size: 13px !important;
-    font-weight: 500 !important;
-    cursor: pointer;
 }
 
 .remember-label input {
     width: 16px;
     height: 16px;
     accent-color: #082c55;
-    cursor: pointer;
 }
-
-
-/* =========================
-   LOGIN MESSAGE
-========================= */
 
 .login-message {
     min-height: 0;
     margin-bottom: 12px;
     font-size: 13px;
     text-align: center;
-    line-height: 1.5;
 }
-
-
-/* =========================
-   LOGIN BUTTON
-========================= */
 
 .auth-button {
     width: 100%;
@@ -2852,29 +921,12 @@ body {
     font-size: 16px;
     font-weight: 700;
     cursor: pointer;
-    transition: 0.2s ease;
 }
 
 .auth-button:hover {
     background: #0b3b72;
     transform: translateY(-1px);
-    box-shadow: 0 7px 18px rgba(8, 44, 85, 0.20);
 }
-
-.auth-button:active {
-    transform: translateY(0);
-}
-
-.auth-button:disabled {
-    opacity: 0.65;
-    cursor: not-allowed;
-    transform: none;
-}
-
-
-/* =========================
-   DIVIDER
-========================= */
 
 .auth-divider {
     display: flex;
@@ -2883,7 +935,6 @@ body {
     margin: 28px 0 22px;
     color: #9aa9b8;
     font-size: 11px;
-    font-weight: 600;
 }
 
 .auth-divider::before,
@@ -2893,15 +944,6 @@ body {
     height: 1px;
     background: #e5ebf2;
 }
-
-.auth-divider span {
-    flex-shrink: 0;
-}
-
-
-/* =========================
-   REGISTER TEXT
-========================= */
 
 .register-text {
     margin: 0;
@@ -2916,102 +958,10 @@ body {
     text-decoration: none;
 }
 
-.register-text a:hover {
-    text-decoration: underline;
-}
 
-
-/* =========================
-   BACK HOME
-========================= */
-
-.back-home {
-    display: block;
-    margin-top: 24px;
-    text-align: center;
-    color: #6b7c93;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.back-home:hover {
-    color: #082c55;
-}
-
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 600px) {
-
-    .auth-header {
-        min-height: 68px;
-        padding: 0 18px;
-    }
-
-    .auth-logo {
-        font-size: 16px;
-    }
-
-    .logo-icon {
-        width: 32px;
-        height: 32px;
-        font-size: 18px;
-        border-radius: 8px;
-    }
-
-    .home-link {
-        padding: 8px 13px;
-        font-size: 13px;
-    }
-
-    .auth-container {
-        min-height: calc(100vh - 68px);
-        padding: 28px 15px;
-        align-items: flex-start;
-    }
-
-    .auth-card {
-        margin-top: 10px;
-        padding: 29px 21px;
-        border-radius: 15px;
-    }
-
-    .auth-card-header h1 {
-        font-size: 25px;
-    }
-
-    .auth-card-header p {
-        font-size: 13px;
-    }
-}
-
-/* =========================
-   PASSWORD EYE ICON
-========================= */
-
-.password-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #6b7c93;
-}
-
-.eye-icon {
-    width: 21px;
-    height: 21px;
-    display: block;
-}
-
-.password-toggle:hover {
-    color: #082c55;
-}
-/* =========================================
-   PIUS MEDICAL ACCESSORIES
-   DASHBOARD STYLES
-========================================= */
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
 
 .dashboard-page {
     margin: 0;
@@ -3021,29 +971,20 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
-/* =========================================
-   HEADER
-========================================= */
-
 .dashboard-header {
     position: sticky;
     top: 0;
     z-index: 1000;
-
     height: 74px;
     padding: 0 28px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     background: #082b55;
     color: #ffffff;
-
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+    box-shadow:
+        0 4px 18px rgba(0,0,0,0.12);
 }
-
 
 .header-left,
 .header-actions {
@@ -3051,323 +992,177 @@ body {
     align-items: center;
 }
 
-
 .header-left {
     gap: 16px;
 }
-
 
 .header-actions {
     gap: 18px;
 }
 
-
-/* =========================================
-   MENU BUTTON
-========================================= */
-
 .menu-btn {
     width: 44px;
     height: 44px;
-
     border: 0;
     border-radius: 10px;
-
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.10);
     color: #ffffff;
-
     font-size: 20px;
     cursor: pointer;
-
-    transition: 0.2s ease;
 }
-
-
-.menu-btn:hover {
-    background: rgba(255, 255, 255, 0.18);
-}
-
-
-/* =========================================
-   LOGO
-========================================= */
 
 .dashboard-logo {
     display: flex;
     align-items: center;
     gap: 10px;
-
     color: #ffffff;
-    text-decoration: none;
-
     font-size: 17px;
     font-weight: 800;
-    letter-spacing: 0.4px;
 }
-
 
 .medical-cross {
     width: 38px;
     height: 38px;
-
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: #d71920;
     color: #ffffff;
-
     border-radius: 8px;
-
-    font-size: 22px;
-    font-weight: 900;
 }
-
-
-.medical-cross.small {
-    width: 34px;
-    height: 34px;
-    font-size: 19px;
-}
-
-
-/* =========================================
-   SEARCH
-========================================= */
 
 .dashboard-search {
     width: 270px;
     height: 42px;
-
     display: flex;
     align-items: center;
     gap: 10px;
-
     padding: 0 14px;
-
     background: #ffffff;
-
     border-radius: 10px;
-
-    box-sizing: border-box;
 }
-
 
 .dashboard-search i {
     color: #6b7280;
 }
 
-
 .dashboard-search input {
     width: 100%;
-
     border: 0;
     outline: 0;
-
     background: transparent;
-
     color: #172033;
-    font-size: 14px;
 }
-
-
-.dashboard-search input::placeholder {
-    color: #9ca3af;
-}
-
-
-/* =========================================
-   CART
-========================================= */
 
 .cart-btn {
     position: relative;
-
     width: 44px;
     height: 44px;
-
     border: 0;
     border-radius: 10px;
-
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.10);
     color: #ffffff;
-
     font-size: 19px;
-
     cursor: pointer;
 }
 
-
-.cart-count,
-.menu-cart-count {
+.cart-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    min-width: 19px;
+    height: 19px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    min-width: 19px;
-    height: 19px;
-
     padding: 0 5px;
-
     border-radius: 20px;
-
     background: #d71920;
     color: #ffffff;
-
     font-size: 11px;
     font-weight: 700;
 }
 
 
-.cart-count {
-    position: absolute;
-
-    top: -4px;
-    right: -4px;
-}
-
-
-/* =========================================
+/* =========================================================
    SIDE MENU
-========================================= */
+   ========================================================= */
 
 .menu-overlay {
     position: fixed;
-
     inset: 0;
-
     z-index: 1100;
-
-    background: rgba(0, 0, 0, 0.45);
-
+    background: rgba(0,0,0,0.45);
     opacity: 0;
     visibility: hidden;
-
     transition: 0.25s ease;
 }
-
 
 .menu-overlay.show {
     opacity: 1;
     visibility: visible;
 }
 
-
 .side-menu {
     position: fixed;
-
     top: 0;
     left: 0;
-
     z-index: 1200;
-
     width: 290px;
     height: 100vh;
-
     background: #ffffff;
-
-    box-shadow: 8px 0 30px rgba(0, 0, 0, 0.15);
-
+    box-shadow:
+        8px 0 30px rgba(0,0,0,0.15);
     transform: translateX(-100%);
-
     transition: transform 0.28s ease;
-
     overflow-y: auto;
 }
-
 
 .side-menu.open {
     transform: translateX(0);
 }
 
-
 .side-menu-header {
     height: 74px;
-
     padding: 0 20px;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     background: #082b55;
-    color: #ffffff;
 }
-
-
-.side-menu-header > div {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
 
 .close-menu-btn {
     width: 38px;
     height: 38px;
-
     border: 0;
     border-radius: 9px;
-
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.10);
     color: #ffffff;
-
-    font-size: 19px;
     cursor: pointer;
 }
-
-
-/* =========================================
-   NAVIGATION
-========================================= */
 
 .dashboard-nav {
     padding: 18px 12px;
 }
 
-
 .dashboard-nav a,
 .logout-menu-btn {
     width: 100%;
-
     min-height: 50px;
-
     margin-bottom: 6px;
-
     padding: 0 14px;
-
     display: flex;
     align-items: center;
     gap: 14px;
-
-    box-sizing: border-box;
-
     border: 0;
     border-radius: 10px;
-
     background: transparent;
-
     color: #344054;
-
     text-decoration: none;
-
     font-size: 14px;
-
     cursor: pointer;
-
-    transition: 0.2s ease;
 }
-
-
-.dashboard-nav a i,
-.logout-menu-btn i {
-    width: 22px;
-
-    text-align: center;
-
-    font-size: 17px;
-}
-
 
 .dashboard-nav a:hover,
 .dashboard-nav a.active {
@@ -3375,917 +1170,369 @@ body {
     color: #082b55;
 }
 
-
 .logout-menu-btn {
     margin-top: 15px;
-
     color: #d71920;
 }
-
 
 .logout-menu-btn:hover {
     background: #fff1f1;
 }
 
 
-/* =========================================
-   MAIN
-========================================= */
+/* =========================================================
+   DASHBOARD MAIN
+   ========================================================= */
 
 .dashboard-main {
     width: min(1200px, calc(100% - 40px));
-
     margin: 0 auto;
-
     padding: 38px 0 70px;
 }
-
-
-/* =========================================
-   WELCOME
-========================================= */
 
 .dashboard-welcome {
     margin-bottom: 30px;
 }
 
-
 .dashboard-small-title,
 .section-label {
     margin: 0 0 7px;
-
     color: #1769aa;
-
     font-size: 11px;
     font-weight: 800;
-
     letter-spacing: 1.3px;
 }
 
-
 .dashboard-welcome h1 {
     margin: 0;
-
     color: #132238;
-
     font-size: clamp(27px, 4vw, 40px);
-
-    line-height: 1.2;
 }
-
 
 .dashboard-welcome h1 span {
     color: #1769aa;
 }
 
-
 .dashboard-welcome p:last-child {
     margin-top: 10px;
-
     color: #667085;
-
     font-size: 15px;
 }
 
 
-/* =========================================
-   SECTION HEADINGS
-========================================= */
+/* =========================================================
+   DASHBOARD SECTIONS
+   ========================================================= */
 
 .section-heading {
     margin-bottom: 18px;
-
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    gap: 15px;
 }
-
 
 .section-heading h2 {
     margin: 0;
-
     color: #172033;
-
     font-size: 23px;
 }
-
 
 .view-all-link {
     display: flex;
     align-items: center;
     gap: 7px;
-
     color: #1769aa;
-
     text-decoration: none;
-
     font-size: 13px;
     font-weight: 700;
 }
 
-
-.view-all-link:hover {
-    text-decoration: underline;
-}
-
-
-/* =========================================
-   QUICK ACTIONS
-========================================= */
-
-.quick-actions-section {
+.quick-actions-section,
+.health-section,
+.categories-section,
+.products-preview-section {
     margin-bottom: 38px;
 }
 
-
-.quick-actions-grid {
+.quick-actions-grid,
+.category-grid,
+.product-grid {
     display: grid;
-
     grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
+        repeat(4, minmax(0,1fr));
     gap: 16px;
 }
 
-
-.quick-action-card {
+.quick-action-card,
+.category-card {
     padding: 21px;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 7px;
-
     background: #ffffff;
-
     border: 1px solid #e5eaf1;
     border-radius: 15px;
-
     color: #172033;
     text-decoration: none;
-
-    box-shadow: 0 5px 20px rgba(20, 40, 70, 0.05);
-
+    box-shadow:
+        0 5px 20px rgba(20,40,70,0.05);
     transition: 0.2s ease;
 }
 
-
-.quick-action-card:hover {
+.quick-action-card:hover,
+.category-card:hover {
     transform: translateY(-3px);
-
     box-shadow:
-        0 10px 28px rgba(20, 40, 70, 0.10);
+        0 10px 28px rgba(20,40,70,0.10);
 }
 
-
-.quick-action-icon {
-    width: 42px;
-    height: 42px;
-
+.quick-action-icon,
+.category-icon {
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    margin-bottom: 6px;
-
+    margin-bottom: 12px;
     border-radius: 11px;
-
     background: #eaf2fb;
     color: #1769aa;
-
     font-size: 18px;
 }
-
 
 .quick-action-card strong {
     font-size: 15px;
 }
 
-
-.quick-action-card small {
+.quick-action-card small,
+.category-card p {
     color: #7a8494;
     font-size: 12px;
 }
 
-
-/* =========================================
-   HEALTH
-========================================= */
-
-.health-section {
-    margin-bottom: 42px;
+.category-card h3 {
+    margin: 0 0 7px;
+    font-size: 15px;
 }
 
+
+/* =========================================================
+   HEALTH CARD
+   ========================================================= */
 
 .health-dashboard-card {
     display: flex;
     align-items: center;
     gap: 25px;
-
     padding: 28px;
-
     background:
         linear-gradient(
             135deg,
             #082b55,
             #14558a
         );
-
     border-radius: 18px;
-
     color: #ffffff;
-
     box-shadow:
-        0 12px 30px rgba(8, 43, 85, 0.18);
+        0 12px 30px rgba(8,43,85,0.18);
 }
 
-
 .health-card-icon {
-    flex: 0 0 65px;
-
     width: 65px;
     height: 65px;
-
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-
     border-radius: 17px;
-
-    background: rgba(255, 255, 255, 0.12);
-
+    background: rgba(255,255,255,0.12);
     font-size: 29px;
 }
-
 
 .health-card-content {
     flex: 1;
 }
 
-
 .health-card-content h3 {
-    margin: 0 0 7px;
-
+    margin-bottom: 7px;
     font-size: 22px;
 }
 
-
 .health-card-content p {
     max-width: 680px;
-
-    margin: 0 0 17px;
-
-    color: rgba(255, 255, 255, 0.82);
-
+    margin-bottom: 17px;
+    color: rgba(255,255,255,0.82);
     font-size: 14px;
-
     line-height: 1.6;
 }
 
-
 .health-features {
     display: flex;
-
     flex-wrap: wrap;
-
     gap: 9px;
-
     margin-bottom: 20px;
 }
 
-
 .health-features span {
     padding: 7px 10px;
-
-    border: 1px solid rgba(255, 255, 255, 0.15);
-
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: 20px;
-
-    background: rgba(255, 255, 255, 0.08);
-
+    background: rgba(255,255,255,0.08);
     font-size: 12px;
 }
-
-
-.health-features i {
-    margin-right: 5px;
-}
-
 
 .health-button,
 .support-button {
     display: inline-flex;
-
     align-items: center;
-
     gap: 9px;
-
     padding: 11px 16px;
-
     border: 0;
     border-radius: 9px;
-
     background: #ffffff;
-
     color: #082b55;
-
     font-size: 13px;
     font-weight: 700;
-
     text-decoration: none;
-
-    cursor: pointer;
 }
 
 
-/* =========================================
-   CATEGORIES
-========================================= */
-
-.categories-section {
-    margin-bottom: 42px;
-}
-
-
-.category-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap: 16px;
-}
-
-
-.category-card {
-    padding: 22px;
-
-    background: #ffffff;
-
-    border: 1px solid #e5eaf1;
-    border-radius: 15px;
-
-    color: #172033;
-
-    text-decoration: none;
-
-    transition: 0.2s ease;
-}
-
-
-.category-card:hover {
-    transform: translateY(-3px);
-
-    border-color: #c8d9ea;
-
-    box-shadow:
-        0 10px 25px rgba(20, 40, 70, 0.08);
-}
-
-
-.category-icon {
-    width: 48px;
-    height: 48px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    margin-bottom: 16px;
-
-    border-radius: 12px;
-
-    background: #f0f6fb;
-    color: #1769aa;
-
-    font-size: 21px;
-}
-
-
-.category-card h3 {
-    margin: 0 0 7px;
-
-    font-size: 15px;
-}
-
-
-.category-card p {
-    margin: 0;
-
-    color: #7a8494;
-
-    font-size: 12px;
-
-    line-height: 1.5;
-}
-
-
-/* =========================================
+/* =========================================================
    PRODUCTS
-========================================= */
-
-.products-preview-section {
-    margin-bottom: 42px;
-}
-
-
-.product-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap: 16px;
-}
-
-
-.product-grid:empty::before {
-    content: "Featured medical products will appear here.";
-
-    grid-column: 1 / -1;
-
-    padding: 50px 20px;
-
-    background: #ffffff;
-
-    border: 1px dashed #d6dde7;
-    border-radius: 15px;
-
-    color: #7a8494;
-
-    text-align: center;
-
-    font-size: 14px;
-}
-
-
-/* =========================================
-   SUPPORT
-========================================= */
-
-.support-dashboard-section {
-    margin-top: 20px;
-}
-
-
-.support-dashboard-card {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-
-    padding: 27px;
-
-    background: #ffffff;
-
-    border: 1px solid #e5eaf1;
-
-    border-radius: 17px;
-
-    box-shadow:
-        0 6px 22px rgba(20, 40, 70, 0.05);
-}
-
-
-.support-icon {
-    flex: 0 0 58px;
-
-    width: 58px;
-    height: 58px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 15px;
-
-    background: #eaf2fb;
-    color: #1769aa;
-
-    font-size: 23px;
-}
-
-
-.support-dashboard-card h2 {
-    margin: 0 0 8px;
-
-    font-size: 21px;
-}
-
-
-.support-dashboard-card p:not(.section-label) {
-    max-width: 700px;
-
-    margin: 0 0 16px;
-
-    color: #6b7280;
-
-    font-size: 13px;
-
-    line-height: 1.6;
-}
-
-
-.support-button {
-    background: #082b55;
-    color: #ffffff;
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 900px) {
-
-    .dashboard-header {
-        padding: 0 16px;
-    }
-
-
-    .dashboard-logo {
-        font-size: 13px;
-    }
-
-
-    .dashboard-search {
-        width: 220px;
-    }
-
-
-    .quick-actions-grid,
-    .category-grid,
-    .product-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-    }
-
-}
-
-
-@media (max-width: 650px) {
-
-    .dashboard-header {
-        height: 68px;
-    }
-
-
-    .dashboard-logo span:last-child {
-        max-width: 135px;
-
-        overflow: hidden;
-
-        white-space: nowrap;
-
-        text-overflow: ellipsis;
-    }
-
-
-    .dashboard-search {
-        width: 42px;
-
-        padding: 0;
-
-        justify-content: center;
-    }
-
-
-    .dashboard-search input {
-        display: none;
-    }
-
-
-    .dashboard-search i {
-        font-size: 16px;
-    }
-
-
-    .header-actions {
-        gap: 8px;
-    }
-
-
-    .dashboard-main {
-        width: min(
-            100% - 24px,
-            1200px
-        );
-
-        padding-top: 27px;
-    }
-
-
-    .quick-actions-grid,
-    .category-grid,
-    .product-grid {
-        grid-template-columns: 1fr 1fr;
-
-        gap: 10px;
-    }
-
-
-    .quick-action-card,
-    .category-card {
-        padding: 16px;
-    }
-
-
-    .health-dashboard-card {
-        align-items: flex-start;
-
-        flex-direction: column;
-
-        padding: 21px;
-    }
-
-
-    .health-card-icon {
-        width: 52px;
-        height: 52px;
-
-        flex-basis: 52px;
-    }
-
-
-    .support-dashboard-card {
-        align-items: flex-start;
-
-        flex-direction: column;
-    }
-
-
-    .side-menu {
-        width: min(
-            300px,
-            86vw
-        );
-    }
-
-}
-
-
-@media (max-width: 400px) {
-
-    .dashboard-logo {
-        gap: 6px;
-
-        font-size: 11px;
-    }
-
-
-    .medical-cross {
-        width: 32px;
-        height: 32px;
-
-        font-size: 18px;
-    }
-
-
-    .menu-btn,
-    .cart-btn {
-        width: 40px;
-        height: 40px;
-    }
-
-
-    .quick-actions-grid,
-    .category-grid,
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
-
-}
-
-/* =========================================
-   DASHBOARD PRODUCT CARDS
-========================================= */
+   ========================================================= */
 
 .dashboard-product-card {
     position: relative;
-
     overflow: hidden;
-
     background: #ffffff;
-
     border: 1px solid #e5eaf1;
     border-radius: 16px;
-
     box-shadow:
-        0 6px 20px rgba(20, 40, 70, 0.05);
-
+        0 6px 20px rgba(20,40,70,0.05);
     transition: 0.2s ease;
 }
 
-
 .dashboard-product-card:hover {
     transform: translateY(-3px);
-
     box-shadow:
-        0 12px 28px rgba(20, 40, 70, 0.10);
+        0 12px 28px rgba(20,40,70,0.10);
 }
-
 
 .product-favorite {
     position: absolute;
-
     top: 12px;
     right: 12px;
-
     width: 35px;
     height: 35px;
-
     border: 0;
     border-radius: 50%;
-
     background: #ffffff;
-
     color: #667085;
-
     cursor: pointer;
-
     z-index: 2;
 }
-
 
 .product-favorite.saved {
     color: #d71920;
 }
 
-
 .product-image-placeholder {
     height: 150px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     background: #eef5fb;
-
     color: #1769aa;
-
     font-size: 48px;
 }
-
 
 .product-card-content {
     padding: 17px;
 }
 
-
 .product-category {
     color: #1769aa;
-
     font-size: 10px;
     font-weight: 800;
-
     text-transform: uppercase;
-
-    letter-spacing: 0.7px;
 }
-
 
 .dashboard-product-card h3 {
     margin: 7px 0 10px;
-
     color: #172033;
-
     font-size: 15px;
-
-    line-height: 1.35;
 }
-
 
 .product-price {
     display: block;
-
     margin-bottom: 15px;
-
     color: #082b55;
-
     font-size: 17px;
 }
 
-
 .add-to-cart-btn {
     width: 100%;
-
     padding: 11px 12px;
-
     border: 0;
     border-radius: 9px;
-
     background: #082b55;
-
     color: #ffffff;
-
     font-size: 12px;
     font-weight: 700;
-
     cursor: pointer;
-
-    transition: 0.2s ease;
 }
-
 
 .add-to-cart-btn:hover {
     background: #1769aa;
 }
 
 
-.no-products {
-    grid-column: 1 / -1;
+/* =========================================================
+   SUPPORT CARD
+   ========================================================= */
 
-    padding: 45px 20px;
-
-    text-align: center;
-
+.support-dashboard-card {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding: 27px;
     background: #ffffff;
-
     border: 1px solid #e5eaf1;
-    border-radius: 16px;
-}
-
-
-.no-products i {
-    color: #1769aa;
-
-    font-size: 30px;
-}
-
-
-.no-products h3 {
-    margin: 12px 0 5px;
-}
-
-
-.no-products p {
-    margin: 0;
-
-    color: #7a8494;
-
-    font-size: 13px;
-}
-
-
-/* =========================================
-   CART NOTIFICATION
-========================================= */
-
-.dashboard-cart-message {
-    position: fixed;
-
-    left: 50%;
-
-    bottom: 25px;
-
-    z-index: 2000;
-
-    padding: 13px 18px;
-
-    border-radius: 10px;
-
-    background: #082b55;
-
-    color: #ffffff;
-
-    font-size: 13px;
-
+    border-radius: 17px;
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.18);
+        0 6px 22px rgba(20,40,70,0.05);
+}
 
-    opacity: 0;
+.support-icon {
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: #eaf2fb;
+    color: #1769aa;
+    font-size: 23px;
+}
 
-    transform:
-        translate(-50%, 15px);
+.support-dashboard-card h2 {
+    margin-bottom: 8px;
+    font-size: 21px;
+}
 
-    transition: 0.25s ease;
+.support-dashboard-card p {
+    margin-bottom: 16px;
+    color: #6b7280;
+    font-size: 13px;
 }
 
 
-.dashboard-cart-message.show {
-    opacity: 1;
-
-    transform:
-        translate(-50%, 0);
-}
-
-/* =========================================
-   PIUS MEDICAL ACCESSORIES
+/* =========================================================
    CART PAGE
-========================================= */
+   ========================================================= */
 
 .cart-page {
     background: #f5f8fb;
     min-height: 100vh;
 }
-
-
-.cart-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
 
 .cart-main {
     width: min(1200px, 94%);
@@ -4293,48 +1540,31 @@ body {
     padding: 45px 0 80px;
 }
 
-
 .cart-heading {
     margin-bottom: 30px;
 }
 
-
 .cart-heading .section-label {
-    display: block;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 1.8px;
     color: #b4232c;
-    margin-bottom: 8px;
 }
 
-
 .cart-heading h1 {
-    margin: 0 0 8px;
-    font-size: clamp(30px, 5vw, 46px);
+    margin-bottom: 8px;
+    font-size: clamp(30px,5vw,46px);
     color: #102a43;
 }
 
-
 .cart-heading p {
-    margin: 0;
     color: #66788a;
-    font-size: 15px;
 }
-
 
 .cart-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 360px;
+    grid-template-columns:
+        minmax(0,1fr)
+        360px;
     gap: 28px;
-    align-items: start;
 }
-
-
-.cart-items-section {
-    min-width: 0;
-}
-
 
 .cart-items {
     display: flex;
@@ -4342,66 +1572,54 @@ body {
     gap: 15px;
 }
 
-
 .cart-item {
     display: grid;
-    grid-template-columns: 82px minmax(0, 1fr) auto;
+    grid-template-columns:
+        82px
+        minmax(0,1fr)
+        auto;
     align-items: center;
     gap: 18px;
     padding: 20px;
     background: #ffffff;
     border: 1px solid #e3eaf0;
     border-radius: 18px;
-    box-shadow: 0 8px 25px rgba(16, 42, 67, 0.06);
+    box-shadow:
+        0 8px 25px rgba(16,42,67,0.06);
 }
-
 
 .cart-item-icon {
     width: 82px;
     height: 82px;
-    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(
-        145deg,
-        #eef6fb,
-        #dfeaf2
-    );
+    border-radius: 15px;
+    background: #eef6fb;
     color: #b4232c;
     font-size: 30px;
 }
-
 
 .cart-item-details {
     min-width: 0;
 }
 
-
 .cart-item-category {
-    display: inline-block;
-    margin-bottom: 5px;
+    color: #75879a;
     font-size: 11px;
     font-weight: 800;
-    letter-spacing: 0.6px;
     text-transform: uppercase;
-    color: #75879a;
 }
-
 
 .cart-item-details h3 {
-    margin: 0 0 8px;
+    margin: 5px 0 8px;
     color: #172b3a;
     font-size: 18px;
-    line-height: 1.3;
 }
-
 
 .cart-item-price {
-    font-size: 16px;
     color: #102a43;
 }
-
 
 .cart-item-controls {
     display: flex;
@@ -4409,40 +1627,27 @@ body {
     gap: 20px;
 }
 
-
 .quantity-control {
     display: flex;
     align-items: center;
     border: 1px solid #d8e1e8;
     border-radius: 10px;
     overflow: hidden;
-    background: #ffffff;
 }
-
 
 .quantity-btn {
     width: 34px;
     height: 34px;
     border: 0;
     background: #f4f7f9;
-    color: #102a43;
     cursor: pointer;
-    transition: 0.2s ease;
 }
-
-
-.quantity-btn:hover {
-    background: #e7eef3;
-}
-
 
 .quantity-value {
     min-width: 35px;
     text-align: center;
     font-weight: 800;
-    color: #172b3a;
 }
-
 
 .cart-item-total {
     min-width: 85px;
@@ -4450,26 +1655,18 @@ body {
     color: #102a43;
 }
 
-
 .remove-item-btn {
     border: 0;
     background: transparent;
     color: #b4232c;
     font-weight: 700;
     cursor: pointer;
-    white-space: nowrap;
 }
 
 
-.remove-item-btn:hover {
-    text-decoration: underline;
-}
-
-
-.remove-item-btn i {
-    margin-right: 5px;
-}
-
+/* =========================================================
+   CART SUMMARY
+   ========================================================= */
 
 .cart-summary {
     position: sticky;
@@ -4478,9 +1675,9 @@ body {
     background: #ffffff;
     border: 1px solid #e1e8ee;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(16, 42, 67, 0.08);
+    box-shadow:
+        0 10px 30px rgba(16,42,67,0.08);
 }
-
 
 .cart-summary-header {
     display: flex;
@@ -4491,36 +1688,17 @@ body {
     border-bottom: 1px solid #e7edf2;
 }
 
-
-.cart-summary-header span {
-    font-size: 12px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
-    color: #66788a;
-}
-
-
-.cart-summary-header i {
-    color: #b4232c;
-}
-
-
 .summary-row {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: 15px;
     margin-bottom: 15px;
     color: #66788a;
     font-size: 14px;
 }
 
-
 .summary-row strong {
     color: #172b3a;
-    text-align: right;
 }
-
 
 .summary-divider {
     height: 1px;
@@ -4528,27 +1706,21 @@ body {
     margin: 20px 0;
 }
 
-
 .summary-total {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     margin-bottom: 22px;
 }
 
-
 .summary-total span {
     font-size: 18px;
     font-weight: 800;
-    color: #172b3a;
 }
-
 
 .summary-total strong {
     font-size: 25px;
     color: #102a43;
 }
-
 
 .checkout-btn {
     width: 100%;
@@ -4559,25 +1731,19 @@ body {
     gap: 10px;
     border: 0;
     border-radius: 12px;
-    background: linear-gradient(
-        135deg,
-        #b4232c,
-        #8f1820
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #b4232c,
+            #8f1820
+        );
     color: #ffffff;
     font-size: 14px;
     font-weight: 800;
     cursor: pointer;
-    box-shadow: 0 8px 20px rgba(180, 35, 44, 0.22);
-    transition: 0.2s ease;
+    box-shadow:
+        0 8px 20px rgba(180,35,44,0.22);
 }
-
-
-.checkout-btn:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 25px rgba(180, 35, 44, 0.28);
-}
-
 
 .continue-shopping {
     display: flex;
@@ -4591,12 +1757,6 @@ body {
     text-decoration: none;
 }
 
-
-.continue-shopping:hover {
-    color: #b4232c;
-}
-
-
 .secure-checkout {
     display: flex;
     align-items: center;
@@ -4609,204 +1769,142 @@ body {
     font-size: 12px;
 }
 
-
 .secure-checkout i {
     color: #3d8b63;
 }
 
 
-/* =========================================
-   EMPTY CART
-========================================= */
-
-.cart-empty {
-    min-height: 390px;
-    padding: 40px 25px;
-    background: #ffffff;
-    border: 1px solid #e1e8ee;
-    border-radius: 20px;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-
-.cart-empty-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: #edf4f8;
-    color: #b4232c;
-    font-size: 30px;
-}
-
-
-.cart-empty h2 {
-    margin: 0 0 8px;
-    color: #172b3a;
-}
-
-
-.cart-empty p {
-    margin: 0 0 22px;
-    color: #75879a;
-}
-
-
-.continue-shopping-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
-    border-radius: 10px;
-    background: #102a43;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 800;
-}
-
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 900px) {
-
-    .cart-layout {
-        grid-template-columns: 1fr;
-    }
-
-
-    .cart-summary {
-        position: static;
-    }
-
-}
-
-
-@media (max-width: 650px) {
-
-    .cart-main {
-        width: min(94%, 560px);
-        padding-top: 30px;
-    }
-
-
-    .cart-item {
-        grid-template-columns: 65px minmax(0, 1fr);
-        gap: 13px;
-        padding: 15px;
-    }
-
-
-    .cart-item-icon {
-        width: 65px;
-        height: 65px;
-        font-size: 24px;
-    }
-
-
-    .cart-item-details h3 {
-        font-size: 15px;
-    }
-
-
-    .cart-item-controls {
-        grid-column: 1 / -1;
-        justify-content: space-between;
-        padding-top: 5px;
-        gap: 10px;
-    }
-
-
-    .cart-item-total {
-        min-width: auto;
-    }
-
-
-    .remove-item-btn {
-        font-size: 12px;
-    }
-
-
-    .cart-summary {
-        padding: 20px;
-    }
-
-}
-
-
-@media (max-width: 400px) {
-
-    .cart-item-controls {
-        flex-wrap: wrap;
-    }
-
-
-    .cart-item-total {
-        margin-left: auto;
-    }
-
-
-    .remove-item-btn {
-        width: 100%;
-        text-align: right;
-    }
-
-}
-
-/* =========================================
-   PIUS MEDICAL ACCESSORIES
+/* =========================================================
    CHECKOUT PAGE
-========================================= */
+   ========================================================= */
 
 .checkout-page {
-    background: #f4f7fa;
+    background:
+        linear-gradient(
+            180deg,
+            #f2f6fa 0%,
+            #f7f9fb 48%,
+            #eef3f7 100%
+        );
     min-height: 100vh;
 }
 
 .checkout-main {
     width: min(1200px, calc(100% - 32px));
     margin: 0 auto;
-    padding: 45px 0 70px;
+    padding: 42px 0 80px;
 }
+
+
+/* =========================================================
+   CHECKOUT HEADER
+   ========================================================= */
+
+.checkout-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 74px;
+    min-height: 74px;
+    background:
+        linear-gradient(
+            135deg,
+            #061f3a,
+            #082b55 52%,
+            #0d4774
+        );
+}
+
+.checkout-logo {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 0;
+}
+
+.checkout-logo .medical-cross.small {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    background: #d71920;
+    border-radius: 9px;
+}
+
+.checkout-logo .medical-cross.small span:first-child {
+    position: absolute;
+    width: 20px;
+    height: 6px;
+    background: #ffffff;
+    border-radius: 2px;
+}
+
+.checkout-logo .medical-cross.small span:last-child {
+    position: absolute;
+    width: 6px;
+    height: 20px;
+    background: #ffffff;
+    border-radius: 2px;
+}
+
+.checkout-brand-name {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 850;
+    letter-spacing: 0.65px;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   CHECKOUT HEADING
+   ========================================================= */
 
 .checkout-heading {
     margin-bottom: 30px;
 }
 
 .checkout-eyebrow {
-    display: inline-block;
-    color: #c62828;
-    font-size: 12px;
-    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 7px 12px;
+    border: 1px solid #f1c9cc;
+    border-radius: 30px;
+    background: #fff4f4;
+    color: #b4232c;
+    font-size: 10px;
+    font-weight: 900;
     letter-spacing: 1.5px;
-    margin-bottom: 8px;
 }
 
 .checkout-heading h1 {
-    margin: 0 0 8px;
+    margin: 0 0 9px;
     color: #102a43;
-    font-size: 34px;
-    font-weight: 800;
+    font-size: clamp(30px,4vw,42px);
+    line-height: 1.15;
+    font-weight: 850;
 }
 
 .checkout-heading p {
+    max-width: 700px;
     margin: 0;
     color: #627d98;
     font-size: 15px;
+    line-height: 1.65;
 }
+
+
+/* =========================================================
+   CHECKOUT LAYOUT
+   ========================================================= */
 
 .checkout-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 380px;
-    gap: 25px;
+    grid-template-columns:
+        minmax(0,1fr)
+        380px;
+    gap: 26px;
     align-items: start;
 }
 
@@ -4814,39 +1912,52 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    min-width: 0;
 }
 
 .checkout-card,
 .checkout-summary-card,
 .checkout-help-card {
     background: #ffffff;
-    border: 1px solid #e1e8ef;
-    border-radius: 18px;
-    box-shadow: 0 8px 30px rgba(16, 42, 67, 0.07);
+    border: 1px solid #dfe7ee;
+    border-radius: 20px;
+    box-shadow:
+        0 10px 30px rgba(16,42,67,0.06);
 }
 
 .checkout-card {
-    padding: 25px;
+    padding: 27px;
 }
+
+
+/* =========================================================
+   CHECKOUT CARD HEADER
+   ========================================================= */
 
 .checkout-card-header {
     display: flex;
     align-items: flex-start;
     gap: 14px;
-    margin-bottom: 24px;
+    margin-bottom: 25px;
 }
 
 .checkout-step {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #c62828;
-    color: #fff;
-    border-radius: 50%;
-    font-weight: 800;
+    border-radius: 11px;
+    background:
+        linear-gradient(
+            135deg,
+            #c62828,
+            #a51f26
+        );
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 900;
 }
 
 .checkout-card-header h2 {
@@ -4861,16 +1972,22 @@ body {
     font-size: 13px;
 }
 
+
+/* =========================================================
+   CHECKOUT FORM
+   ========================================================= */
+
 .checkout-form-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns:
+        repeat(2,minmax(0,1fr));
     gap: 18px;
 }
 
 .checkout-field {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 8px;
 }
 
 .checkout-field.checkout-full {
@@ -4880,28 +1997,33 @@ body {
 .checkout-field label {
     color: #334e68;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 750;
 }
 
 .checkout-field input {
     width: 100%;
-    height: 48px;
-    padding: 0 14px;
-    border: 1px solid #d9e2ec;
-    border-radius: 10px;
+    height: 50px;
+    padding: 0 15px;
+    border: 1.5px solid #d7e1e9;
+    border-radius: 12px;
     outline: none;
-    background: #fbfcfe;
+    background: #fbfcfd;
     color: #102a43;
     font-size: 14px;
     transition: 0.2s ease;
-    box-sizing: border-box;
 }
 
 .checkout-field input:focus {
-    border-color: #c62828;
-    background: #fff;
-    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.08);
+    border-color: #b4232c;
+    background: #ffffff;
+    box-shadow:
+        0 0 0 4px rgba(180,35,44,0.08);
 }
+
+
+/* =========================================================
+   DELIVERY OPTIONS
+   ========================================================= */
 
 .delivery-options,
 .payment-options {
@@ -4916,9 +2038,11 @@ body {
     display: flex;
     align-items: center;
     gap: 13px;
-    padding: 16px;
-    border: 1px solid #d9e2ec;
-    border-radius: 12px;
+    min-height: 72px;
+    padding: 15px 16px;
+    border: 1.5px solid #dce5ec;
+    border-radius: 14px;
+    background: #ffffff;
     cursor: pointer;
     transition: 0.2s ease;
 }
@@ -4926,12 +2050,19 @@ body {
 .delivery-option:hover,
 .payment-option:hover {
     border-color: #c62828;
+    box-shadow:
+        0 5px 15px rgba(16,42,67,0.05);
 }
 
 .delivery-option.active,
 .payment-option.active {
     border-color: #c62828;
-    background: #fff7f7;
+    background:
+        linear-gradient(
+            135deg,
+            #fffafa,
+            #fff5f5
+        );
 }
 
 .delivery-option input,
@@ -4941,14 +2072,19 @@ body {
     pointer-events: none;
 }
 
+
+/* =========================================================
+   RADIO
+   ========================================================= */
+
 .delivery-radio,
 .payment-radio {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     flex-shrink: 0;
-    border: 2px solid #bcccdc;
-    border-radius: 50%;
     position: relative;
+    border: 2px solid #b8c6d2;
+    border-radius: 50%;
 }
 
 .delivery-option.active .delivery-radio,
@@ -4960,17 +2096,50 @@ body {
 .payment-option.active .payment-radio::after {
     content: "";
     position: absolute;
-    width: 8px;
-    height: 8px;
-    top: 3px;
-    left: 3px;
-    background: #c62828;
+    width: 9px;
+    height: 9px;
+    top: 3.5px;
+    left: 3.5px;
     border-radius: 50%;
+    background: #c62828;
 }
+
+
+/* =========================================================
+   DELIVERY / PAYMENT ICON
+   ========================================================= */
+
+.delivery-method-icon,
+.payment-method-visual {
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    background: #edf4f8;
+    color: #1769aa;
+    font-size: 17px;
+}
+
+.delivery-option.active
+.delivery-method-icon,
+.payment-option.active
+.payment-method-visual {
+    background: #fdeaea;
+    color: #c62828;
+}
+
+
+/* =========================================================
+   DELIVERY / PAYMENT TEXT
+   ========================================================= */
 
 .delivery-info,
 .payment-info {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -4980,82 +2149,298 @@ body {
 .payment-info strong {
     color: #102a43;
     font-size: 14px;
+    font-weight: 800;
 }
 
 .delivery-info small,
 .payment-info small {
     color: #829ab1;
     font-size: 12px;
+    line-height: 1.4;
 }
 
-.payment-icon {
-    width: 40px;
-    height: 40px;
+.delivery-price-label {
+    flex-shrink: 0;
+    color: #627d98;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   PAYMENT METHOD HEADER
+   ========================================================= */
+
+.payment-method-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 13px;
+    color: #52687a;
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.payment-accepted-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.payment-accepted-icons i {
+    font-size: 25px;
+    color: #66788a;
+}
+
+.payment-accepted-icons .fa-cc-visa {
+    color: #1a4fa3;
+}
+
+.payment-accepted-icons .fa-cc-mastercard {
+    color: #d64a43;
+}
+
+.payment-accepted-icons .fa-cc-amex {
+    color: #2678b9;
+}
+
+
+/* =========================================================
+   PAYMENT CARDS
+   ========================================================= */
+
+.payment-card-option {
+    min-height: 77px;
+}
+
+.payment-card-brands {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.payment-card-brands i {
+    font-size: 25px;
+}
+
+.payment-card-brands .fa-cc-visa {
+    color: #1a4fa3;
+}
+
+.payment-card-brands .fa-cc-mastercard {
+    color: #d64a43;
+}
+
+
+/* =========================================================
+   CARD PREVIEW
+   ========================================================= */
+
+.checkout-card-preview {
+    position: relative;
+    width: 100%;
+    min-height: 205px;
+    margin-top: 20px;
+    padding: 24px;
+    overflow: hidden;
+    border-radius: 19px;
+    background:
+        linear-gradient(
+            135deg,
+            #061f3a 0%,
+            #0a315b 45%,
+            #17608e 100%
+        );
+    color: #ffffff;
+    box-shadow:
+        0 15px 30px rgba(6,31,58,0.22);
+}
+
+.checkout-card-preview::before {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    top: -160px;
+    right: -80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+}
+
+.checkout-card-preview::after {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    right: -100px;
+    bottom: -160px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+}
+
+.card-preview-top {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgba(255,255,255,0.70);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.card-preview-top i {
+    font-size: 18px;
+    transform: rotate(90deg);
+}
+
+.card-preview-chip {
+    position: relative;
+    z-index: 2;
+    width: 44px;
+    height: 33px;
+    margin-top: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f0f4f8;
-    color: #c62828;
-    border-radius: 10px;
+    border-radius: 7px;
+    background:
+        linear-gradient(
+            135deg,
+            #e9d68d,
+            #bca85b
+        );
+    color: rgba(50,40,10,0.65);
     font-size: 17px;
 }
 
+.card-preview-number {
+    position: relative;
+    z-index: 2;
+    margin-top: 19px;
+    color: #ffffff;
+    font-family: "Courier New", monospace;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+    white-space: nowrap;
+}
+
+.card-preview-bottom {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    gap: 28px;
+    margin-top: 18px;
+}
+
+.card-preview-bottom > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.card-preview-bottom small {
+    color: rgba(255,255,255,0.52);
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.card-preview-bottom strong {
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.7px;
+}
+
+.card-preview-brand {
+    margin-left: auto;
+}
+
+.card-preview-brand i {
+    font-size: 42px;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   PAYMENT SECURITY
+   ========================================================= */
+
 .payment-security {
     display: flex;
+    align-items: flex-start;
     gap: 12px;
     margin-top: 20px;
-    padding: 15px;
-    background: #f4f8fb;
-    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid #dfe9e3;
+    border-radius: 13px;
+    background:
+        linear-gradient(
+            135deg,
+            #f3faf6,
+            #f7fbf9
+        );
 }
 
 .payment-security > i {
     color: #2e7d32;
     font-size: 18px;
-    margin-top: 2px;
 }
 
 .payment-security strong {
     display: block;
+    margin-bottom: 4px;
     color: #243b53;
     font-size: 13px;
-    margin-bottom: 4px;
 }
 
 .payment-security p {
     margin: 0;
-    color: #829ab1;
-    font-size: 12px;
-    line-height: 1.5;
+    color: #718397;
+    font-size: 11px;
+    line-height: 1.55;
 }
 
+
+/* =========================================================
+   CHECKOUT SUMMARY
+   ========================================================= */
+
 .checkout-right {
+    position: sticky;
+    top: 94px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    position: sticky;
-    top: 20px;
 }
 
 .checkout-summary-card {
-    padding: 22px;
+    padding: 23px;
 }
 
 .checkout-summary-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
     padding-bottom: 18px;
-    border-bottom: 1px solid #edf2f7;
+    border-bottom: 1px solid #e8eef3;
 }
 
 .checkout-summary-header span {
     display: block;
+    margin-bottom: 5px;
     color: #829ab1;
     font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.3px;
-    margin-bottom: 4px;
+    font-weight: 900;
+    letter-spacing: 1.4px;
 }
 
 .checkout-summary-header h2 {
@@ -5065,35 +2450,42 @@ body {
 }
 
 .checkout-summary-header > i {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #fff1f1;
     color: #c62828;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .checkout-order-items {
     display: flex;
     flex-direction: column;
-    max-height: 310px;
+    max-height: 320px;
     overflow-y: auto;
 }
 
 .checkout-order-item {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 11px;
     padding: 14px 0;
     border-bottom: 1px solid #edf2f7;
 }
 
 .checkout-order-icon {
-    width: 42px;
-    height: 42px;
+    width: 44px;
+    height: 44px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f3f7fa;
+    border-radius: 11px;
+    background: #f2f6f9;
     color: #c62828;
-    border-radius: 10px;
 }
 
 .checkout-order-details {
@@ -5118,9 +2510,10 @@ body {
 }
 
 .checkout-order-price {
+    flex-shrink: 0;
     color: #102a43;
     font-size: 13px;
-    white-space: nowrap;
+    font-weight: 750;
 }
 
 .checkout-summary-lines {
@@ -5129,8 +2522,9 @@ body {
 
 .checkout-summary-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    gap: 15px;
     padding: 7px 0;
     color: #627d98;
     font-size: 13px;
@@ -5142,62 +2536,82 @@ body {
 
 .checkout-summary-divider {
     height: 1px;
-    background: #d9e2ec;
-    margin: 10px 0;
+    background: #dfe6ec;
+    margin: 11px 0;
 }
 
 .checkout-summary-total {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 8px 0 18px;
 }
 
 .checkout-summary-total span {
     color: #102a43;
     font-size: 16px;
-    font-weight: 800;
+    font-weight: 850;
 }
 
 .checkout-summary-total strong {
     color: #c62828;
-    font-size: 22px;
+    font-size: 23px;
     font-weight: 900;
 }
 
+
+/* =========================================================
+   PLACE ORDER BUTTON
+   ========================================================= */
+
 .place-order-btn {
     width: 100%;
-    min-height: 52px;
-    border: none;
-    border-radius: 12px;
-    background: #c62828;
-    color: #fff;
+    min-height: 54px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    cursor: pointer;
+    border: none;
+    border-radius: 13px;
+    background:
+        linear-gradient(
+            135deg,
+            #c62828,
+            #a71f25
+        );
+    color: #ffffff;
     font-size: 14px;
-    font-weight: 800;
+    font-weight: 850;
+    cursor: pointer;
+    box-shadow:
+        0 9px 22px rgba(198,40,40,0.23);
     transition: 0.2s ease;
 }
 
 .place-order-btn:hover:not(:disabled) {
-    background: #a91f1f;
-    transform: translateY(-1px);
+    background:
+        linear-gradient(
+            135deg,
+            #d32f2f,
+            #b32027
+        );
+    transform: translateY(-2px);
+    box-shadow:
+        0 13px 28px rgba(198,40,40,0.29);
 }
 
 .place-order-btn:disabled {
     opacity: 0.55;
     cursor: not-allowed;
+    box-shadow: none;
 }
 
 .checkout-secure-note {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     gap: 7px;
-    padding-top: 13px;
+    padding-top: 14px;
     color: #829ab1;
     font-size: 11px;
 }
@@ -5206,22 +2620,28 @@ body {
     color: #2e7d32;
 }
 
+
+/* =========================================================
+   HELP CARD
+   ========================================================= */
+
 .checkout-help-card {
-    padding: 18px;
     display: flex;
+    align-items: flex-start;
     gap: 13px;
+    padding: 19px;
 }
 
 .checkout-help-icon {
-    width: 42px;
-    height: 42px;
+    width: 43px;
+    height: 43px;
     flex-shrink: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fdf0f0;
-    color: #c62828;
-    border-radius: 10px;
+    border-radius: 11px;
+    background: #eef5fb;
+    color: #1769aa;
 }
 
 .checkout-help-card h3 {
@@ -5231,7 +2651,7 @@ body {
 }
 
 .checkout-help-card p {
-    margin: 0 0 8px;
+    margin: 0 0 9px;
     color: #829ab1;
     font-size: 12px;
     line-height: 1.5;
@@ -5242,19 +2662,19 @@ body {
     color: #c62828;
     text-decoration: none;
     font-size: 12px;
-    font-weight: 700;
-}
-
-.checkout-help-card a i {
-    margin-left: 4px;
+    font-weight: 800;
 }
 
 .back-cart-link {
     display: inline-flex;
     align-items: center;
     gap: 7px;
-    padding: 4px 2px;
 }
+
+
+/* =========================================================
+   EMPTY CHECKOUT
+   ========================================================= */
 
 .checkout-empty {
     padding: 30px 10px;
@@ -5286,7 +2706,31 @@ body {
     text-decoration: none;
 }
 
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
 @media (max-width: 900px) {
+
+    .medical-image-container {
+        height: 320px;
+    }
+
+    .quick-actions-grid,
+    .category-grid,
+    .product-grid {
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+
+    .cart-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-summary {
+        position: static;
+    }
 
     .checkout-layout {
         grid-template-columns: 1fr;
@@ -5295,39 +2739,383 @@ body {
     .checkout-right {
         position: static;
     }
-
 }
 
-@media (max-width: 600px) {
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .header-container {
+        width: calc(100% - 24px);
+    }
+
+    .brand-name {
+        font-size: 16px;
+    }
+
+    .medical-hero {
+        padding: 22px 12px 30px;
+    }
+
+    .medical-image-container {
+        height: 250px;
+        border-radius: 18px;
+    }
+
+    .doctor-image {
+        width: 27%;
+        height: 88%;
+        right: 3px;
+    }
+
+    .intro-section {
+        padding: 48px 18px 68px;
+    }
+
+    .intro-container h1 {
+        font-size: 31px;
+    }
+
+    .intro-container p {
+        font-size: 15px;
+    }
+
+    .auth-actions {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 27px;
+        gap: 11px;
+    }
+
+    .signup-button,
+    .login-button {
+        width: 100%;
+        max-width: 340px;
+    }
+
+
+    /* Register */
+
+    .auth-header {
+        min-height: 68px;
+        padding: 0 18px;
+    }
+
+    .auth-brand {
+        font-size: 18px;
+    }
+
+    .auth-main {
+        min-height: calc(100vh - 68px);
+        padding: 22px 12px 45px;
+    }
+
+    .register-card {
+        padding: 28px 18px 26px;
+        border-radius: 20px;
+    }
+
+    .register-card h1 {
+        font-size: 31px;
+    }
+
+
+    /* Login */
+
+    .auth-container {
+        min-height: calc(100vh - 68px);
+        padding: 28px 15px;
+        align-items: flex-start;
+    }
+
+    .auth-card {
+        margin-top: 10px;
+        padding: 29px 21px;
+    }
+
+
+    /* Dashboard */
+
+    .dashboard-header {
+        height: 68px;
+        padding: 0 14px;
+    }
+
+    .dashboard-logo {
+        font-size: 12px;
+    }
+
+    .dashboard-search {
+        width: 42px;
+        padding: 0;
+        justify-content: center;
+    }
+
+    .dashboard-search input {
+        display: none;
+    }
+
+    .dashboard-main {
+        width: calc(100% - 24px);
+        padding-top: 27px;
+    }
+
+    .quick-actions-grid,
+    .category-grid,
+    .product-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .health-dashboard-card {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 21px;
+    }
+
+    .support-dashboard-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    /* Cart */
+
+    .cart-main {
+        width: min(94%,560px);
+        padding-top: 30px;
+    }
+
+    .cart-item {
+        grid-template-columns:
+            65px
+            minmax(0,1fr);
+        gap: 13px;
+        padding: 15px;
+    }
+
+    .cart-item-icon {
+        width: 65px;
+        height: 65px;
+    }
+
+    .cart-item-details h3 {
+        font-size: 15px;
+    }
+
+    .cart-item-controls {
+        grid-column: 1 / -1;
+        justify-content: space-between;
+        padding-top: 5px;
+        gap: 10px;
+    }
+
+    .cart-item-total {
+        min-width: auto;
+    }
+
+
+    /* Checkout */
+
+    .checkout-header {
+        height: 68px;
+        min-height: 68px;
+        padding: 0 14px;
+    }
+
+    .checkout-logo {
+        gap: 8px;
+    }
+
+    .checkout-logo .medical-cross.small {
+        width: 32px;
+        height: 32px;
+    }
+
+    .checkout-brand-name {
+        max-width: 205px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 11px;
+    }
 
     .checkout-main {
-        width: min(100% - 20px, 1200px);
-        padding-top: 25px;
+        width: calc(100% - 20px);
+        padding: 26px 0 55px;
+    }
+
+    .checkout-heading {
+        margin-bottom: 23px;
     }
 
     .checkout-heading h1 {
-        font-size: 27px;
+        font-size: 29px;
+    }
+
+    .checkout-heading p {
+        font-size: 14px;
+    }
+
+    .checkout-card {
+        padding: 19px;
+        border-radius: 17px;
     }
 
     .checkout-form-grid {
         grid-template-columns: 1fr;
+        gap: 15px;
     }
 
     .checkout-field.checkout-full {
         grid-column: auto;
     }
 
-    .checkout-card {
-        padding: 18px;
-    }
-
-    .checkout-card-header {
-        margin-bottom: 20px;
-    }
-
     .delivery-option,
     .payment-option {
-        padding: 13px;
+        min-height: 68px;
+        padding: 12px;
     }
 
+    .payment-method-title {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+    }
+
+    .payment-card-brands i {
+        font-size: 22px;
+    }
+
+    .checkout-card-preview {
+        min-height: 190px;
+        padding: 20px;
+    }
+
+    .card-preview-number {
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+
+    .card-preview-bottom {
+        gap: 18px;
+    }
+
+    .card-preview-brand i {
+        font-size: 35px;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .brand-name {
+        font-size: 14px;
+    }
+
+    .medical-image-container {
+        height: 220px;
+    }
+
+    .doctor-image {
+        width: 25%;
+        height: 86%;
+    }
+
+    .intro-container h1 {
+        font-size: 28px;
+    }
+
+    .quick-actions-grid,
+    .category-grid,
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-main {
+        width: calc(100% - 14px);
+        padding-top: 20px;
+    }
+
+    .checkout-heading h1 {
+        font-size: 26px;
+    }
+
+    .checkout-card {
+        padding: 16px;
+    }
+
+    .checkout-card-preview {
+        min-height: 175px;
+        padding: 17px;
+    }
+
+    .card-preview-number {
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+
+    .card-preview-bottom {
+        gap: 12px;
+    }
+
+    .card-preview-brand i {
+        font-size: 30px;
+    }
+
+    .checkout-summary-total strong {
+        font-size: 20px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 340px) {
+
+    .brand-name {
+        font-size: 13px;
+    }
+
+    .medical-image-container {
+        height: 205px;
+    }
+
+    .intro-container h1 {
+        font-size: 26px;
+    }
+
+    .checkout-brand-name {
+        max-width: 170px;
+        font-size: 10px;
+    }
+
+    .checkout-card-preview {
+        min-height: 160px;
+        padding: 14px;
+    }
+
+    .card-preview-number {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid rgba(22,119,200,0.25);
+    outline-offset: 2px;
 }
