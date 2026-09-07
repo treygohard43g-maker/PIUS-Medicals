@@ -1,5 +1,6 @@
 import {
     signInWithEmailAndPassword,
+    sendPasswordResetEmail,
     onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
@@ -191,7 +192,7 @@ if (loginForm) {
 
 if (forgotPassword) {
 
-    forgotPassword.addEventListener("click", (event) => {
+    forgotPassword.addEventListener("click", async (event) => {
 
         event.preventDefault();
 
@@ -200,7 +201,7 @@ if (forgotPassword) {
         if (!email) {
 
             showLoginMessage(
-                "Enter your email address first, then select Forgot Password."
+                "Enter your email address first."
             );
 
             loginEmail.focus();
@@ -209,9 +210,65 @@ if (forgotPassword) {
         }
 
 
-        alert(
-            "Password reset will be connected to Firebase next."
-        );
+        forgotPassword.style.pointerEvents = "none";
+        forgotPassword.textContent = "Sending...";
+
+
+        try {
+
+            await sendPasswordResetEmail(auth, email);
+
+            showLoginMessage(
+                "Password reset email sent. Please check your inbox.",
+                "success"
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "Password reset error:",
+                error
+            );
+
+
+            let message =
+                "Unable to send password reset email.";
+
+
+            switch (error.code) {
+
+                case "auth/invalid-email":
+                    message =
+                        "Please enter a valid email address.";
+                    break;
+
+                case "auth/user-not-found":
+                    message =
+                        "No account was found with this email.";
+                    break;
+
+                case "auth/too-many-requests":
+                    message =
+                        "Too many requests. Please try again later.";
+                    break;
+
+                case "auth/network-request-failed":
+                    message =
+                        "Network error. Please check your internet connection.";
+                    break;
+
+            }
+
+
+            showLoginMessage(message);
+
+        } finally {
+
+            forgotPassword.style.pointerEvents = "";
+            forgotPassword.textContent = "Forgot Password?";
+
+        }
 
     });
 
