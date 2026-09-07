@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Create Account | Pius Medical Accessories</title>
+
+    <meta
+        name="description"
+        content="Create your Pius Medical Accessories account."
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+
+<body class="auth-page">
+
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <header class="auth-header">
+
+        <a
+            href="index.html"
+            class="auth-brand"
+        >
+
+            <i class="fa-solid fa-heart-pulse"></i>
+
+            <span>
+                Pius Medical Accessories
+            </span>
+
+        </a>
+
+    </header>
+
+
+    <!-- =====================================
+         REGISTER MAIN
+    ====================================== -->
+
+    <main class="auth-main">
+
+        <div class="register-card">
+
+
+            <!-- REGISTER ICON -->
+
+            <div class="auth-icon">
+
+                <i class="fa-solid fa-user-plus"></i>
+
+            </div>
+
+
+            <!-- TITLE -->
+
+            <h1>
+                Create Your Account
+            </h1>
+
+            <p class="auth-subtitle">
+                Join Pius Medical Accessories and get access
+                to quality healthcare products.
+            </p>
+
+
+            <!-- =================================
+                 REGISTER FORM
+            ================================== -->
+
+            <form
+                id="registerForm"
+                class="auth-form"
+            >
+
+
+                <!-- FULL NAME -->
+
+                <div class="form-group">
+
+                    <label for="registerName">
+                        Full Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-regular fa-user"></i>
+
+                        <input
+                            type="text"
+                            id="registerName"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     COUNTRY
+                ================================== -->
+
+                <div class="form-group">
+
+                    <label for="countrySelector">
+                        Country
+                    </label>
+
+                    <div
+                        class="country-selector"
+                        id="countrySelector"
+                    >
+
+                        <button
+                            type="button"
+                            class="country-selected"
+                            id="countrySelected"
+                        >
+
+                            <span
+                                id="selectedFlag"
+                                class="country-flag"
+                            >
+                                🌍
+                            </span>
+
+                            <span
+                                id="selectedCountry"
+                                class="selected-country-name"
+                            >
+                                Select your country
+                            </span>
+
+                            <i
+                                class="fa-solid fa-chevron-down country-arrow"
+                            ></i>
+
+                        </button>
+
+
+                        <!-- COUNTRY DROPDOWN -->
+
+                        <div
+                            class="country-dropdown"
+                            id="countryDropdown"
+                        >
+
+
+                            <!-- SEARCH -->
+
+                            <div class="country-search">
+
+                                <i
+                                    class="fa-solid fa-magnifying-glass"
+                                ></i>
+
+                                <input
+                                    type="text"
+                                    id="countrySearch"
+                                    placeholder="Search country..."
+                                    autocomplete="off"
+                                >
+
+                            </div>
+
+
+                            <!-- COUNTRY LIST -->
+
+                            <div
+                                class="country-list"
+                                id="countryList"
+                            >
+
+                                <!-- Countries are inserted by register.js -->
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <input
+                        type="hidden"
+                        id="selectedCountryCode"
+                        name="country"
+                    >
+
+                </div>
+
+
+                <!-- =================================
+                     PHONE
+                ================================== -->
+
+                <div class="form-group">
+
+                    <label for="registerPhone">
+                        Phone Number
+                    </label>
+
+                    <div class="phone-wrapper">
+
+
+                        <div
+                            class="phone-code"
+                            id="phoneCode"
+                        >
+                            +234
+                        </div>
+
+
+                        <input
+                            type="tel"
+                            id="registerPhone"
+                            placeholder="Enter phone number"
+                            autocomplete="tel"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     EMAIL
+                ================================== -->
+
+                <div class="form-group">
+
+                    <label for="registerEmail">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        <input
+                            type="email"
+                            id="registerEmail"
+                            placeholder="Enter your email address"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     PASSWORD
+                ================================== -->
+
+                <div class="form-group">
+
+                    <label for="registerPassword">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="registerPassword"
+                            placeholder="Create a password"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="toggleRegisterPassword"
+                            aria-label="Show password"
+                        >
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     CONFIRM PASSWORD
+                ================================== -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm your password"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            id="toggleConfirmPassword"
+                            aria-label="Show password"
+                        >
+
+                            <i class="fa-regular fa-eye"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     TERMS
+                ================================== -->
+
+                <label class="terms-row">
+
+                    <input
+                        type="checkbox"
+                        id="termsCheckbox"
+                        required
+                    >
+
+                    <span>
+                        I agree to the
+                        <a href="#">
+                            Terms & Conditions
+                        </a>
+                        and
+                        <a href="#">
+                            Privacy Policy
+                        </a>.
+                    </span>
+
+                </label>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="registerMessage"
+                    class="auth-message"
+                ></div>
+
+
+                <!-- =================================
+                     REGISTER BUTTON
+                ================================== -->
+
+                <button
+                    type="submit"
+                    class="auth-submit"
+                    id="registerButton"
+                >
+
+                    <span>
+                        Create Account
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <!-- =================================
+                 LOGIN LINK
+            ================================== -->
+
+            <div class="auth-footer">
+
+                <span>
+                    Already have an account?
+                </span>
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </div>
+
+
+            <!-- BACK HOME -->
+
+            <a
+                href="index.html"
+                class="back-home"
+            >
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+                Back to Home
+
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <!-- REGISTER JAVASCRIPT -->
+
+    <script
+        type="module"
+        src="register.js"
+    ></script>
+
+</body>
+
+</html>
