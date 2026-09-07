@@ -355,26 +355,36 @@ body {
     position: absolute;
 
     right: 8px;
-
     bottom: 0;
 
-    /*
-       Smaller width keeps the doctor
-       from covering the equipment.
-    */
-
     width: 24%;
-
     height: 88%;
 
     display: block;
 
     object-fit: contain;
-
-    object-position:
-        bottom right;
+    object-position: bottom right;
 
     z-index: 2;
+
+    /* Makes the outer edges blend into the card */
+    -webkit-mask-image:
+        linear-gradient(
+            to right,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%
+        );
+
+    mask-image:
+        linear-gradient(
+            to right,
+            transparent 0%,
+            black 12%,
+            black 88%,
+            transparent 100%
+        );
 
     filter:
         drop-shadow(
