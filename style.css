@@ -339,24 +339,70 @@ body {
 ========================================= */
 
 .medical-hero {
-    width: 100%;
-
-    background:
-        linear-gradient(
-            135deg,
-            #0b2a4a 0%,
-            #0b3157 52%,
-            #123f68 100%
-        );
-
-    padding:
-        0
-        16px
-        46px;
-
-    position: relative;
+    padding: 35px 20px 20px;
+    background: #f5f8fb;
 }
 
+.medical-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    height: 420px;
+    margin: 0 auto;
+
+    background: #ffffff;
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 18px 45px rgba(0, 35, 70, 0.14);
+
+    overflow: visible;
+}
+
+
+/* =========================================
+   EQUIPMENT IMAGE
+========================================= */
+
+.equipment-image {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 72%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 20px;
+
+    border-radius: 30px;
+}
+
+
+/* =========================================
+   DOCTOR IMAGE
+========================================= */
+
+.doctor-image {
+    position: absolute;
+
+    right: -25px;
+    bottom: -25px;
+
+    width: 38%;
+    height: 95%;
+
+    object-fit: contain;
+    object-position: bottom center;
+
+    z-index: 5;
+
+    filter:
+        drop-shadow(0 15px 20px rgba(0, 0, 0, 0.18));
+}
 
 /* =========================================
    HERO DECORATIVE LIGHT
