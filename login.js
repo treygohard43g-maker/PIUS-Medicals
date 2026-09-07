@@ -1,8 +1,3 @@
-/* =========================================
-   PIUS MEDICAL ACCESSORIES
-   LOGIN JAVASCRIPT
-========================================= */
-
 import {
     signInWithEmailAndPassword,
     onAuthStateChanged
@@ -31,7 +26,7 @@ if (togglePassword) {
         if (loginPassword.type === "password") {
 
             loginPassword.type = "text";
-            togglePassword.textContent = "🙈";
+
             togglePassword.setAttribute(
                 "aria-label",
                 "Hide password"
@@ -40,17 +35,17 @@ if (togglePassword) {
         } else {
 
             loginPassword.type = "password";
-            togglePassword.textContent = "👁";
+
             togglePassword.setAttribute(
                 "aria-label",
                 "Show password"
             );
+
         }
 
     });
 
 }
-
 
 /* =========================
    LOGIN MESSAGE
