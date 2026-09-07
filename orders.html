@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Orders - Pius Medical Accessories</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fa;
+            color: #172033;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        .orders-header {
+            background: #071d3b;
+            color: white;
+            padding: 18px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 15px rgba(0,0,0,.12);
+        }
+
+        .back-btn {
+            width: 42px;
+            height: 42px;
+            border: 0;
+            border-radius: 12px;
+            background: rgba(255,255,255,.1);
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .orders-header h1 {
+            font-size: 21px;
+        }
+
+        .orders-header p {
+            font-size: 12px;
+            opacity: .7;
+            margin-top: 3px;
+        }
+
+        /* CONTENT */
+        .orders-container {
+            width: min(900px, 94%);
+            margin: 25px auto;
+        }
+
+        .welcome-box {
+            background: white;
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.06);
+        }
+
+        .welcome-box h2 {
+            font-size: 20px;
+            margin-bottom: 6px;
+        }
+
+        .welcome-box p {
+            color: #697386;
+            font-size: 14px;
+        }
+
+        /* ORDER CARD */
+        .order-card {
+            background: white;
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.06);
+            border: 1px solid #edf0f4;
+        }
+
+        .order-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 16px;
+        }
+
+        .order-number {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .order-date {
+            color: #7a8494;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .status {
+            padding: 7px 11px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .status.pending {
+            background: #fff4d6;
+            color: #9a6800;
+        }
+
+        .status.processing {
+            background: #e5f0ff;
+            color: #1764b0;
+        }
+
+        .status.shipped {
+            background: #e8e5ff;
+            color: #5545b8;
+        }
+
+        .status.delivered {
+            background: #e4f8ec;
+            color: #18864b;
+        }
+
+        .status.cancelled {
+            background: #ffe6e6;
+            color: #c62828;
+        }
+
+        /* ITEMS */
+        .order-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 12px 0;
+            border-top: 1px solid #eef1f4;
+        }
+
+        .product-image {
+            width: 62px;
+            height: 62px;
+            border-radius: 12px;
+            object-fit: cover;
+            background: #f1f3f6;
+            flex-shrink: 0;
+        }
+
+        .item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .item-name {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .item-quantity {
+            color: #7a8494;
+            font-size: 12px;
+        }
+
+        .item-price {
+            font-size: 14px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* BOTTOM */
+        .order-bottom {
+            border-top: 1px solid #eef1f4;
+            margin-top: 8px;
+            padding-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .total-label {
+            color: #7a8494;
+            font-size: 13px;
+        }
+
+        .total-price {
+            font-size: 19px;
+            font-weight: bold;
+            color: #071d3b;
+        }
+
+        .view-btn {
+            border: 0;
+            background: #071d3b;
+            color: white;
+            padding: 11px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* EMPTY */
+        .empty-orders {
+            background: white;
+            border-radius: 18px;
+            padding: 55px 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,.06);
+        }
+
+        .empty-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .empty-orders h3 {
+            margin-bottom: 8px;
+        }
+
+        .empty-orders p {
+            color: #7a8494;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            background: #071d3b;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px;
+            color: #697386;
+        }
+
+        @media (max-width: 600px) {
+            .order-top {
+                align-items: flex-start;
+            }
+
+            .order-bottom {
+                gap: 12px;
+                flex-wrap: wrap;
+            }
+
+            .product-image {
+                width: 55px;
+                height: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="orders-header">
+
+    <button class="back-btn" onclick="history.back()">‹</button>
+
+    <div>
+        <h1>My Orders</h1>
+        <p>View and track your purchases</p>
+    </div>
+
+</header>
+
+<main class="orders-container">
+
+    <section class="welcome-box">
+        <h2>Your Orders</h2>
+        <p>Here you can view your previous purchases and order status.</p>
+    </section>
+
+    <div id="ordersList">
+        <div class="loading">
+            Loading your orders...
+        </div>
+    </div>
+
+</main>
+
+
+<script type="module">
+
+    import {
+        initializeApp
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+    import {
+        getAuth,
+        onAuthStateChanged
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    import {
+        getFirestore,
+        collection,
+        query,
+        where,
+        orderBy,
+        getDocs
+    } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+    /* =========================================
+       FIREBASE
+    ========================================= */
+
+    const firebaseConfig = {
+
+        // USE THE SAME FIREBASE CONFIG
+        // FROM YOUR PIUS MEDICAL ACCESSORIES PROJECT
+
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+
+    const auth = getAuth(app);
+
+    const db = getFirestore(app);
+
+
+    /* =========================================
+       ELEMENTS
+    ========================================= */
+
+    const ordersList =
+        document.getElementById("ordersList");
+
+
+    /* =========================================
+       AUTH
+    ========================================= */
+
+    onAuthStateChanged(auth, async (user) => {
+
+        if (!user) {
+
+            window.location.href = "login.html";
+
+            return;
+        }
+
+        await loadOrders(user.uid);
+
+    });
+
+
+    /* =========================================
+       LOAD ORDERS
+    ========================================= */
+
+    async function loadOrders(userId) {
+
+        try {
+
+            const ordersRef =
+                collection(db, "orders");
+
+            const q = query(
+                ordersRef,
+                where("userId", "==", userId),
+                orderBy("createdAt", "desc")
+            );
+
+            const snapshot =
+                await getDocs(q);
+
+
+            if (snapshot.empty) {
+
+                showEmptyOrders();
+
+                return;
+            }
+
+
+            ordersList.innerHTML = "";
+
+
+            snapshot.forEach((doc) => {
+
+                const order = {
+                    id: doc.id,
+                    ...doc.data()
+                };
+
+                ordersList.appendChild(
+                    createOrderCard(order)
+                );
+
+            });
+
+
+        } catch (error) {
+
+            console.error(
+                "Error loading orders:",
+                error
+            );
+
+            ordersList.innerHTML = `
+                <div class="empty-orders">
+
+                    <div class="empty-icon">⚠️</div>
+
+                    <h3>Unable to load orders</h3>
+
+                    <p>
+                        We couldn't load your orders right now.
+                        Please try again.
+                    </p>
+
+                </div>
+            `;
+
+        }
+
+    }
+
+
+    /* =========================================
+       CREATE ORDER CARD
+    ========================================= */
+
+    function createOrderCard(order) {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "order-card";
+
+
+        const status =
+            String(order.status || "Pending")
+            .toLowerCase();
+
+
+        const formattedDate =
+            formatDate(order.createdAt);
+
+
+        const items =
+            Array.isArray(order.items)
+                ? order.items
+                : [];
+
+
+        let itemsHTML = "";
+
+
+        items.forEach(item => {
+
+            const image =
+                item.image ||
+                "https://via.placeholder.com/100";
+
+
+            const quantity =
+                Number(item.quantity || 1);
+
+
+            const price =
+                Number(item.price || 0);
+
+
+            itemsHTML += `
+
+                <div class="order-item">
+
+                    <img
+                        class="product-image"
+                        src="${escapeHTML(image)}"
+                        alt="${escapeHTML(item.name || "Product")}"
+                    >
+
+                    <div class="item-info">
+
+                        <div class="item-name">
+                            ${escapeHTML(item.name || "Product")}
+                        </div>
+
+                        <div class="item-quantity">
+                            Quantity: ${quantity}
+                        </div>
+
+                    </div>
+
+                    <div class="item-price">
+                        ${formatMoney(price * quantity)}
+                    </div>
+
+                </div>
+
+            `;
+
+        });
+
+
+        card.innerHTML = `
+
+            <div class="order-top">
+
+                <div>
+
+                    <div class="order-number">
+                        Order #${escapeHTML(order.id)}
+                    </div>
+
+                    <div class="order-date">
+                        ${formattedDate}
+                    </div>
+
+                </div>
+
+                <div class="status ${status}">
+                    ${capitalize(order.status || "Pending")}
+                </div>
+
+            </div>
+
+
+            <div>
+
+                ${itemsHTML || `
+                    <div class="order-item">
+                        <div class="item-info">
+                            <div class="item-name">
+                                Order items
+                            </div>
+                        </div>
+                    </div>
+                `}
+
+            </div>
+
+
+            <div class="order-bottom">
+
+                <div>
+
+                    <div class="total-label">
+                        Order Total
+                    </div>
+
+                    <div class="total-price">
+                        ${formatMoney(order.total || 0)}
+                    </div>
+
+                </div>
+
+                <button
+                    class="view-btn"
+                    onclick="viewOrder('${escapeHTML(order.id)}')"
+                >
+                    View Details
+                </button>
+
+            </div>
+
+        `;
+
+
+        return card;
+
+    }
+
+
+    /* =========================================
+       EMPTY ORDERS
+    ========================================= */
+
+    function showEmptyOrders() {
+
+        ordersList.innerHTML = `
+
+            <div class="empty-orders">
+
+                <div class="empty-icon">
+                    🛍️
+                </div>
+
+                <h3>No orders yet</h3>
+
+                <p>
+                    You haven't placed any orders yet.
+                    Your purchases will appear here.
+                </p>
+
+                <a
+                    href="index.html"
+                    class="shop-btn"
+                >
+                    Start Shopping
+                </a>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /* =========================================
+       VIEW ORDER
+    ========================================= */
+
+    window.viewOrder = function(orderId) {
+
+        window.location.href =
+            "order-details.html?id=" +
+            encodeURIComponent(orderId);
+
+    };
+
+
+    /* =========================================
+       DATE
+    ========================================= */
+
+    function formatDate(timestamp) {
+
+        if (!timestamp) {
+            return "Date unavailable";
+        }
+
+        try {
+
+            const date =
+                timestamp.toDate
+                    ? timestamp.toDate()
+                    : new Date(timestamp);
+
+            return date.toLocaleDateString(
+                "en-US",
+                {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                }
+            );
+
+        } catch {
+
+            return "Date unavailable";
+
+        }
+
+    }
+
+
+    /* =========================================
+       MONEY
+    ========================================= */
+
+    function formatMoney(amount) {
+
+        return "₦" +
+            Number(amount || 0)
+                .toLocaleString(
+                    "en-NG",
+                    {
+                        minimumFractionDigits: 2
+                    }
+                );
+
+    }
+
+
+    /* =========================================
+       HELPERS
+    ========================================= */
+
+    function capitalize(value) {
+
+        return String(value)
+            .charAt(0)
+            .toUpperCase() +
+            String(value).slice(1);
+
+    }
+
+
+    function escapeHTML(value) {
+
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+</script>
+
+</body>
+</html>
