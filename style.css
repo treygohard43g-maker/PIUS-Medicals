@@ -2987,3 +2987,24 @@ body {
         font-size: 13px;
     }
 }
+
+/* =========================
+   PASSWORD EYE ICON
+========================= */
+
+.password-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7c93;
+}
+
+.eye-icon {
+    width: 21px;
+    height: 21px;
+    display: block;
+}
+
+.password-toggle:hover {
+    color: #082c55;
+}
