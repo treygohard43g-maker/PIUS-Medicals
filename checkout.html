@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -22,11 +23,17 @@
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
+
 </head>
+
 
 <body class="checkout-page">
 
-    <!-- HEADER -->
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
     <header class="dashboard-header checkout-header">
 
         <div class="header-left">
@@ -35,18 +42,26 @@
                 class="menu-btn"
                 id="menuBtn"
                 aria-label="Open menu"
+                type="button"
             >
                 <i class="fa-solid fa-bars"></i>
             </button>
 
-            <div class="dashboard-logo">
 
-                <span class="medical-cross small">
+            <div class="dashboard-logo checkout-logo">
+
+                <!-- RED MEDICAL CROSS -->
+
+                <span
+                    class="medical-cross small"
+                    aria-hidden="true"
+                >
                     <span></span>
                     <span></span>
                 </span>
 
-                <span>
+
+                <span class="checkout-brand-name">
                     PIUS MEDICAL ACCESSORIES
                 </span>
 
@@ -54,13 +69,16 @@
 
         </div>
 
+
         <div class="header-actions">
 
             <button
                 class="cart-btn"
                 id="cartBtn"
                 aria-label="Cart"
+                type="button"
             >
+
                 <i class="fa-solid fa-cart-shopping"></i>
 
                 <span
@@ -69,6 +87,7 @@
                 >
                     0
                 </span>
+
             </button>
 
         </div>
@@ -76,14 +95,22 @@
     </header>
 
 
-    <!-- MENU OVERLAY -->
+
+    <!-- =========================================
+         MENU OVERLAY
+    ========================================== -->
+
     <div
         class="menu-overlay"
         id="menuOverlay"
     ></div>
 
 
-    <!-- SIDE MENU -->
+
+    <!-- =========================================
+         SIDE MENU
+    ========================================== -->
+
     <aside
         class="side-menu"
         id="sideMenu"
@@ -93,7 +120,10 @@
 
             <div class="dashboard-logo">
 
-                <span class="medical-cross small">
+                <span
+                    class="medical-cross small"
+                    aria-hidden="true"
+                >
                     <span></span>
                     <span></span>
                 </span>
@@ -104,15 +134,20 @@
 
             </div>
 
+
             <button
                 class="close-menu-btn"
                 id="closeMenuBtn"
                 aria-label="Close menu"
+                type="button"
             >
+
                 <i class="fa-solid fa-xmark"></i>
+
             </button>
 
         </div>
+
 
 
         <nav class="dashboard-nav">
@@ -122,32 +157,41 @@
                 <span>Home</span>
             </a>
 
+
             <a href="products.html">
                 <i class="fa-solid fa-bag-shopping"></i>
                 <span>Products</span>
             </a>
+
 
             <a href="orders.html">
                 <i class="fa-solid fa-box"></i>
                 <span>Orders</span>
             </a>
 
+
             <a href="profile.html">
                 <i class="fa-solid fa-user"></i>
                 <span>My Profile</span>
             </a>
+
 
             <a href="favorites.html">
                 <i class="fa-solid fa-heart"></i>
                 <span>Saved / Favorites</span>
             </a>
 
+
             <a
                 href="cart.html"
                 class="menu-cart-link"
             >
+
                 <i class="fa-solid fa-cart-shopping"></i>
-                <span>Cart</span>
+
+                <span>
+                    Cart
+                </span>
 
                 <span
                     class="menu-cart-count"
@@ -155,24 +199,44 @@
                 >
                     0
                 </span>
+
             </a>
+
 
             <a href="support.html">
+
                 <i class="fa-solid fa-headset"></i>
-                <span>Support</span>
+
+                <span>
+                    Support
+                </span>
+
             </a>
 
+
             <a href="tracking.html">
+
                 <i class="fa-solid fa-location-dot"></i>
-                <span>Track Delivery</span>
+
+                <span>
+                    Track Delivery
+                </span>
+
             </a>
+
 
             <button
                 class="logout-menu-btn"
                 id="logoutBtn"
+                type="button"
             >
+
                 <i class="fa-solid fa-right-from-bracket"></i>
-                <span>Logout</span>
+
+                <span>
+                    Logout
+                </span>
+
             </button>
 
         </nav>
@@ -180,8 +244,15 @@
     </aside>
 
 
-    <!-- MAIN -->
+
+    <!-- =========================================
+         MAIN CHECKOUT
+    ========================================== -->
+
     <main class="checkout-main">
+
+
+        <!-- PAGE HEADING -->
 
         <div class="checkout-heading">
 
@@ -191,13 +262,16 @@
                     SECURE CHECKOUT
                 </span>
 
+
                 <h1>
                     Complete Your Order
                 </h1>
 
+
                 <p>
-                    Review your order, provide your delivery
-                    information and choose your payment method.
+                    Review your order, enter your delivery
+                    information and choose your preferred
+                    payment method.
                 </p>
 
             </div>
@@ -205,14 +279,26 @@
         </div>
 
 
+
+        <!-- =====================================
+             CHECKOUT LAYOUT
+        ====================================== -->
+
         <div class="checkout-layout">
 
 
-            <!-- LEFT SIDE -->
+            <!-- =================================
+                 LEFT COLUMN
+            ================================== -->
+
             <section class="checkout-left">
 
 
-                <!-- CUSTOMER INFORMATION -->
+
+                <!-- =================================
+                     CUSTOMER INFORMATION
+                ================================== -->
+
                 <div class="checkout-card">
 
                     <div class="checkout-card-header">
@@ -221,26 +307,34 @@
                             1
                         </div>
 
+
                         <div>
+
                             <h2>
                                 Customer Information
                             </h2>
 
+
                             <p>
-                                Enter the information we need for your order.
+                                Enter the information we need
+                                for your order.
                             </p>
+
                         </div>
 
                     </div>
 
 
+
                     <div class="checkout-form-grid">
+
 
                         <div class="checkout-field">
 
                             <label for="fullName">
                                 Full Name
                             </label>
+
 
                             <input
                                 type="text"
@@ -252,11 +346,13 @@
                         </div>
 
 
+
                         <div class="checkout-field">
 
                             <label for="email">
                                 Email Address
                             </label>
+
 
                             <input
                                 type="email"
@@ -268,11 +364,13 @@
                         </div>
 
 
+
                         <div class="checkout-field">
 
                             <label for="phone">
                                 Phone Number
                             </label>
+
 
                             <input
                                 type="tel"
@@ -288,7 +386,11 @@
                 </div>
 
 
-                <!-- DELIVERY -->
+
+                <!-- =================================
+                     DELIVERY ADDRESS
+                ================================== -->
+
                 <div class="checkout-card">
 
                     <div class="checkout-card-header">
@@ -297,26 +399,33 @@
                             2
                         </div>
 
+
                         <div>
+
                             <h2>
                                 Delivery Address
                             </h2>
 
+
                             <p>
                                 Where should we deliver your order?
                             </p>
+
                         </div>
 
                     </div>
 
 
+
                     <div class="checkout-form-grid">
+
 
                         <div class="checkout-field checkout-full">
 
                             <label for="address">
                                 Street Address
                             </label>
+
 
                             <input
                                 type="text"
@@ -328,11 +437,13 @@
                         </div>
 
 
+
                         <div class="checkout-field">
 
                             <label for="city">
                                 City
                             </label>
+
 
                             <input
                                 type="text"
@@ -344,11 +455,13 @@
                         </div>
 
 
+
                         <div class="checkout-field">
 
                             <label for="state">
                                 State
                             </label>
+
 
                             <input
                                 type="text"
@@ -360,11 +473,13 @@
                         </div>
 
 
+
                         <div class="checkout-field">
 
                             <label for="country">
                                 Country
                             </label>
+
 
                             <input
                                 type="text"
@@ -376,11 +491,13 @@
                         </div>
 
 
+
                         <div class="checkout-field">
 
                             <label for="postalCode">
                                 Postal Code
                             </label>
+
 
                             <input
                                 type="text"
@@ -396,7 +513,11 @@
                 </div>
 
 
-                <!-- DELIVERY METHOD -->
+
+                <!-- =================================
+                     DELIVERY METHOD
+                ================================== -->
+
                 <div class="checkout-card">
 
                     <div class="checkout-card-header">
@@ -405,20 +526,29 @@
                             3
                         </div>
 
+
                         <div>
+
                             <h2>
                                 Delivery Method
                             </h2>
 
+
                             <p>
-                                Select how you want your order delivered.
+                                Select how you want your order
+                                delivered.
                             </p>
+
                         </div>
 
                     </div>
 
 
+
                     <div class="delivery-options">
+
+
+                        <!-- STANDARD -->
 
                         <label class="delivery-option active">
 
@@ -429,7 +559,16 @@
                                 checked
                             >
 
+
                             <span class="delivery-radio"></span>
+
+
+                            <span class="delivery-method-icon">
+
+                                <i class="fa-solid fa-truck"></i>
+
+                            </span>
+
 
                             <span class="delivery-info">
 
@@ -437,18 +576,23 @@
                                     Standard Delivery
                                 </strong>
 
+
                                 <small>
-                                    Delivery fee calculated based on location
+                                    Reliable delivery to your address
                                 </small>
 
                             </span>
 
-                            <strong>
+
+                            <strong class="delivery-price-label">
                                 Calculated
                             </strong>
 
                         </label>
 
+
+
+                        <!-- EXPRESS -->
 
                         <label class="delivery-option">
 
@@ -458,7 +602,16 @@
                                 value="express"
                             >
 
+
                             <span class="delivery-radio"></span>
+
+
+                            <span class="delivery-method-icon">
+
+                                <i class="fa-solid fa-truck-fast"></i>
+
+                            </span>
+
 
                             <span class="delivery-info">
 
@@ -466,13 +619,15 @@
                                     Express Delivery
                                 </strong>
 
+
                                 <small>
                                     Faster delivery where available
                                 </small>
 
                             </span>
 
-                            <strong>
+
+                            <strong class="delivery-price-label">
                                 Calculated
                             </strong>
 
@@ -483,8 +638,13 @@
                 </div>
 
 
-                <!-- PAYMENT -->
-                <div class="checkout-card">
+
+                <!-- =================================
+                     PAYMENT METHOD
+                ================================== -->
+
+                <div class="checkout-card payment-checkout-card">
+
 
                     <div class="checkout-card-header">
 
@@ -492,13 +652,17 @@
                             4
                         </div>
 
+
                         <div>
+
                             <h2>
                                 Payment Method
                             </h2>
 
+
                             <p>
-                                Choose how you would like to pay.
+                                Choose your preferred secure
+                                payment method.
                             </p>
 
                         </div>
@@ -506,10 +670,41 @@
                     </div>
 
 
+
+                    <!-- PAYMENT TITLE -->
+
+                    <div class="payment-method-title">
+
+                        <span>
+                            Choose how you'd like to pay
+                        </span>
+
+
+                        <div class="payment-accepted-icons">
+
+                            <i class="fa-brands fa-cc-visa"></i>
+
+                            <i class="fa-brands fa-cc-mastercard"></i>
+
+                            <i class="fa-brands fa-cc-amex"></i>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PAYMENT OPTIONS -->
+
                     <div class="payment-options">
 
 
-                        <label class="payment-option active">
+
+                        <!-- CARD -->
+
+                        <label
+                            class="payment-option payment-card-option active"
+                        >
 
                             <input
                                 type="radio"
@@ -518,11 +713,16 @@
                                 checked
                             >
 
+
                             <span class="payment-radio"></span>
 
-                            <span class="payment-icon">
+
+                            <span class="payment-method-visual card-visual">
+
                                 <i class="fa-regular fa-credit-card"></i>
+
                             </span>
+
 
                             <span class="payment-info">
 
@@ -530,14 +730,28 @@
                                     Debit / Credit Card
                                 </strong>
 
+
                                 <small>
-                                    Secure online card payment
+                                    Visa, Mastercard and other
+                                    supported cards
                                 </small>
+
+                            </span>
+
+
+                            <span class="payment-card-brands">
+
+                                <i class="fa-brands fa-cc-visa"></i>
+
+                                <i class="fa-brands fa-cc-mastercard"></i>
 
                             </span>
 
                         </label>
 
+
+
+                        <!-- BANK -->
 
                         <label class="payment-option">
 
@@ -547,11 +761,16 @@
                                 value="bank"
                             >
 
+
                             <span class="payment-radio"></span>
 
-                            <span class="payment-icon">
+
+                            <span class="payment-method-visual">
+
                                 <i class="fa-solid fa-building-columns"></i>
+
                             </span>
+
 
                             <span class="payment-info">
 
@@ -559,14 +778,18 @@
                                     Bank Transfer
                                 </strong>
 
+
                                 <small>
-                                    Pay directly from your bank
+                                    Pay securely from your bank account
                                 </small>
 
                             </span>
 
                         </label>
 
+
+
+                        <!-- PAY ON DELIVERY -->
 
                         <label class="payment-option">
 
@@ -576,11 +799,16 @@
                                 value="pod"
                             >
 
+
                             <span class="payment-radio"></span>
 
-                            <span class="payment-icon">
-                                <i class="fa-solid fa-money-bill-wave"></i>
+
+                            <span class="payment-method-visual">
+
+                                <i class="fa-solid fa-hand-holding-dollar"></i>
+
                             </span>
+
 
                             <span class="payment-info">
 
@@ -588,8 +816,10 @@
                                     Pay on Delivery
                                 </strong>
 
+
                                 <small>
-                                    Available where supported
+                                    Available for eligible delivery
+                                    locations
                                 </small>
 
                             </span>
@@ -599,21 +829,113 @@
                     </div>
 
 
+
+                    <!-- =================================
+                         CARD VISUAL
+                    ================================== -->
+
+                    <div
+                        class="checkout-card-preview"
+                        id="cardPreview"
+                    >
+
+
+                        <div class="card-preview-top">
+
+                            <span>
+                                SECURE CARD PAYMENT
+                            </span>
+
+
+                            <i class="fa-solid fa-wifi"></i>
+
+                        </div>
+
+
+
+                        <div class="card-preview-chip">
+
+                            <i class="fa-solid fa-microchip"></i>
+
+                        </div>
+
+
+
+                        <div class="card-preview-number">
+
+                            •••• &nbsp;&nbsp;
+                            •••• &nbsp;&nbsp;
+                            •••• &nbsp;&nbsp;
+                            ••••
+
+                        </div>
+
+
+
+                        <div class="card-preview-bottom">
+
+
+                            <div>
+
+                                <small>
+                                    CARD HOLDER
+                                </small>
+
+
+                                <strong>
+                                    YOUR NAME
+                                </strong>
+
+                            </div>
+
+
+
+                            <div>
+
+                                <small>
+                                    EXPIRES
+                                </small>
+
+
+                                <strong>
+                                    MM/YY
+                                </strong>
+
+                            </div>
+
+
+
+                            <div class="card-preview-brand">
+
+                                <i class="fa-brands fa-cc-visa"></i>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SECURITY -->
+
                     <div class="payment-security">
 
                         <i class="fa-solid fa-shield-halved"></i>
 
+
                         <div>
 
                             <strong>
-                                Secure Payment
+                                Your payment is secure
                             </strong>
 
+
                             <p>
-                                Your payment information will be
-                                handled through a secure payment
-                                provider. We do not store your
-                                complete card details.
+                                Payment details will be handled
+                                through a secure payment provider.
+                                Pius Medical Accessories does not
+                                store your complete card information.
                             </p>
 
                         </div>
@@ -625,45 +947,68 @@
             </section>
 
 
-            <!-- RIGHT SIDE -->
+
+            <!-- =================================
+                 RIGHT COLUMN
+            ================================== -->
+
             <aside class="checkout-right">
 
 
-                <!-- ORDER SUMMARY -->
+
+                <!-- =================================
+                     ORDER SUMMARY
+                ================================== -->
+
                 <div class="checkout-summary-card">
+
 
                     <div class="checkout-summary-header">
 
                         <div>
+
                             <span>
                                 YOUR ORDER
                             </span>
 
+
                             <h2>
                                 Order Summary
                             </h2>
+
                         </div>
+
 
                         <i class="fa-solid fa-bag-shopping"></i>
 
                     </div>
 
 
+
+                    <!-- ITEMS -->
+
                     <div
                         class="checkout-order-items"
                         id="checkoutOrderItems"
                     >
+
                         <!-- Loaded by checkout.js -->
+
                     </div>
 
 
+
+                    <!-- SUMMARY -->
+
                     <div class="checkout-summary-lines">
+
 
                         <div class="checkout-summary-row">
 
                             <span>
                                 Subtotal
                             </span>
+
 
                             <strong id="checkoutSubtotal">
                                 $0.00
@@ -672,11 +1017,13 @@
                         </div>
 
 
+
                         <div class="checkout-summary-row">
 
                             <span>
                                 Delivery
                             </span>
+
 
                             <strong id="checkoutDelivery">
                                 Calculated
@@ -685,7 +1032,9 @@
                         </div>
 
 
+
                         <div class="checkout-summary-divider"></div>
+
 
 
                         <div class="checkout-summary-total">
@@ -693,6 +1042,7 @@
                             <span>
                                 Total
                             </span>
+
 
                             <strong id="checkoutTotal">
                                 $0.00
@@ -703,17 +1053,24 @@
                     </div>
 
 
+
+                    <!-- PAYMENT BUTTON -->
+
                     <button
                         type="button"
                         class="place-order-btn"
                         id="placeOrderBtn"
                     >
+
                         <span>
                             Continue to Payment
                         </span>
 
+
                         <i class="fa-solid fa-arrow-right"></i>
+
                     </button>
+
 
 
                     <div class="checkout-secure-note">
@@ -729,12 +1086,20 @@
                 </div>
 
 
-                <!-- HELP -->
+
+                <!-- =================================
+                     HELP CARD
+                ================================== -->
+
                 <div class="checkout-help-card">
 
+
                     <div class="checkout-help-icon">
+
                         <i class="fa-solid fa-headset"></i>
+
                     </div>
+
 
                     <div>
 
@@ -742,14 +1107,19 @@
                             Need Help?
                         </h3>
 
+
                         <p>
-                            Our support team is available to help
-                            with your order.
+                            Our support team is available to
+                            help with your order.
                         </p>
 
+
                         <a href="support.html">
+
                             Contact Support
+
                             <i class="fa-solid fa-arrow-right"></i>
+
                         </a>
 
                     </div>
@@ -757,12 +1127,18 @@
                 </div>
 
 
+
+                <!-- BACK TO CART -->
+
                 <a
                     href="cart.html"
                     class="back-cart-link"
                 >
+
                     <i class="fa-solid fa-arrow-left"></i>
+
                     Back to Cart
+
                 </a>
 
             </aside>
@@ -772,13 +1148,27 @@
     </main>
 
 
+
+    <!-- =========================================
+         MESSAGE
+    ========================================== -->
+
     <div
         class="dashboard-cart-message"
         id="checkoutMessage"
     ></div>
 
 
-    <script type="module" src="checkout.js"></script>
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script
+        type="module"
+        src="checkout.js"
+    ></script>
+
 
 </body>
 
