@@ -519,7 +519,7 @@ function showMessage(
 
 registerForm.addEventListener(
     "submit",
-    event => {
+    async event => {
 
         event.preventDefault();
 
@@ -540,7 +540,8 @@ registerForm.addEventListener(
             document
                 .getElementById("registerEmail")
                 .value
-                .trim();
+                .trim()
+                .toLowerCase();
 
         const password =
             registerPassword.value;
@@ -549,7 +550,9 @@ registerForm.addEventListener(
             confirmPassword.value;
 
 
-        /* COUNTRY */
+        /* =========================================
+           VALIDATION
+        ========================================= */
 
         if (!selectedCountryCode.value) {
 
@@ -561,8 +564,6 @@ registerForm.addEventListener(
         }
 
 
-        /* NAME */
-
         if (name.length < 2) {
 
             showMessage(
@@ -572,8 +573,6 @@ registerForm.addEventListener(
             return;
         }
 
-
-        /* PHONE */
 
         if (phone.length < 6) {
 
@@ -585,8 +584,6 @@ registerForm.addEventListener(
         }
 
 
-        /* EMAIL */
-
         if (!email.includes("@")) {
 
             showMessage(
@@ -596,8 +593,6 @@ registerForm.addEventListener(
             return;
         }
 
-
-        /* PASSWORD */
 
         if (password.length < 6) {
 
@@ -609,8 +604,6 @@ registerForm.addEventListener(
         }
 
 
-        /* CONFIRM */
-
         if (password !== confirm) {
 
             showMessage(
@@ -621,29 +614,195 @@ registerForm.addEventListener(
         }
 
 
-        /* SUCCESS FOR NOW */
+        /* =========================================
+           CREATE FIREBASE ACCOUNT
+        ========================================= */
 
-        showMessage(
-            "Your information looks good.",
-            "success"
-        );
+        try {
 
-        console.log(
-            "Registration data ready:",
-            {
-                name,
-                country:
-                    selectedCountryCode.value,
-                phone:
-                    phoneCode.textContent +
-                    phone,
+            showMessage(
+                "Creating your account...",
+                "success"
+            );
+
+
+            const userCredential =
+                await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+
+
+            const user =
+                userCredential.user;
+
+
+            /* =========================================
+               SAVE DISPLAY NAME
+            ========================================= */
+
+            await updateProfile(
+                user,
+                {
+                    displayName: name
+                }
+            );
+
+
+            /* =========================================
+               SAVE USER PROFILE TO FIRESTORE
+            ========================================= */
+
+            await setDoc(
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                ),
+                {
+                    uid: user.uid,
+
+                    name: name,
+
+                    email: email,
+
+                    country:
+                        selectedCountryCode.value,
+
+                    phoneCode:
+                        phoneCode.textContent,
+
+                    phone: phone,
+
+                    createdAt:
+                        serverTimestamp()
+                }
+            );
+
+
+            /* =========================================
+               SAVE LOGIN INFORMATION
+            ========================================= */
+
+            localStorage.setItem(
+                "loggedIn",
+                "true"
+            );
+
+            localStorage.setItem(
+                "firebaseUser",
+                user.uid
+            );
+
+            localStorage.setItem(
+                "userEmail",
                 email
+            );
+
+            localStorage.setItem(
+                "userName",
+                name
+            );
+
+
+            /* =========================================
+               SUCCESS
+            ========================================= */
+
+            showMessage(
+                "Account created successfully!",
+                "success"
+            );
+
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "dashboard.html";
+
+            }, 800);
+
+
+        } catch (error) {
+
+            console.error(
+                "Registration error:",
+                error
+            );
+
+
+            /* =========================================
+               FIREBASE ERROR MESSAGES
+            ========================================= */
+
+            if (
+                error.code ===
+                "auth/email-already-in-use"
+            ) {
+
+                showMessage(
+                    "An account with this email already exists."
+                );
+
             }
-        );
+
+            else if (
+                error.code ===
+                "auth/invalid-email"
+            ) {
+
+                showMessage(
+                    "Please enter a valid email address."
+                );
+
+            }
+
+            else if (
+                error.code ===
+                "auth/weak-password"
+            ) {
+
+                showMessage(
+                    "Password is too weak. Please choose a stronger password."
+                );
+
+            }
+
+            else if (
+                error.code ===
+                "auth/network-request-failed"
+            ) {
+
+                showMessage(
+                    "Network error. Please check your internet connection."
+                );
+
+            }
+
+            else if (
+                error.code ===
+                "auth/operation-not-allowed"
+            ) {
+
+                showMessage(
+                    "Email/password registration is not enabled in Firebase."
+                );
+
+            }
+
+            else {
+
+                showMessage(
+                    "Unable to create your account. Please try again."
+                );
+
+            }
+
+        }
 
     }
 );
-
 
 /* =========================================
    INITIAL COUNTRY LIST
