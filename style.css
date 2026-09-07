@@ -34,7 +34,7 @@ body {
 
 
 /* =========================================
-   TOP NAVY HERO
+   TOP NAVY HEADER
 ========================================= */
 
 .site-header {
@@ -161,16 +161,18 @@ body {
 /* =========================================
    MOBILE MENU
 ========================================= */
-/* =========================================
-   MOBILE MENU — MODERN ANIMATION
-========================================= */
 
 .mobile-menu {
     position: absolute;
+
     top: 78px;
     left: 16px;
 
-    width: min(310px, calc(100% - 32px));
+    width:
+        min(
+            310px,
+            calc(100% - 32px)
+        );
 
     padding: 10px;
 
@@ -185,10 +187,13 @@ body {
 
     z-index: 1000;
 
-    /* Hidden state */
     opacity: 0;
+
     visibility: hidden;
-    transform: translateY(-10px) scale(0.98);
+
+    transform:
+        translateY(-10px)
+        scale(0.98);
 
     transition:
         opacity 0.22s ease,
@@ -196,90 +201,14 @@ body {
         visibility 0.22s ease;
 }
 
-
-/* OPEN STATE */
-
 .mobile-menu.open {
     opacity: 1;
+
     visibility: visible;
-    transform: translateY(0) scale(1);
-}
 
-
-/* MENU LINKS */
-
-.mobile-menu a {
-    display: flex;
-    align-items: center;
-
-    gap: 13px;
-
-    padding: 13px 14px;
-
-    border-radius: 10px;
-
-    text-decoration: none;
-
-    color: #172033;
-
-    font-size: 15px;
-    font-weight: 600;
-
-    transition:
-        background 0.18s ease,
-        color 0.18s ease,
-        transform 0.18s ease;
-}
-
-
-/* HOVER / TAP FEEL */
-
-.mobile-menu a:hover {
-    background: #eef7ff;
-    color: #0b2a4a;
-    transform: translateX(3px);
-}
-
-
-/* ICONS */
-
-.mobile-menu i {
-    width: 20px;
-
-    text-align: center;
-
-    color: #1677c8;
-
-    transition: transform 0.18s ease;
-}
-
-
-.mobile-menu a:hover i {
-    transform: scale(1.08);
-}
-
-
-/* DIVIDER */
-
-.menu-divider {
-    height: 1px;
-
-    background: #e5eaf0;
-
-    margin: 8px 4px;
-}
-
-@keyframes menuDrop {
-
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    transform:
+        translateY(0)
+        scale(1);
 }
 
 .mobile-menu a {
@@ -312,7 +241,8 @@ body {
 
     color: #0b5d9f;
 
-    transform: translateX(2px);
+    transform:
+        translateX(2px);
 }
 
 .mobile-menu i {
@@ -339,25 +269,50 @@ body {
 ========================================= */
 
 .medical-hero {
-    padding: 35px 20px 20px;
-    background: #f5f8fb;
+    position: relative;
+
+    padding:
+        35px
+        20px
+        25px;
+
+    background:
+        #f5f8fb;
+
+    overflow: hidden;
 }
+
+
+/* =========================================
+   MEDICAL IMAGE CARD
+========================================= */
 
 .medical-image-container {
     position: relative;
-    width: 100%;
-    max-width: 1100px;
-    height: 420px;
+
+    width:
+        min(
+            1180px,
+            100%
+        );
+
+    height: 370px;
+
     margin: 0 auto;
 
     background: #ffffff;
 
-    border-radius: 30px;
+    border-radius: 26px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.75);
+
+    overflow: hidden;
 
     box-shadow:
-        0 18px 45px rgba(0, 35, 70, 0.14);
-
-    overflow: visible;
+        0 20px 40px rgba(0, 0, 0, 0.16),
+        0 8px 20px rgba(0, 0, 0, 0.08);
 }
 
 
@@ -374,15 +329,23 @@ body {
     width: 100%;
     height: 100%;
 
-    object-fit: contain;
-    object-position: left center;
-
     padding: 8px;
 
-    border-radius: 26px;
+    display: block;
+
+    object-fit: contain;
+
+    /*
+       Keep the equipment toward
+       the left side of the card.
+    */
+
+    object-position:
+        left center;
 
     z-index: 1;
 }
+
 
 /* =========================================
    DOCTOR IMAGE
@@ -391,20 +354,60 @@ body {
 .doctor-image {
     position: absolute;
 
-    right: 5px;
+    right: 8px;
+
     bottom: 0;
 
-    width: 30%;
-    height: 90%;
+    /*
+       Smaller width keeps the doctor
+       from covering the equipment.
+    */
+
+    width: 24%;
+
+    height: 88%;
+
+    display: block;
 
     object-fit: contain;
-    object-position: bottom right;
 
-    z-index: 5;
+    object-position:
+        bottom right;
+
+    z-index: 2;
 
     filter:
-        drop-shadow(0 10px 15px rgba(0, 0, 0, 0.12));
+        drop-shadow(
+            0 8px 14px
+            rgba(0, 0, 0, 0.12)
+        );
 }
+
+
+/* =========================================
+   CARD LIGHT EFFECT
+========================================= */
+
+.medical-image-container::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.10),
+            transparent 38%,
+            transparent 100%
+        );
+
+    pointer-events: none;
+
+    z-index: 3;
+}
+
 
 /* =========================================
    HERO DECORATIVE LIGHT
@@ -419,6 +422,7 @@ body {
     height: 360px;
 
     top: -170px;
+
     right: -150px;
 
     background:
@@ -429,75 +433,6 @@ body {
         );
 
     pointer-events: none;
-}
-
-
-/* =========================================
-   MEDICAL IMAGE CARD
-========================================= */
-.medical-image-container {
-    width: min(1180px, 100%);
-    height: 370px;
-    margin: 0 auto;
-
-    background: #ffffff;
-
-    padding: 10px;
-
-    border-radius: 26px;
-
-    overflow: hidden;
-
-    border: 1px solid rgba(255, 255, 255, 0.65);
-
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.18),
-        0 8px 20px rgba(0, 0, 0, 0.10);
-
-    position: relative;
-}
-
-/* =========================================
-   IMAGE LIGHT OVERLAY
-========================================= */
-
-.medical-image-container::after {
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    background:
-        linear-gradient(
-            120deg,
-            rgba(255, 255, 255, 0.12),
-            transparent 38%,
-            transparent 100%
-        );
-
-    pointer-events: none;
-}
-
-
-/* =========================================
-   MEDICAL IMAGE
-========================================= */
-
-.medical-image-container img {
-    width: 100%;
-    height: 100%;
-
-    display: block;
-
-    object-fit: contain;
-
-    transition:
-        transform 0.55s ease;
-}
-
-.medical-image-container:hover img {
-    transform: scale(1.025);
 }
 
 
@@ -522,7 +457,11 @@ body {
 }
 
 .intro-container {
-    width: min(780px, 100%);
+    width:
+        min(
+            780px,
+            100%
+        );
 
     margin: 0 auto;
 
@@ -531,7 +470,7 @@ body {
 
 
 /* =========================================
-   SMALL LABEL
+   INTRO LABEL
 ========================================= */
 
 .intro-label {
@@ -543,13 +482,17 @@ body {
 
     margin-bottom: 17px;
 
-    padding: 8px 15px;
+    padding:
+        8px
+        15px;
 
     border-radius: 50px;
 
     background: #eef7ff;
 
-    border: 1px solid #dceefe;
+    border:
+        1px solid
+        #dceefe;
 
     color: #1677c8;
 
@@ -661,7 +604,8 @@ body {
 
 .signup-button:hover,
 .login-button:hover {
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 }
 
 
@@ -684,7 +628,8 @@ body {
         rgba(255, 255, 255, 0.08);
 
     box-shadow:
-        0 10px 25px rgba(22, 119, 200, 0.24);
+        0 10px 25px
+        rgba(22, 119, 200, 0.24);
 }
 
 .signup-button:hover {
@@ -696,7 +641,8 @@ body {
         );
 
     box-shadow:
-        0 14px 30px rgba(22, 119, 200, 0.30);
+        0 14px 30px
+        rgba(22, 119, 200, 0.30);
 }
 
 
@@ -714,16 +660,19 @@ body {
         #d7e3ed;
 
     box-shadow:
-        0 6px 18px rgba(11, 42, 74, 0.06);
+        0 6px 18px
+        rgba(11, 42, 74, 0.06);
 }
 
 .login-button:hover {
     background: #f7fbff;
 
-    border-color: #bfd6e8;
+    border-color:
+        #bfd6e8;
 
     box-shadow:
-        0 10px 24px rgba(11, 42, 74, 0.10);
+        0 10px 24px
+        rgba(11, 42, 74, 0.10);
 }
 
 
@@ -735,7 +684,9 @@ body {
 .login-button:focus-visible,
 .menu-button:focus-visible,
 .mobile-menu a:focus-visible {
-    outline: 3px solid rgba(22, 119, 200, 0.28);
+    outline:
+        3px solid
+        rgba(22, 119, 200, 0.28);
 
     outline-offset: 3px;
 }
@@ -749,6 +700,12 @@ body {
 
     .medical-image-container {
         height: 320px;
+    }
+
+    .doctor-image {
+        width: 25%;
+
+        height: 88%;
     }
 
     .intro-section {
@@ -773,7 +730,8 @@ body {
     }
 
     .header-container {
-        width: calc(100% - 24px);
+        width:
+            calc(100% - 24px);
 
         min-height: 58px;
 
@@ -805,42 +763,72 @@ body {
         border-radius: 15px;
     }
 
+
+    /* -----------------------------
+       MEDICAL HERO MOBILE
+    ----------------------------- */
+
     .medical-hero {
-        padding-left: 12px;
-
-        padding-right: 12px;
-
-        padding-bottom: 30px;
+        padding:
+            22px
+            12px
+            30px;
     }
 
     .medical-image-container {
+        width: 100%;
+
         height: 250px;
 
         border-radius: 18px;
 
         box-shadow:
-            0 18px 40px rgba(0, 0, 0, 0.22);
+            0 18px 40px
+            rgba(0, 0, 0, 0.20);
     }
-    
-  .equipment-image {
-    width: 100%;
-    height: 100%;
-    padding: 8px;
 
-    object-fit: contain;
-    object-position: left center;
-}
 
-.doctor-image {
-    width: 30%;
-    height: 88%;
+    /* -----------------------------
+       EQUIPMENT MOBILE
+    ----------------------------- */
 
-    right: 3px;
-    bottom: 0;
+    .equipment-image {
+        width: 100%;
 
-    object-fit: contain;
-    object-position: bottom right;
-}
+        height: 100%;
+
+        padding: 5px;
+
+        object-fit: contain;
+
+        object-position:
+            left center;
+    }
+
+
+    /* -----------------------------
+       DOCTOR MOBILE
+    ----------------------------- */
+
+    .doctor-image {
+        width: 27%;
+
+        height: 88%;
+
+        right: 3px;
+
+        bottom: 0;
+
+        object-fit: contain;
+
+        object-position:
+            bottom right;
+    }
+
+
+    /* -----------------------------
+       INTRO MOBILE
+    ----------------------------- */
 
     .intro-section {
         padding:
@@ -873,6 +861,11 @@ body {
         line-height: 1.75;
     }
 
+
+    /* -----------------------------
+       BUTTONS MOBILE
+    ----------------------------- */
+
     .auth-actions {
         flex-direction: column;
 
@@ -901,7 +894,8 @@ body {
 @media (max-width: 400px) {
 
     .header-container {
-        width: calc(100% - 20px);
+        width:
+            calc(100% - 20px);
     }
 
     .brand-name {
@@ -916,6 +910,11 @@ body {
         font-size: 18px;
     }
 
+
+    /* -----------------------------
+       SMALL PHONE CARD
+    ----------------------------- */
+
     .medical-hero {
         padding-left: 10px;
 
@@ -929,6 +928,23 @@ body {
 
         border-radius: 16px;
     }
+
+    .equipment-image {
+        padding: 3px;
+    }
+
+    .doctor-image {
+        width: 25%;
+
+        height: 86%;
+
+        right: 2px;
+    }
+
+
+    /* -----------------------------
+       SMALL PHONE INTRO
+    ----------------------------- */
 
     .intro-section {
         padding:
@@ -972,6 +988,12 @@ body {
         height: 205px;
     }
 
+    .doctor-image {
+        width: 24%;
+
+        height: 84%;
+    }
+
     .intro-container h1 {
         font-size: 26px;
     }
@@ -991,8 +1013,13 @@ body {
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
     }
 }
