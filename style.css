@@ -4569,3 +4569,294 @@ input:focus-visible {
     }
 }
 
+/* =========================================
+   BANK TRANSFER PAYMENT CARD
+   PREMIUM CHECKOUT DESIGN
+========================================= */
+
+.bank-transfer-card {
+    width: 100%;
+    margin-top: 18px;
+    padding: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff 0%,
+            #f9fcfd 55%,
+            #f3f8fa 100%
+        );
+
+    border: 1px solid #dfe9ee;
+    border-radius: 18px;
+
+    box-shadow:
+        0 14px 35px rgba(15, 23, 42, 0.07),
+        0 4px 12px rgba(15, 23, 42, 0.035);
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* Premium top accent */
+
+.bank-transfer-card::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 3px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #176b87,
+            #3b9ab5,
+            #176b87
+        );
+}
+
+/* Header */
+
+.bank-transfer-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 20px;
+}
+
+.bank-transfer-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #eef8fb,
+            #e1f1f5
+        );
+
+    border: 1px solid #d6e8ee;
+
+    color: #176b87;
+
+    font-size: 20px;
+
+    box-shadow:
+        0 7px 18px rgba(23, 107, 135, 0.10);
+}
+
+.bank-transfer-header h3 {
+    margin: 0;
+
+    color: #16242d;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    line-height: 1.25;
+}
+
+.bank-transfer-header p {
+    margin: 4px 0 0;
+
+    color: #6a7b84;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+/* Amount */
+
+.bank-transfer-amount {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+    padding: 17px 18px;
+
+    background: #f5fafc;
+
+    border: 1px solid #dcebef;
+    border-radius: 13px;
+}
+
+.bank-transfer-amount span {
+    color: #667781;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+.bank-transfer-amount strong {
+    color: #102a43;
+
+    font-size: 21px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+/* Account information */
+
+.bank-transfer-details {
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid #e1e9ed;
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+.bank-transfer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 15px 17px;
+
+    border-bottom: 1px solid #e8eef1;
+}
+
+.bank-transfer-row:last-child {
+    border-bottom: none;
+}
+
+.bank-transfer-row span {
+    color: #71818a;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.bank-transfer-row strong {
+    color: #172b3a;
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    text-align: right;
+}
+
+/* Provider notice */
+
+.bank-transfer-notice {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 9px;
+
+    margin-top: 17px;
+    padding: 13px 14px;
+
+    background: #f8fafb;
+
+    border: 1px solid #e5ecef;
+    border-radius: 11px;
+
+    color: #6a7b84;
+
+    font-size: 12px;
+
+    line-height: 1.55;
+}
+
+.bank-transfer-notice i {
+    flex-shrink: 0;
+
+    margin-top: 2px;
+
+    color: #176b87;
+
+    font-size: 13px;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .bank-transfer-card {
+        padding: 20px 16px;
+
+        border-radius: 16px;
+    }
+
+    .bank-transfer-header {
+        gap: 11px;
+
+        margin-bottom: 17px;
+    }
+
+    .bank-transfer-icon {
+        width: 44px;
+        height: 44px;
+
+        border-radius: 11px;
+
+        font-size: 18px;
+    }
+
+    .bank-transfer-header h3 {
+        font-size: 17px;
+    }
+
+    .bank-transfer-header p {
+        font-size: 12px;
+    }
+
+    .bank-transfer-amount {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 6px;
+
+        padding: 15px;
+    }
+
+    .bank-transfer-amount strong {
+        font-size: 20px;
+    }
+
+    .bank-transfer-row {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 5px;
+
+        padding: 13px 14px;
+    }
+
+    .bank-transfer-row strong {
+        text-align: left;
+    }
+
+    .bank-transfer-notice {
+        font-size: 11px;
+    }
+}
