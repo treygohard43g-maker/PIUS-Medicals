@@ -1,1 +1,2859 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Track Delivery - Pius Medical Accessories</title>
+
+    <meta
+        name="description"
+        content="Track your Pius Medical Accessories delivery in real time."
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- Leaflet Map -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+    <style>
+
+        /* =========================================
+           PAGE
+        ========================================= */
+
+        .tracking-page {
+            min-height: 100vh;
+            background: #f5f7fa;
+            color: #071d3b;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .tracking-header {
+            background: #071d3b;
+            color: white;
+
+            padding: 18px 20px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+
+            box-shadow:
+                0 3px 15px rgba(0,0,0,.14);
+        }
+
+
+        .back-btn {
+            width: 42px;
+            height: 42px;
+
+            border: 0;
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.10);
+
+            color: white;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+        }
+
+
+        .back-btn:active {
+            transform: scale(.96);
+        }
+
+
+        .tracking-header h1 {
+            font-size: 21px;
+            margin: 0;
+        }
+
+
+        .tracking-header p {
+            font-size: 12px;
+
+            opacity: .7;
+
+            margin-top: 3px;
+        }
+
+
+        /* =========================================
+           MAIN CONTAINER
+        ========================================= */
+
+        .tracking-container {
+            width: min(950px, 94%);
+
+            margin: 25px auto 50px;
+        }
+
+
+        /* =========================================
+           LIVE INDICATOR
+        ========================================= */
+
+        .live-bar {
+            background: white;
+
+            border-radius: 16px;
+
+            padding: 13px 16px;
+
+            margin-bottom: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            border: 1px solid #edf0f4;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.05);
+        }
+
+
+        .live-status {
+            display: flex;
+            align-items: center;
+
+            gap: 9px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        .live-dot {
+            width: 9px;
+            height: 9px;
+
+            background: #16a05d;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 0 5px rgba(22,160,93,.12);
+
+            animation: livePulse 1.8s infinite;
+        }
+
+
+        @keyframes livePulse {
+
+            0% {
+                box-shadow:
+                    0 0 0 0 rgba(22,160,93,.35);
+            }
+
+            70% {
+                box-shadow:
+                    0 0 0 7px rgba(22,160,93,0);
+            }
+
+            100% {
+                box-shadow:
+                    0 0 0 0 rgba(22,160,93,0);
+            }
+
+        }
+
+
+        .last-updated {
+            color: #7a8494;
+
+            font-size: 11px;
+
+            text-align: right;
+        }
+
+
+        /* =========================================
+           ORDER SUMMARY CARD
+        ========================================= */
+
+        .order-summary {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 22px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid #edf0f4;
+
+            box-shadow:
+                0 6px 22px rgba(0,0,0,.06);
+        }
+
+
+        .summary-top {
+            display: flex;
+
+            align-items: flex-start;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 20px;
+        }
+
+
+        .summary-label {
+            color: #7a8494;
+
+            font-size: 12px;
+
+            margin-bottom: 5px;
+        }
+
+
+        .order-number {
+            font-size: 18px;
+
+            font-weight: 800;
+
+            word-break: break-all;
+        }
+
+
+        .status-badge {
+            padding: 8px 13px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            white-space: nowrap;
+        }
+
+
+        .status-pending {
+            background: #fff4d6;
+            color: #9a6800;
+        }
+
+
+        .status-processing {
+            background: #e5f0ff;
+            color: #1764b0;
+        }
+
+
+        .status-shipped,
+        .status-in-transit {
+            background: #e8e5ff;
+            color: #5545b8;
+        }
+
+
+        .status-out-for-delivery {
+            background: #fff0df;
+            color: #b86600;
+        }
+
+
+        .status-delivered {
+            background: #e4f8ec;
+            color: #18864b;
+        }
+
+
+        .status-cancelled {
+            background: #ffe6e6;
+            color: #c62828;
+        }
+
+
+        .summary-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .summary-item {
+            background: #f7f9fb;
+
+            border-radius: 13px;
+
+            padding: 14px;
+        }
+
+
+        .summary-item i {
+            color: #071d3b;
+
+            font-size: 15px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .summary-item span {
+            display: block;
+
+            color: #7a8494;
+
+            font-size: 11px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .summary-item strong {
+            display: block;
+
+            font-size: 13px;
+
+            word-break: break-word;
+        }
+
+
+        /* =========================================
+           TRACKING MESSAGE
+        ========================================= */
+
+        .tracking-message {
+            background:
+                linear-gradient(
+                    135deg,
+                    #071d3b,
+                    #0b2c59
+                );
+
+            color: white;
+
+            border-radius: 20px;
+
+            padding: 22px;
+
+            margin-bottom: 18px;
+
+            box-shadow:
+                0 8px 25px rgba(7,29,59,.16);
+        }
+
+
+        .message-header {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .message-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 12px;
+
+            background:
+                rgba(255,255,255,.12);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 17px;
+        }
+
+
+        .message-header h3 {
+            font-size: 16px;
+            margin: 0;
+        }
+
+
+        .tracking-message p {
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            opacity: .82;
+
+            margin: 0;
+        }
+
+
+        /* =========================================
+           MAP
+        ========================================= */
+
+        .map-card {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 18px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid #edf0f4;
+
+            box-shadow:
+                0 6px 22px rgba(0,0,0,.06);
+        }
+
+
+        .section-title {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .section-title i {
+            width: 34px;
+            height: 34px;
+
+            border-radius: 10px;
+
+            background: #eef3f8;
+
+            color: #071d3b;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .section-title h2 {
+            font-size: 17px;
+            margin: 0;
+        }
+
+
+        .map-wrapper {
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 15px;
+
+            background: #eef1f4;
+
+            min-height: 310px;
+        }
+
+
+        #trackingMap {
+            width: 100%;
+            height: 310px;
+
+            display: none;
+        }
+
+
+        .map-placeholder {
+            min-height: 310px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 30px;
+
+            color: #697386;
+        }
+
+
+        .map-placeholder i {
+            font-size: 38px;
+
+            color: #071d3b;
+
+            margin-bottom: 14px;
+        }
+
+
+        .map-placeholder h3 {
+            color: #071d3b;
+
+            font-size: 15px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .map-placeholder p {
+            font-size: 12px;
+
+            max-width: 400px;
+
+            line-height: 1.6;
+
+            margin: 0;
+        }
+
+
+        .location-info {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-top: 14px;
+
+            padding: 13px;
+
+            background: #f7f9fb;
+
+            border-radius: 12px;
+        }
+
+
+        .location-info i {
+            color: #c62828;
+
+            font-size: 17px;
+        }
+
+
+        .location-info div {
+            min-width: 0;
+        }
+
+
+        .location-info span {
+            display: block;
+
+            color: #7a8494;
+
+            font-size: 11px;
+
+            margin-bottom: 3px;
+        }
+
+
+        .location-info strong {
+            display: block;
+
+            font-size: 13px;
+
+            word-break: break-word;
+        }
+
+
+        /* =========================================
+           PROGRESS
+        ========================================= */
+
+        .progress-card {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 22px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid #edf0f4;
+
+            box-shadow:
+                0 6px 22px rgba(0,0,0,.06);
+        }
+
+
+        .timeline {
+            position: relative;
+
+            margin-top: 22px;
+        }
+
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            left: 17px;
+
+            top: 17px;
+
+            bottom: 17px;
+
+            width: 2px;
+
+            background: #e3e7ec;
+        }
+
+
+        .timeline-step {
+            position: relative;
+
+            display: flex;
+
+            gap: 15px;
+
+            padding-bottom: 24px;
+        }
+
+
+        .timeline-step:last-child {
+            padding-bottom: 0;
+        }
+
+
+        .timeline-icon {
+            width: 36px;
+            height: 36px;
+
+            border-radius: 50%;
+
+            background: #f0f2f5;
+
+            color: #9aa3af;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            position: relative;
+
+            z-index: 2;
+
+            flex-shrink: 0;
+
+            border: 3px solid white;
+
+            font-size: 13px;
+        }
+
+
+        .timeline-step.completed .timeline-icon {
+            background: #071d3b;
+
+            color: white;
+        }
+
+
+        .timeline-step.current .timeline-icon {
+            background: #18864b;
+
+            color: white;
+
+            box-shadow:
+                0 0 0 5px rgba(24,134,75,.12);
+        }
+
+
+        .timeline-content {
+            padding-top: 2px;
+
+            flex: 1;
+        }
+
+
+        .timeline-content h3 {
+            font-size: 14px;
+
+            margin: 0 0 4px;
+        }
+
+
+        .timeline-content p {
+            color: #7a8494;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
+            margin: 0;
+        }
+
+
+        .timeline-step.completed
+        .timeline-content h3 {
+            color: #071d3b;
+        }
+
+
+        .timeline-step:not(.completed)
+        .timeline-content h3 {
+            color: #9aa3af;
+        }
+
+
+        /* =========================================
+           ESTIMATED DELIVERY
+        ========================================= */
+
+        .delivery-card {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 22px;
+
+            margin-bottom: 18px;
+
+            border: 1px solid #edf0f4;
+
+            box-shadow:
+                0 6px 22px rgba(0,0,0,.06);
+        }
+
+
+        .delivery-box {
+            background: #f7f9fb;
+
+            border-radius: 15px;
+
+            padding: 18px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+        }
+
+
+        .delivery-icon {
+            width: 48px;
+            height: 48px;
+
+            border-radius: 14px;
+
+            background: #071d3b;
+
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 19px;
+
+            flex-shrink: 0;
+        }
+
+
+        .delivery-box span {
+            display: block;
+
+            color: #7a8494;
+
+            font-size: 11px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .delivery-box strong {
+            display: block;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================================
+           NO TRACKING DATA
+        ========================================= */
+
+        .awaiting-card {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 35px 22px;
+
+            text-align: center;
+
+            border: 1px solid #edf0f4;
+
+            box-shadow:
+                0 6px 22px rgba(0,0,0,.06);
+
+            margin-bottom: 18px;
+        }
+
+
+        .awaiting-card i {
+            font-size: 40px;
+
+            color: #071d3b;
+
+            margin-bottom: 15px;
+        }
+
+
+        .awaiting-card h3 {
+            font-size: 17px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .awaiting-card p {
+            color: #697386;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            max-width: 500px;
+
+            margin: 0 auto;
+        }
+
+
+        /* =========================================
+           ERROR
+        ========================================= */
+
+        .error-box {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 45px 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 6px 22px rgba(0,0,0,.06);
+        }
+
+
+        .error-box i {
+            font-size: 40px;
+
+            color: #c62828;
+
+            margin-bottom: 15px;
+        }
+
+
+        .error-box h3 {
+            margin-bottom: 8px;
+        }
+
+
+        .error-box p {
+            color: #697386;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+        }
+
+
+        .back-orders-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            background: #071d3b;
+
+            color: white;
+
+            text-decoration: none;
+
+            padding: 12px 18px;
+
+            border-radius: 10px;
+
+            font-weight: 700;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================================
+           LOADING
+        ========================================= */
+
+        .loading {
+            background: white;
+
+            border-radius: 20px;
+
+            padding: 60px 20px;
+
+            text-align: center;
+
+            color: #697386;
+
+            box-shadow:
+                0 6px 22px rgba(0,0,0,.06);
+        }
+
+
+        .loading i {
+            font-size: 28px;
+
+            margin-bottom: 12px;
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 650px) {
+
+            .tracking-container {
+                width: 92%;
+
+                margin-top: 18px;
+            }
+
+
+            .tracking-header {
+                padding: 15px;
+            }
+
+
+            .tracking-header h1 {
+                font-size: 18px;
+            }
+
+
+            .order-summary,
+            .progress-card,
+            .map-card,
+            .delivery-card,
+            .tracking-message {
+                padding: 17px;
+            }
+
+
+            .summary-top {
+                flex-direction: column;
+            }
+
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+
+            .live-bar {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .last-updated {
+                text-align: left;
+            }
+
+
+            .map-wrapper,
+            #trackingMap,
+            .map-placeholder {
+                min-height: 260px;
+
+                height: 260px;
+            }
+
+
+            #trackingMap {
+                height: 260px;
+            }
+
+
+            .delivery-box {
+                align-items: flex-start;
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body class="tracking-page">
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="tracking-header">
+
+        <button
+            class="back-btn"
+            id="backBtn"
+            type="button"
+            aria-label="Back to orders"
+        >
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+        </button>
+
+
+        <div>
+
+            <h1>
+                Track Delivery
+            </h1>
+
+            <p>
+                Follow your order status in real time
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="tracking-container">
+
+        <div id="trackingContent">
+
+            <div class="loading">
+
+                <i class="fa-solid fa-spinner fa-spin"></i>
+
+                <div>
+                    Loading delivery information...
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- LEAFLET -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    ></script>
+
+
+
+    <!-- =========================================
+         FIREBASE
+    ========================================== -->
+
+    <script type="module">
+
+        import {
+            auth,
+            db
+        } from "./firebase.js";
+
+
+        import {
+            onAuthStateChanged
+        } from
+            "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+
+        import {
+            doc,
+            getDoc,
+            onSnapshot,
+            collection,
+            getDocs
+        } from
+            "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+
+        /* =========================================
+           ELEMENTS
+        ========================================= */
+
+        const trackingContent =
+            document.getElementById(
+                "trackingContent"
+            );
+
+
+        const backBtn =
+            document.getElementById(
+                "backBtn"
+            );
+
+
+
+        /* =========================================
+           ORDER ID
+        ========================================= */
+
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const orderId =
+            params.get("id");
+
+
+
+        /* =========================================
+           MAP
+        ========================================= */
+
+        let trackingMap = null;
+
+        let trackingMarker = null;
+
+
+
+        /* =========================================
+           BACK BUTTON
+        ========================================= */
+
+        backBtn.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    history.length > 1
+                ) {
+
+                    history.back();
+
+                } else {
+
+                    window.location.href =
+                        "orders.html";
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================================
+           AUTH
+        ========================================= */
+
+        onAuthStateChanged(
+            auth,
+            async (user) => {
+
+                if (!user) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+                if (!orderId) {
+
+                    showError(
+                        "Missing Order",
+                        "No order was selected for tracking."
+                    );
+
+                    return;
+
+                }
+
+
+                await startTracking(
+                    user,
+                    orderId
+                );
+
+            }
+        );
+
+
+
+        /* =========================================
+           START REAL-TIME TRACKING
+        ========================================= */
+
+        async function startTracking(
+            user,
+            id
+        ) {
+
+            try {
+
+                const orderRef =
+                    doc(
+                        db,
+                        "orders",
+                        id
+                    );
+
+
+                /*
+                 * First check that the order exists.
+                 */
+
+                const initialSnapshot =
+                    await getDoc(
+                        orderRef
+                    );
+
+
+                if (
+                    !initialSnapshot.exists()
+                ) {
+
+                    showError(
+                        "Order Not Found",
+                        "We could not find this order."
+                    );
+
+                    return;
+
+                }
+
+
+                const initialData =
+                    initialSnapshot.data();
+
+
+                /*
+                 * Make sure this order belongs
+                 * to the currently logged-in user.
+                 */
+
+                if (
+                    initialData.userId !==
+                    user.uid
+                ) {
+
+                    showError(
+                        "Access Denied",
+                        "You do not have permission to view this order."
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                 * Render immediately.
+                 */
+
+                renderTracking(
+                    id,
+                    initialData
+                );
+
+
+                /*
+                 * Listen for REAL-TIME updates.
+                 *
+                 * Any change made to this order
+                 * in Firestore will automatically
+                 * update this page.
+                 */
+
+                onSnapshot(
+                    orderRef,
+                    (snapshot) => {
+
+                        if (
+                            !snapshot.exists()
+                        ) {
+
+                            showError(
+                                "Order Removed",
+                                "This order is no longer available."
+                            );
+
+                            return;
+
+                        }
+
+
+                        const data =
+                            snapshot.data();
+
+
+                        /*
+                         * Security check again.
+                         */
+
+                        if (
+                            data.userId !==
+                            user.uid
+                        ) {
+
+                            showError(
+                                "Access Denied",
+                                "You do not have permission to view this order."
+                            );
+
+                            return;
+
+                        }
+
+
+                        renderTracking(
+                            id,
+                            data
+                        );
+
+
+                        /*
+                         * Load tracking history
+                         * when available.
+                         */
+
+                        loadTrackingUpdates(
+                            id
+                        );
+
+                    },
+                    (error) => {
+
+                        console.error(
+                            "Tracking listener error:",
+                            error
+                        );
+
+                        showError(
+                            "Tracking Unavailable",
+                            "We could not keep the delivery information updated."
+                        );
+
+                    }
+                );
+
+
+                /*
+                 * Also attempt to load any existing
+                 * tracking update history.
+                 */
+
+                await loadTrackingUpdates(
+                    id
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Tracking error:",
+                    error
+                );
+
+
+                showError(
+                    "Unable to Load Tracking",
+                    "Please try again later."
+                );
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           RENDER TRACKING
+        ========================================= */
+
+        function renderTracking(
+            id,
+            order
+        ) {
+
+            const rawStatus =
+                String(
+                    order.status ||
+                    "Pending"
+                );
+
+
+            const status =
+                normalizeStatus(
+                    rawStatus
+                );
+
+
+            const trackingNumber =
+                order.trackingNumber ||
+                order.trackingId ||
+                order.tracking ||
+                "Not assigned yet";
+
+
+            const carrier =
+                order.carrier ||
+                order.deliveryCompany ||
+                order.shippingCarrier ||
+                "Not assigned yet";
+
+
+            const location =
+                order.currentLocation ||
+                order.location ||
+                order.lastLocation ||
+                "Location not available yet";
+
+
+            const estimatedDelivery =
+                order.estimatedDelivery ||
+                order.estimatedDeliveryDate ||
+                order.deliveryDate ||
+                null;
+
+
+            const deliveryNote =
+                order.deliveryNote ||
+                order.trackingMessage ||
+                order.deliveryMessage ||
+                getDefaultMessage(
+                    status
+                );
+
+
+            const lastUpdated =
+                order.lastUpdated ||
+                order.updatedAt ||
+                order.trackingUpdatedAt ||
+                null;
+
+
+            const latitude =
+                getNumber(
+                    order.latitude ??
+                    order.lat
+                );
+
+
+            const longitude =
+                getNumber(
+                    order.longitude ??
+                    order.lng ??
+                    order.lon
+                );
+
+
+            trackingContent.innerHTML = `
+
+                <!-- LIVE BAR -->
+
+                <div class="live-bar">
+
+                    <div class="live-status">
+
+                        <span class="live-dot"></span>
+
+                        <span>
+                            LIVE • Updating automatically
+                        </span>
+
+                    </div>
+
+
+                    <div class="last-updated">
+
+                        Last updated:
+                        ${formatDateTime(lastUpdated)}
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ORDER SUMMARY -->
+
+                <section class="order-summary">
+
+                    <div class="summary-top">
+
+                        <div>
+
+                            <div class="summary-label">
+                                Order Number
+                            </div>
+
+                            <div class="order-number">
+                                #${escapeHTML(id)}
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="status-badge status-${escapeHTML(status)}"
+                        >
+
+                            ${escapeHTML(
+                                formatStatus(rawStatus)
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-grid">
+
+
+                        <div class="summary-item">
+
+                            <i class="fa-solid fa-barcode"></i>
+
+                            <span>
+                                Tracking Number
+                            </span>
+
+                            <strong>
+                                ${escapeHTML(
+                                    trackingNumber
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <i class="fa-solid fa-truck"></i>
+
+                            <span>
+                                Carrier
+                            </span>
+
+                            <strong>
+                                ${escapeHTML(
+                                    carrier
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-item">
+
+                            <i class="fa-solid fa-calendar-check"></i>
+
+                            <span>
+                                Estimated Delivery
+                            </span>
+
+                            <strong>
+                                ${formatDeliveryDate(
+                                    estimatedDelivery
+                                )}
+                            </strong>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- CURRENT UPDATE -->
+
+                <section class="tracking-message">
+
+                    <div class="message-header">
+
+                        <div class="message-icon">
+
+                            <i class="fa-solid fa-location-crosshairs"></i>
+
+                        </div>
+
+
+                        <h3>
+                            Current Delivery Update
+                        </h3>
+
+                    </div>
+
+
+                    <p>
+                        ${escapeHTML(
+                            deliveryNote
+                        )}
+                    </p>
+
+                </section>
+
+
+
+                <!-- MAP -->
+
+                <section class="map-card">
+
+                    <div class="section-title">
+
+                        <i class="fa-solid fa-map-location-dot"></i>
+
+                        <h2>
+                            Live Location
+                        </h2>
+
+                    </div>
+
+
+                    <div class="map-wrapper">
+
+                        <div
+                            id="trackingMap"
+                        ></div>
+
+
+                        <div
+                            id="mapPlaceholder"
+                            class="map-placeholder"
+                        >
+
+                            <i class="fa-solid fa-location-dot"></i>
+
+                            <h3>
+                                Live location unavailable
+                            </h3>
+
+                            <p>
+                                The delivery location will appear
+                                here when live location coordinates
+                                are provided by your delivery system.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="location-info">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <div>
+
+                            <span>
+                                Current Location
+                            </span>
+
+                            <strong>
+                                ${escapeHTML(
+                                    location
+                                )}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- DELIVERY PROGRESS -->
+
+                <section class="progress-card">
+
+                    <div class="section-title">
+
+                        <i class="fa-solid fa-route"></i>
+
+                        <h2>
+                            Delivery Progress
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        class="timeline"
+                        id="timeline"
+                    >
+
+                        ${createTimeline(
+                            status,
+                            order
+                        )}
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- ESTIMATED DELIVERY -->
+
+                <section class="delivery-card">
+
+                    <div class="section-title">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        <h2>
+                            Estimated Delivery
+                        </h2>
+
+                    </div>
+
+
+                    <div class="delivery-box">
+
+                        <div class="delivery-icon">
+
+                            <i class="fa-solid fa-truck-fast"></i>
+
+                        </div>
+
+
+                        <div>
+
+                            <span>
+                                Expected arrival
+                            </span>
+
+                            <strong>
+                                ${formatDeliveryDate(
+                                    estimatedDelivery
+                                )}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- TRACKING HISTORY -->
+
+                <section
+                    class="progress-card"
+                    id="trackingHistoryCard"
+                    style="display:none;"
+                >
+
+                    <div class="section-title">
+
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+
+                        <h2>
+                            Tracking History
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        class="timeline"
+                        id="trackingHistory"
+                    ></div>
+
+                </section>
+
+            `;
+
+
+            /*
+             * Update map after HTML exists.
+             */
+
+            updateMap(
+                latitude,
+                longitude,
+                location
+            );
+
+        }
+
+
+
+        /* =========================================
+           TIMELINE
+        ========================================= */
+
+        function createTimeline(
+            status,
+            order
+        ) {
+
+            const steps = [
+
+                {
+                    key: "pending",
+                    title: "Order Placed",
+                    icon: "fa-clipboard-check",
+                    text:
+                        "Your order has been received."
+                },
+
+                {
+                    key: "processing",
+                    title: "Processing",
+                    icon: "fa-box-open",
+                    text:
+                        "Your order is being prepared."
+                },
+
+                {
+                    key: "shipped",
+                    title: "Shipped",
+                    icon: "fa-box",
+                    text:
+                        "Your order has left the facility."
+                },
+
+                {
+                    key: "in-transit",
+                    title: "In Transit",
+                    icon: "fa-truck",
+                    text:
+                        "Your package is on its way."
+                },
+
+                {
+                    key: "out-for-delivery",
+                    title: "Out for Delivery",
+                    icon: "fa-truck-fast",
+                    text:
+                        "Your package is with the delivery driver."
+                },
+
+                {
+                    key: "delivered",
+                    title: "Delivered",
+                    icon: "fa-house-circle-check",
+                    text:
+                        "Your package has been delivered."
+                }
+
+            ];
+
+
+            /*
+             * Map statuses to progression indexes.
+             */
+
+            const statusIndex =
+                getStatusIndex(
+                    status
+                );
+
+
+            /*
+             * Cancelled is handled separately.
+             */
+
+            if (
+                status === "cancelled"
+            ) {
+
+                return `
+
+                    <div class="timeline-step current">
+
+                        <div class="timeline-icon">
+
+                            <i class="fa-solid fa-xmark"></i>
+
+                        </div>
+
+
+                        <div class="timeline-content">
+
+                            <h3>
+                                Order Cancelled
+                            </h3>
+
+                            <p>
+                                This order has been cancelled.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+
+            return steps.map(
+                (step, index) => {
+
+                    let className = "";
+
+
+                    if (
+                        index <
+                        statusIndex
+                    ) {
+
+                        className =
+                            "completed";
+
+                    } else if (
+                        index ===
+                        statusIndex
+                    ) {
+
+                        className =
+                            "completed current";
+
+                    }
+
+
+                    return `
+
+                        <div
+                            class="timeline-step ${className}"
+                        >
+
+                            <div class="timeline-icon">
+
+                                <i
+                                    class="fa-solid ${step.icon}"
+                                ></i>
+
+                            </div>
+
+
+                            <div class="timeline-content">
+
+                                <h3>
+                                    ${step.title}
+                                </h3>
+
+                                <p>
+                                    ${step.text}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    `;
+
+                }
+            ).join("");
+
+        }
+
+
+
+        /* =========================================
+           LOAD TRACKING HISTORY
+        ========================================= */
+
+        async function loadTrackingUpdates(
+            id
+        ) {
+
+            try {
+
+                const updatesRef =
+                    collection(
+                        db,
+                        "orders",
+                        id,
+                        "trackingUpdates"
+                    );
+
+
+                const snapshot =
+                    await getDocs(
+                        updatesRef
+                    );
+
+
+                const historyCard =
+                    document.getElementById(
+                        "trackingHistoryCard"
+                    );
+
+
+                const history =
+                    document.getElementById(
+                        "trackingHistory"
+                    );
+
+
+                if (
+                    !historyCard ||
+                    !history
+                ) {
+
+                    return;
+
+                }
+
+
+                if (
+                    snapshot.empty
+                ) {
+
+                    historyCard.style.display =
+                        "none";
+
+                    return;
+
+                }
+
+
+                const updates = [];
+
+
+                snapshot.forEach(
+                    (item) => {
+
+                        updates.push({
+
+                            id:
+                                item.id,
+
+                            ...item.data()
+
+                        });
+
+                    }
+                );
+
+
+                /*
+                 * Sort on the client.
+                 * This avoids requiring a Firestore
+                 * composite index.
+                 */
+
+                updates.sort(
+                    (a, b) => {
+
+                        return (
+                            getTime(
+                                b.timestamp ||
+                                b.createdAt ||
+                                b.updatedAt
+                            ) -
+                            getTime(
+                                a.timestamp ||
+                                a.createdAt ||
+                                a.updatedAt
+                            )
+                        );
+
+                    }
+                );
+
+
+                history.innerHTML =
+                    updates.map(
+                        (update) => {
+
+                            const updateStatus =
+                                update.status ||
+                                "Update";
+
+
+                            const updateLocation =
+                                update.location ||
+                                update.currentLocation ||
+                                "";
+
+
+                            const updateMessage =
+                                update.message ||
+                                update.note ||
+                                update.description ||
+                                "Delivery status updated.";
+
+
+                            return `
+
+                                <div class="timeline-step completed">
+
+                                    <div class="timeline-icon">
+
+                                        <i class="fa-solid fa-check"></i>
+
+                                    </div>
+
+
+                                    <div class="timeline-content">
+
+                                        <h3>
+                                            ${escapeHTML(
+                                                formatStatus(
+                                                    updateStatus
+                                                )
+                                            )}
+                                        </h3>
+
+                                        <p>
+
+                                            ${escapeHTML(
+                                                updateMessage
+                                            )}
+
+                                            ${
+                                                updateLocation
+                                                ?
+                                                `
+                                                <br>
+                                                <strong>
+                                                    ${escapeHTML(
+                                                        updateLocation
+                                                    )}
+                                                </strong>
+                                                `
+                                                :
+                                                ""
+                                            }
+
+                                            <br>
+
+                                            ${formatDateTime(
+                                                update.timestamp ||
+                                                update.createdAt ||
+                                                update.updatedAt
+                                            )}
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                            `;
+
+                        }
+                    ).join("");
+
+
+                historyCard.style.display =
+                    "block";
+
+
+            } catch (error) {
+
+                /*
+                 * Tracking history is optional.
+                 *
+                 * If the subcollection does not exist,
+                 * the main tracking page still works.
+                 */
+
+                console.log(
+                    "No tracking history available:",
+                    error
+                );
+
+            }
+
+        }
+
+
+
+        /* =========================================
+           MAP
+        ========================================= */
+
+        function updateMap(
+            latitude,
+            longitude,
+            locationText
+        ) {
+
+            const mapElement =
+                document.getElementById(
+                    "trackingMap"
+                );
+
+
+            const placeholder =
+                document.getElementById(
+                    "mapPlaceholder"
+                );
+
+
+            if (
+                !mapElement ||
+                !placeholder
+            ) {
+
+                return;
+
+            }
+
+
+            /*
+             * Don't show fake GPS coordinates.
+             */
+
+            if (
+                latitude === null ||
+                longitude === null ||
+                Number.isNaN(latitude) ||
+                Number.isNaN(longitude)
+            ) {
+
+                mapElement.style.display =
+                    "none";
+
+                placeholder.style.display =
+                    "flex";
+
+                return;
+
+            }
+
+
+            mapElement.style.display =
+                "block";
+
+            placeholder.style.display =
+                "none";
+
+
+            /*
+             * Create map only once.
+             */
+
+            if (!trackingMap) {
+
+                trackingMap =
+                    L.map(
+                        "trackingMap"
+                    ).setView(
+                        [
+                            latitude,
+                            longitude
+                        ],
+                        14
+                    );
+
+
+                L.tileLayer(
+                    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    {
+                        maxZoom: 19,
+                        attribution:
+                            '&copy; OpenStreetMap contributors'
+                    }
+                ).addTo(
+                    trackingMap
+                );
+
+
+                trackingMarker =
+                    L.marker(
+                        [
+                            latitude,
+                            longitude
+                        ]
+                    )
+                    .addTo(
+                        trackingMap
+                    )
+                    .bindPopup(
+                        "Current delivery location"
+                    )
+                    .openPopup();
+
+
+            } else {
+
+                trackingMap.setView(
+                    [
+                        latitude,
+                        longitude
+                    ],
+                    14
+                );
+
+
+                if (
+                    trackingMarker
+                ) {
+
+                    trackingMarker.setLatLng(
+                        [
+                            latitude,
+                            longitude
+                        ]
+                    );
+
+                }
+
+            }
+
+
+            /*
+             * Leaflet sometimes needs a resize
+             * after its container becomes visible.
+             */
+
+            setTimeout(
+                () => {
+
+                    if (
+                        trackingMap
+                    ) {
+
+                        trackingMap.invalidateSize();
+
+                    }
+
+                },
+                100
+            );
+
+        }
+
+
+
+        /* =========================================
+           STATUS HELPERS
+        ========================================= */
+
+        function normalizeStatus(
+            value
+        ) {
+
+            const text =
+                String(
+                    value ||
+                    "pending"
+                )
+                .toLowerCase()
+                .trim()
+                .replace(
+                    /_/g,
+                    "-"
+                )
+                .replace(
+                    /\s+/g,
+                    "-"
+                );
+
+
+            /*
+             * Keep different possible Firestore
+             * values compatible with the timeline.
+             */
+
+            if (
+                text === "placed" ||
+                text === "order-placed" ||
+                text === "new"
+            ) {
+
+                return "pending";
+
+            }
+
+
+            if (
+                text === "ready" ||
+                text === "preparing"
+            ) {
+
+                return "processing";
+
+            }
+
+
+            if (
+                text === "dispatched"
+            ) {
+
+                return "shipped";
+
+            }
+
+
+            if (
+                text === "transit"
+            ) {
+
+                return "in-transit";
+
+            }
+
+
+            if (
+                text === "outfordelivery"
+            ) {
+
+                return "out-for-delivery";
+
+            }
+
+
+            return text;
+
+        }
+
+
+
+        function getStatusIndex(
+            status
+        ) {
+
+            const indexes = {
+
+                pending: 0,
+
+                processing: 1,
+
+                shipped: 2,
+
+                "in-transit": 3,
+
+                "out-for-delivery": 4,
+
+                delivered: 5
+
+            };
+
+
+            if (
+                indexes[status] !==
+                undefined
+            ) {
+
+                return indexes[status];
+
+            }
+
+
+            return 0;
+
+        }
+
+
+
+        function formatStatus(
+            value
+        ) {
+
+            return String(
+                value ||
+                "Pending"
+            )
+            .replace(
+                /[-_]+/g,
+                " "
+            )
+            .replace(
+                /\b\w/g,
+                letter =>
+                    letter.toUpperCase()
+            );
+
+        }
+
+
+
+        /* =========================================
+           DEFAULT MESSAGE
+        ========================================= */
+
+        function getDefaultMessage(
+            status
+        ) {
+
+            const messages = {
+
+                pending:
+                    "Your order has been received and is awaiting processing.",
+
+                processing:
+                    "Your order is currently being prepared for shipment.",
+
+                shipped:
+                    "Your order has been shipped and is leaving the fulfillment facility.",
+
+                "in-transit":
+                    "Your package is currently in transit to its destination.",
+
+                "out-for-delivery":
+                    "Your package is out for delivery and should arrive soon.",
+
+                delivered:
+                    "Your package has been delivered successfully.",
+
+                cancelled:
+                    "This order has been cancelled."
+
+            };
+
+
+            return (
+                messages[status] ||
+                "Your delivery information will appear here as it becomes available."
+            );
+
+        }
+
+
+
+        /* =========================================
+           DATE HELPERS
+        ========================================= */
+
+        function getTime(
+            timestamp
+        ) {
+
+            if (!timestamp) {
+
+                return 0;
+
+            }
+
+
+            try {
+
+                if (
+                    typeof timestamp.toMillis ===
+                    "function"
+                ) {
+
+                    return timestamp.toMillis();
+
+                }
+
+
+                if (
+                    typeof timestamp.toDate ===
+                    "function"
+                ) {
+
+                    return timestamp
+                        .toDate()
+                        .getTime();
+
+                }
+
+
+                if (
+                    timestamp.seconds !==
+                    undefined
+                ) {
+
+                    return (
+                        Number(
+                            timestamp.seconds
+                        ) * 1000
+                    );
+
+                }
+
+
+                const parsed =
+                    new Date(
+                        timestamp
+                    ).getTime();
+
+
+                return Number.isNaN(
+                    parsed
+                )
+                    ? 0
+                    : parsed;
+
+
+            } catch {
+
+                return 0;
+
+            }
+
+        }
+
+
+
+        function formatDateTime(
+            timestamp
+        ) {
+
+            const time =
+                getTime(
+                    timestamp
+                );
+
+
+            if (!time) {
+
+                return "Not available";
+
+            }
+
+
+            return new Date(
+                time
+            ).toLocaleString(
+                "en-NG",
+                {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit"
+                }
+            );
+
+        }
+
+
+
+        function formatDeliveryDate(
+            value
+        ) {
+
+            if (!value) {
+
+                return "Not available yet";
+
+            }
+
+
+            const time =
+                getTime(
+                    value
+                );
+
+
+            if (!time) {
+
+                /*
+                 * It may already be a formatted
+                 * string such as "September 15, 2026".
+                 */
+
+                return escapeHTML(
+                    String(value)
+                );
+
+            }
+
+
+            return new Date(
+                time
+            ).toLocaleDateString(
+                "en-NG",
+                {
+                    weekday: "short",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric"
+                }
+            );
+
+        }
+
+
+
+        /* =========================================
+           NUMBER
+        ========================================= */
+
+        function getNumber(
+            value
+        ) {
+
+            if (
+                value === null ||
+                value === undefined ||
+                value === ""
+            ) {
+
+                return null;
+
+            }
+
+
+            const number =
+                Number(value);
+
+
+            if (
+                !Number.isFinite(
+                    number
+                )
+            ) {
+
+                return null;
+
+            }
+
+
+            return number;
+
+        }
+
+
+
+        /* =========================================
+           ERROR
+        ========================================= */
+
+        function showError(
+            title,
+            message
+        ) {
+
+            trackingContent.innerHTML = `
+
+                <div class="error-box">
+
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    <h3>
+                        ${escapeHTML(title)}
+                    </h3>
+
+                    <p>
+                        ${escapeHTML(message)}
+                    </p>
+
+                    <a
+                        href="orders.html"
+                        class="back-orders-btn"
+                    >
+
+                        <i class="fa-solid fa-arrow-left"></i>
+
+                        Back to My Orders
+
+                    </a>
+
+                </div>
+
+            `;
+
+        }
+
+
+
+        /* =========================================
+           ESCAPE HTML
+        ========================================= */
+
+        function escapeHTML(
+            value
+        ) {
+
+            return String(
+                value ?? ""
+            )
+
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+
+            .replace(
+                /</g,
+                "&lt;"
+            )
+
+            .replace(
+                />/g,
+                "&gt;"
+            )
+
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+        }
+
+    </script>
+
+</body>
+
+</html>
