@@ -6404,19 +6404,26 @@ input:focus-visible {
 }
 
 /* =========================================
-   REALISTIC DELIVERY ICON
+   DELIVERY ICON - SIZE FIX
 ========================================= */
 
-.dashboard-page .quick-action-card .quick-action-icon img {
-    width: 68px;
-    height: 68px;
-    object-fit: contain;
-    display: block;
-    border-radius: 18px;
+.dashboard-page .quick-action-card .quick-action-icon {
+    width: 82px !important;
+    height: 82px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
 }
 
-.dashboard-page .quick-action-card .quick-action-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.dashboard-page .quick-action-card .quick-action-icon img {
+    width: 76px !important;
+    height: 76px !important;
+    max-width: 76px !important;
+    max-height: 76px !important;
+    object-fit: contain !important;
+    display: block !important;
+    position: static !important;
+    margin: 0 !important;
 }
