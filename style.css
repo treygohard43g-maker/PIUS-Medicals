@@ -5652,3 +5652,190 @@ input:focus-visible {
         max-width: 260px;
     }
 }
+
+/* =========================================================
+   PIUS MEDICAL ACCESSORIES
+   PAYMENT PAGE
+   STEP 1 — PAGE + HEADER
+========================================================= */
+
+.payment-page {
+    min-height: 100vh;
+    margin: 0;
+
+    background: #f4f7fb;
+    color: #17233a;
+}
+
+
+/* =========================================================
+   PAYMENT HEADER
+========================================================= */
+
+.payment-page .site-header {
+    width: 100%;
+
+    background: linear-gradient(135deg, #071d3b, #0b315f);
+
+    box-shadow:
+        0 6px 25px rgba(7, 29, 59, 0.15);
+}
+
+
+.payment-page .header-container {
+    width: min(1100px, 92%);
+
+    min-height: 72px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* Brand */
+
+.payment-page .brand {
+    color: #ffffff;
+
+    text-decoration: none;
+
+    display: inline-flex;
+    align-items: center;
+}
+
+
+.payment-page .brand-name {
+    font-size: 21px;
+    font-weight: 500;
+
+    letter-spacing: -0.2px;
+}
+
+
+.payment-page .brand-name strong {
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   PAYMENT MAIN
+========================================================= */
+
+.payment-page .payment-main {
+    width: 100%;
+
+    padding: 45px 20px 70px;
+
+    box-sizing: border-box;
+}
+
+
+.payment-page .payment-container {
+    width: min(760px, 100%);
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   PAYMENT PAGE TITLE
+========================================================= */
+
+.payment-page .payment-header {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+
+.payment-page .payment-icon {
+    width: 68px;
+    height: 68px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 20px;
+
+    background: #e8f2ff;
+    color: #0b5cab;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+
+    box-shadow:
+        0 8px 20px rgba(11, 92, 171, 0.08);
+}
+
+
+.payment-page .payment-header h1 {
+    margin: 0 0 9px;
+
+    color: #17233a;
+
+    font-size: 32px;
+    font-weight: 850;
+
+    letter-spacing: -0.5px;
+}
+
+
+.payment-page .payment-header p {
+    margin: 0;
+
+    color: #69778a;
+
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .payment-page .header-container {
+        min-height: 64px;
+    }
+
+
+    .payment-page .brand-name {
+        font-size: 18px;
+    }
+
+
+    .payment-page .payment-main {
+        padding: 30px 16px 50px;
+    }
+
+
+    .payment-page .payment-header {
+        margin-bottom: 24px;
+    }
+
+
+    .payment-page .payment-icon {
+        width: 60px;
+        height: 60px;
+
+        border-radius: 18px;
+
+        font-size: 24px;
+    }
+
+
+    .payment-page .payment-header h1 {
+        font-size: 27px;
+    }
+
+
+    .payment-page .payment-header p {
+        font-size: 14px;
+    }
+}
