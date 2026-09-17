@@ -10,17 +10,17 @@ import {
 import { auth, db } from "./firebase.js";
 
 
-/* ================================
+/* =========================================
    FLUTTERWAVE PUBLIC KEY
-================================ */
+========================================= */
 
 const FLW_PUBLIC_KEY =
     "FLWPUBK_TEST-b742ed7d80a130e85e6e71b837739698-X";
 
 
-/* ================================
+/* =========================================
    ELEMENTS
-================================ */
+========================================= */
 
 const orderIdElement =
     document.getElementById("orderId");
@@ -44,9 +44,9 @@ const confirmPaymentBtn =
     document.getElementById("confirmPaymentBtn");
 
 
-/* ================================
-   GET ORDER ID
-================================ */
+/* =========================================
+   ORDER ID
+========================================= */
 
 const urlParams =
     new URLSearchParams(window.location.search);
@@ -55,9 +55,9 @@ const orderId =
     urlParams.get("order");
 
 
-/* ================================
-   USD FORMAT
-================================ */
+/* =========================================
+   MONEY FORMAT
+========================================= */
 
 function formatMoney(amount) {
 
@@ -74,9 +74,9 @@ function formatMoney(amount) {
 }
 
 
-/* ================================
-   SHOW MESSAGE
-================================ */
+/* =========================================
+   MESSAGE
+========================================= */
 
 function showMessage(message) {
 
@@ -87,9 +87,30 @@ function showMessage(message) {
 }
 
 
-/* ================================
-   CHECK LOGIN
-================================ */
+/* =========================================
+   RESET BUTTON
+========================================= */
+
+function resetPaymentButton() {
+
+    confirmPaymentBtn.disabled = false;
+
+    confirmPaymentBtn.innerHTML = `
+        <i class="fa-solid fa-lock"></i>
+
+        <span>
+            Continue to Payment
+        </span>
+
+        <i class="fa-solid fa-arrow-right"></i>
+    `;
+
+}
+
+
+/* =========================================
+   AUTHENTICATION
+========================================= */
 
 onAuthStateChanged(auth, async (user) => {
 
@@ -120,9 +141,9 @@ onAuthStateChanged(auth, async (user) => {
 });
 
 
-/* ================================
+/* =========================================
    LOAD ORDER
-================================ */
+========================================= */
 
 async function loadOrder(user) {
 
@@ -172,24 +193,20 @@ async function loadOrder(user) {
         orderIdElement.textContent =
             orderId;
 
-
         orderStatusElement.textContent =
             order.status || "Pending";
-
 
         paymentSubtotal.textContent =
             formatMoney(order.subtotal);
 
-
         paymentDelivery.textContent =
             formatMoney(order.deliveryFee);
-
 
         paymentTotal.textContent =
             formatMoney(order.total);
 
 
-        /* PAYMENT BUTTON */
+        /* ENABLE BUTTON */
 
         confirmPaymentBtn.disabled = false;
 
@@ -222,17 +239,19 @@ async function loadOrder(user) {
 }
 
 
-/* ================================
-   START FLUTTERWAVE PAYMENT
-================================ */
+/* =========================================
+   START FLUTTERWAVE
+========================================= */
 
-function startFlutterwavePayment(
-    order,
-    user
-) {
+function startFlutterwavePayment(order, user) {
+
+    console.log(
+        "Starting Flutterwave payment..."
+    );
+
 
     if (
-        typeof FlutterwaveCheckout !==
+        typeof window.FlutterwaveCheckout !==
         "function"
     ) {
 
@@ -260,10 +279,24 @@ function startFlutterwavePayment(
     }
 
 
-    /* CREATE UNIQUE TRANSACTION REFERENCE */
+    /* UNIQUE TRANSACTION REFERENCE */
 
     const txRef =
         `PIUS-${orderId}-${Date.now()}`;
+
+
+    console.log(
+        "Transaction reference:",
+        txRef
+    );
+
+
+    /* REDIRECT BACK TO PAYMENT PAGE */
+
+    const redirectUrl =
+        window.location.origin +
+        window.location.pathname +
+        `?order=${encodeURIComponent(orderId)}`;
 
 
     confirmPaymentBtn.disabled = true;
@@ -271,11 +304,16 @@ function startFlutterwavePayment(
 
     confirmPaymentBtn.innerHTML = `
         <i class="fa-solid fa-spinner fa-spin"></i>
-        <span>Opening Payment...</span>
+
+        <span>
+            Opening Payment...
+        </span>
     `;
 
 
-    FlutterwaveCheckout({
+    /* OPEN FLUTTERWAVE */
+
+    window.FlutterwaveCheckout({
 
         public_key:
             FLW_PUBLIC_KEY,
@@ -291,6 +329,9 @@ function startFlutterwavePayment(
 
         payment_options:
             "card, account",
+
+        redirect_url:
+            redirectUrl,
 
         customer: {
 
@@ -323,49 +364,28 @@ function startFlutterwavePayment(
 
         },
 
-        callback: function (payment) {
+
+        /* CALLBACK */
+
+        callback: function(payment) {
 
             console.log(
                 "Flutterwave callback:",
                 payment
             );
 
-            showMessage(
-                "Payment response received. We are verifying your payment..."
-            );
-
-            /*
-             * IMPORTANT:
-             * Payment verification should happen
-             * on the server/backend.
-             *
-             * Do NOT mark the order as paid
-             * from this frontend callback alone.
-             */
-
-            confirmPaymentBtn.disabled = false;
-
-            confirmPaymentBtn.innerHTML = `
-                <i class="fa-solid fa-lock"></i>
-                <span>Continue to Payment</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            `;
-
         },
 
-        onclose: function () {
+
+        /* CLOSED */
+
+        onclose: function() {
 
             console.log(
                 "Flutterwave checkout closed."
             );
 
-            confirmPaymentBtn.disabled = false;
-
-            confirmPaymentBtn.innerHTML = `
-                <i class="fa-solid fa-lock"></i>
-                <span>Continue to Payment</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            `;
+            resetPaymentButton();
 
         }
 
