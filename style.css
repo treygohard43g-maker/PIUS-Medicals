@@ -6427,3 +6427,38 @@ input:focus-visible {
     position: static !important;
     margin: 0 !important;
 }
+/* =========================================
+   MODERN DASHBOARD APP ICONS
+========================================= */
+
+.dashboard-page .quick-action-card .quick-action-icon {
+    width: 82px !important;
+    height: 82px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+    border-radius: 20px !important;
+}
+
+.dashboard-page .quick-action-card .quick-action-icon img {
+    width: 76px !important;
+    height: 76px !important;
+    max-width: 76px !important;
+    max-height: 76px !important;
+    object-fit: contain !important;
+    display: block !important;
+    position: static !important;
+    margin: 0 !important;
+    border-radius: 18px !important;
+    transition: transform 0.25s ease !important;
+}
+
+.dashboard-page .quick-action-card:hover .quick-action-icon img {
+    transform: scale(1.06);
+}
+
+.dashboard-page .quick-action-card .quick-action-icon i {
+    font-size: 34px;
+}
