@@ -10,6 +10,18 @@ import {
 import { auth, db } from "./firebase.js";
 
 
+/* ================================
+   FLUTTERWAVE PUBLIC KEY
+================================ */
+
+const FLW_PUBLIC_KEY =
+    "FLWPUBK_TEST-b742ed7d80a130e85e6e71b837739698-X";
+
+
+/* ================================
+   ELEMENTS
+================================ */
+
 const orderIdElement =
     document.getElementById("orderId");
 
@@ -32,7 +44,9 @@ const confirmPaymentBtn =
     document.getElementById("confirmPaymentBtn");
 
 
-/* GET ORDER ID FROM URL */
+/* ================================
+   GET ORDER ID
+================================ */
 
 const urlParams =
     new URLSearchParams(window.location.search);
@@ -41,7 +55,9 @@ const orderId =
     urlParams.get("order");
 
 
-/* USD FORMAT */
+/* ================================
+   USD FORMAT
+================================ */
 
 function formatMoney(amount) {
 
@@ -58,7 +74,9 @@ function formatMoney(amount) {
 }
 
 
-/* SHOW MESSAGE */
+/* ================================
+   SHOW MESSAGE
+================================ */
 
 function showMessage(message) {
 
@@ -69,7 +87,9 @@ function showMessage(message) {
 }
 
 
-/* CHECK LOGIN */
+/* ================================
+   CHECK LOGIN
+================================ */
 
 onAuthStateChanged(auth, async (user) => {
 
@@ -95,14 +115,16 @@ onAuthStateChanged(auth, async (user) => {
     }
 
 
-    await loadOrder(user.uid);
+    await loadOrder(user);
 
 });
 
 
-/* LOAD ORDER */
+/* ================================
+   LOAD ORDER
+================================ */
 
-async function loadOrder(userId) {
+async function loadOrder(user) {
 
     try {
 
@@ -132,7 +154,7 @@ async function loadOrder(userId) {
 
         /* SECURITY CHECK */
 
-        if (order.userId !== userId) {
+        if (order.userId !== user.uid) {
 
             showMessage(
                 "You are not authorized to view this order."
@@ -167,6 +189,21 @@ async function loadOrder(userId) {
             formatMoney(order.total);
 
 
+        /* PAYMENT BUTTON */
+
+        confirmPaymentBtn.disabled = false;
+
+
+        confirmPaymentBtn.onclick = () => {
+
+            startFlutterwavePayment(
+                order,
+                user
+            );
+
+        };
+
+
     } catch (error) {
 
         console.error(
@@ -185,15 +222,153 @@ async function loadOrder(userId) {
 }
 
 
-/* PAYMENT BUTTON */
+/* ================================
+   START FLUTTERWAVE PAYMENT
+================================ */
 
-confirmPaymentBtn.addEventListener(
-    "click",
-    () => {
+function startFlutterwavePayment(
+    order,
+    user
+) {
+
+    if (
+        typeof FlutterwaveCheckout !==
+        "function"
+    ) {
 
         showMessage(
-            "Payment processing will be connected here next."
+            "Payment system could not be loaded. Please refresh the page."
         );
 
+        return;
+
     }
-);
+
+
+    const amount =
+        Number(order.total || 0);
+
+
+    if (!amount || amount <= 0) {
+
+        showMessage(
+            "Invalid order amount."
+        );
+
+        return;
+
+    }
+
+
+    /* CREATE UNIQUE TRANSACTION REFERENCE */
+
+    const txRef =
+        `PIUS-${orderId}-${Date.now()}`;
+
+
+    confirmPaymentBtn.disabled = true;
+
+
+    confirmPaymentBtn.innerHTML = `
+        <i class="fa-solid fa-spinner fa-spin"></i>
+        <span>Opening Payment...</span>
+    `;
+
+
+    FlutterwaveCheckout({
+
+        public_key:
+            FLW_PUBLIC_KEY,
+
+        tx_ref:
+            txRef,
+
+        amount:
+            amount,
+
+        currency:
+            "USD",
+
+        payment_options:
+            "card, account",
+
+        customer: {
+
+            email:
+                user.email || "",
+
+            name:
+                user.displayName ||
+                "Pius Medical Accessories Customer"
+
+        },
+
+        meta: {
+
+            order_id:
+                orderId,
+
+            user_id:
+                user.uid
+
+        },
+
+        customizations: {
+
+            title:
+                "Pius Medical Accessories",
+
+            description:
+                `Payment for Order ${orderId}`
+
+        },
+
+        callback: function (payment) {
+
+            console.log(
+                "Flutterwave callback:",
+                payment
+            );
+
+            showMessage(
+                "Payment response received. We are verifying your payment..."
+            );
+
+            /*
+             * IMPORTANT:
+             * Payment verification should happen
+             * on the server/backend.
+             *
+             * Do NOT mark the order as paid
+             * from this frontend callback alone.
+             */
+
+            confirmPaymentBtn.disabled = false;
+
+            confirmPaymentBtn.innerHTML = `
+                <i class="fa-solid fa-lock"></i>
+                <span>Continue to Payment</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            `;
+
+        },
+
+        onclose: function () {
+
+            console.log(
+                "Flutterwave checkout closed."
+            );
+
+            confirmPaymentBtn.disabled = false;
+
+            confirmPaymentBtn.innerHTML = `
+                <i class="fa-solid fa-lock"></i>
+                <span>Continue to Payment</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            `;
+
+        }
+
+    });
+
+}
