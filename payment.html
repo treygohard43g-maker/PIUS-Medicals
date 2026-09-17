@@ -11,113 +11,274 @@
 
     <title>Payment | Pius Medical Accessories</title>
 
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <link rel="stylesheet" href="style.css">
 
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     >
+</head>
 
-    <style>
+<body class="payment-page">
 
-        /* =====================================================
-           PAYMENT PAGE
-           ===================================================== */
+    <!-- HEADER -->
 
-        .payment-page {
-            min-height: 100vh;
-            background:
-                linear-gradient(
-                    180deg,
-                    #f4f8fc 0%,
-                    #ffffff 50%,
-                    #eef4f8 100%
-                );
-            color: #172033;
-        }
+    <header class="site-header">
 
+        <div class="header-container">
 
-        /* =====================================================
-           HEADER
-           ===================================================== */
+            <a href="dashboard.html" class="brand">
+                <span class="brand-name">
+                    Pius <strong>Medical Accessories</strong>
+                </span>
+            </a>
 
-        .payment-header {
-            width: 100%;
-            min-height: 78px;
-            background: #0b2a4a;
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            box-shadow:
-                0 8px 25px rgba(11,42,74,0.16);
-        }
+        </div>
 
-        .payment-header-inner {
-            width: min(900px, 100%);
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        .payment-back-btn {
-            width: 44px;
-            height: 44px;
-            flex-shrink: 0;
-            border: 1px solid rgba(255,255,255,0.16);
-            border-radius: 12px;
-            background: rgba(255,255,255,0.10);
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 17px;
-            transition: 0.2s ease;
-        }
-
-        .payment-back-btn:hover {
-            background: rgba(255,255,255,0.17);
-        }
-
-        .payment-brand {
-            color: #ffffff;
-            font-size: 19px;
-            font-weight: 700;
-        }
+    </header>
 
 
-        /* =====================================================
-           MAIN
-           ===================================================== */
+    <!-- PAYMENT PAGE -->
 
-        .payment-main {
-            width: min(900px, calc(100% - 32px));
-            margin: 0 auto;
-            padding: 45px 0 70px;
-        }
+    <main class="payment-main">
 
-        .payment-heading {
-            text-align: center;
-            margin-bottom: 30px;
-        }
+        <section class="payment-container">
 
-        .payment-heading-icon {
-            width: 58px;
-            height: 58px;
-            margin: 0 auto 16px;
-            border-radius: 50%;
-            background: #eef7ff;
-            border: 1px solid #dceefe;
-            color: #1677c8;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
+            <div class="payment-header">
 
-        .payment-heading h1 {
-           
+                <div class="payment-icon">
+                    <i class="fa-solid fa-credit-card"></i>
+                </div>
+
+                <h1>
+                    Complete Your Payment
+                </h1>
+
+                <p>
+                    Review your order and select a payment method.
+                </p>
+
+            </div>
+
+
+            <!-- ORDER INFORMATION -->
+
+            <div class="payment-card">
+
+                <h2>
+                    Order Information
+                </h2>
+
+                <div class="order-info">
+
+                    <div>
+                        <span>Order ID</span>
+                        <strong id="orderId">
+                            Loading...
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Status</span>
+                        <strong id="orderStatus">
+                            Pending
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAYMENT METHOD -->
+
+            <div class="payment-card">
+
+                <h2>
+                    Payment Method
+                </h2>
+
+                <div class="payment-methods">
+
+                    <label class="payment-method">
+
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="card"
+                            checked
+                        >
+
+                        <span>
+                            <i class="fa-solid fa-credit-card"></i>
+                        </span>
+
+                        <div>
+                            <strong>
+                                Debit / Credit Card
+                            </strong>
+
+                            <small>
+                                Pay with your bank card
+                            </small>
+                        </div>
+
+                    </label>
+
+
+                    <label class="payment-method">
+
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="bank"
+                        >
+
+                        <span>
+                            <i class="fa-solid fa-building-columns"></i>
+                        </span>
+
+                        <div>
+                            <strong>
+                                Bank Transfer
+                            </strong>
+
+                            <small>
+                                Pay through bank transfer
+                            </small>
+                        </div>
+
+                    </label>
+
+
+                    <label class="payment-method">
+
+                        <input
+                            type="radio"
+                            name="paymentMethod"
+                            value="cashapp_paypal"
+                        >
+
+                        <span>
+                            <i class="fa-solid fa-wallet"></i>
+                        </span>
+
+                        <div>
+                            <strong>
+                                Other Payment
+                            </strong>
+
+                            <small>
+                                Other available payment options
+                            </small>
+                        </div>
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- ORDER TOTAL -->
+
+            <div class="payment-card">
+
+                <h2>
+                    Order Total
+                </h2>
+
+                <div class="total-row">
+
+                    <span>
+                        Subtotal
+                    </span>
+
+                    <strong id="paymentSubtotal">
+                        $0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="total-row">
+
+                    <span>
+                        Delivery
+                    </span>
+
+                    <strong id="paymentDelivery">
+                        $0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="total-divider"></div>
+
+
+                <div class="total-row total">
+
+                    <span>
+                        Total
+                    </span>
+
+                    <strong id="paymentTotal">
+                        $0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <div
+                id="paymentMessage"
+                class="payment-message"
+            ></div>
+
+
+            <!-- PAYMENT BUTTON -->
+
+            <button
+                type="button"
+                id="confirmPaymentBtn"
+                class="confirm-payment-btn"
+            >
+
+                <i class="fa-solid fa-lock"></i>
+
+                <span>
+                    Continue to Payment
+                </span>
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </button>
+
+
+            <p class="payment-security">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Secure checkout
+
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script
+        type="module"
+        src="payment.js"
+    ></script>
+
+</body>
+
+</html>
