@@ -11,7 +11,10 @@
 
     <title>Payment | Pius Medical Accessories</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
 
     <link
         rel="stylesheet"
@@ -19,18 +22,27 @@
     >
 </head>
 
+
 <body class="payment-page">
 
-    <!-- HEADER -->
+
+    <!-- ================================
+         HEADER
+    ================================= -->
 
     <header class="site-header">
 
         <div class="header-container">
 
-            <a href="dashboard.html" class="brand">
+            <a
+                href="dashboard.html"
+                class="brand"
+            >
+
                 <span class="brand-name">
                     Pius <strong>Medical Accessories</strong>
                 </span>
+
             </a>
 
         </div>
@@ -38,21 +50,31 @@
     </header>
 
 
-    <!-- PAYMENT PAGE -->
+
+    <!-- ================================
+         PAYMENT PAGE
+    ================================= -->
 
     <main class="payment-main">
 
         <section class="payment-container">
 
+
+            <!-- PAYMENT HEADER -->
+
             <div class="payment-header">
 
                 <div class="payment-icon">
+
                     <i class="fa-solid fa-credit-card"></i>
+
                 </div>
+
 
                 <h1>
                     Complete Your Payment
                 </h1>
+
 
                 <p>
                     Review your order and select a payment method.
@@ -61,7 +83,10 @@
             </div>
 
 
-            <!-- ORDER INFORMATION -->
+
+            <!-- ================================
+                 ORDER INFORMATION
+            ================================= -->
 
             <div class="payment-card">
 
@@ -69,28 +94,46 @@
                     Order Information
                 </h2>
 
+
                 <div class="order-info">
 
+
                     <div>
-                        <span>Order ID</span>
+
+                        <span>
+                            Order ID
+                        </span>
+
                         <strong id="orderId">
                             Loading...
                         </strong>
+
                     </div>
 
+
+
                     <div>
-                        <span>Status</span>
+
+                        <span>
+                            Status
+                        </span>
+
                         <strong id="orderStatus">
                             Pending
                         </strong>
+
                     </div>
+
 
                 </div>
 
             </div>
 
 
-            <!-- PAYMENT METHOD -->
+
+            <!-- ================================
+                 PAYMENT METHOD
+            ================================= -->
 
             <div class="payment-card">
 
@@ -98,7 +141,11 @@
                     Payment Method
                 </h2>
 
+
                 <div class="payment-methods">
+
+
+                    <!-- CARD -->
 
                     <label class="payment-method">
 
@@ -109,22 +156,31 @@
                             checked
                         >
 
+
                         <span>
+
                             <i class="fa-solid fa-credit-card"></i>
+
                         </span>
 
+
                         <div>
+
                             <strong>
                                 Debit / Credit Card
                             </strong>
 
                             <small>
-                                Pay with your bank card
+                                Pay securely with your bank card
                             </small>
+
                         </div>
 
                     </label>
 
+
+
+                    <!-- BANK -->
 
                     <label class="payment-method">
 
@@ -134,11 +190,16 @@
                             value="bank"
                         >
 
+
                         <span>
+
                             <i class="fa-solid fa-building-columns"></i>
+
                         </span>
 
+
                         <div>
+
                             <strong>
                                 Bank Transfer
                             </strong>
@@ -146,10 +207,14 @@
                             <small>
                                 Pay through bank transfer
                             </small>
+
                         </div>
 
                     </label>
 
+
+
+                    <!-- OTHER -->
 
                     <label class="payment-method">
 
@@ -159,11 +224,16 @@
                             value="cashapp_paypal"
                         >
 
+
                         <span>
+
                             <i class="fa-solid fa-wallet"></i>
+
                         </span>
 
+
                         <div>
+
                             <strong>
                                 Other Payment
                             </strong>
@@ -171,22 +241,30 @@
                             <small>
                                 Other available payment options
                             </small>
+
                         </div>
 
                     </label>
+
 
                 </div>
 
             </div>
 
 
-            <!-- ORDER TOTAL -->
+
+            <!-- ================================
+                 ORDER TOTAL
+            ================================= -->
 
             <div class="payment-card">
 
                 <h2>
                     Order Total
                 </h2>
+
+
+                <!-- SUBTOTAL -->
 
                 <div class="total-row">
 
@@ -201,6 +279,9 @@
                 </div>
 
 
+
+                <!-- DELIVERY -->
+
                 <div class="total-row">
 
                     <span>
@@ -214,8 +295,14 @@
                 </div>
 
 
+
+                <!-- DIVIDER -->
+
                 <div class="total-divider"></div>
 
+
+
+                <!-- TOTAL -->
 
                 <div class="total-row total">
 
@@ -229,18 +316,27 @@
 
                 </div>
 
+
             </div>
 
 
-            <!-- MESSAGE -->
+
+            <!-- ================================
+                 PAYMENT MESSAGE
+            ================================= -->
 
             <div
                 id="paymentMessage"
                 class="payment-message"
+                role="alert"
+                aria-live="polite"
             ></div>
 
 
-            <!-- PAYMENT BUTTON -->
+
+            <!-- ================================
+                 PAYMENT BUTTON
+            ================================= -->
 
             <button
                 type="button"
@@ -250,14 +346,19 @@
 
                 <i class="fa-solid fa-lock"></i>
 
+
                 <span>
                     Continue to Payment
                 </span>
+
 
                 <i class="fa-solid fa-arrow-right"></i>
 
             </button>
 
+
+
+            <!-- SECURITY -->
 
             <p class="payment-security">
 
@@ -267,17 +368,32 @@
 
             </p>
 
+
         </section>
 
     </main>
 
 
-    <!-- JAVASCRIPT -->
+
+    <!-- ================================
+         FLUTTERWAVE CHECKOUT
+    ================================= -->
+
+    <script
+        src="https://checkout.flutterwave.com/v3.js"
+    ></script>
+
+
+
+    <!-- ================================
+         PAYMENT JAVASCRIPT
+    ================================= -->
 
     <script
         type="module"
         src="payment.js"
     ></script>
+
 
 </body>
 
