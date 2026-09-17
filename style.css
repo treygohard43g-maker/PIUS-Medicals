@@ -6402,3 +6402,21 @@ input:focus-visible {
         gap: 9px;
     }
 }
+
+/* =========================================
+   REALISTIC DELIVERY ICON
+========================================= */
+
+.dashboard-page .quick-action-card .quick-action-icon img {
+    width: 68px;
+    height: 68px;
+    object-fit: contain;
+    display: block;
+    border-radius: 18px;
+}
+
+.dashboard-page .quick-action-card .quick-action-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
