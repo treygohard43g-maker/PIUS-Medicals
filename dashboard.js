@@ -89,7 +89,8 @@ const products = [
         name: "Patient Monitor",
         category: "Hospital Equipment",
         price: 340,
-        icon: "fa-heart-pulse"
+        icon: "fa-heart-pulse",
+        image: "icons/patient-monitor.PNG"
     },
 
     {
@@ -97,7 +98,8 @@ const products = [
         name: "Hospital Bed",
         category: "Hospital Equipment",
         price: 490,
-        icon: "fa-bed"
+        icon: "fa-bed",
+        image: "icons/hospital-bed.PNG"
     },
 
     {
@@ -105,7 +107,8 @@ const products = [
         name: "Digital Blood Pressure Monitor",
         category: "Diagnostic Equipment",
         price: 65,
-        icon: "fa-heart-pulse"
+        icon: "fa-heart-pulse",
+        image: "icons/digital-blood-pressure-monitor.PNG"
     },
 
     {
@@ -113,7 +116,8 @@ const products = [
         name: "Pulse Oximeter",
         category: "Diagnostic Equipment",
         price: 20,
-        icon: "fa-lungs"
+        icon: "fa-lungs",
+        image: "icons/pulse-oximeter.PNG"
     },
 
     {
@@ -121,7 +125,8 @@ const products = [
         name: "Digital Thermometer",
         category: "Medical Supplies",
         price: 10,
-        icon: "fa-temperature-half"
+        icon: "fa-temperature-half",
+        image: "icons/digital-thermometer.PNG"
     },
 
     {
@@ -129,7 +134,8 @@ const products = [
         name: "Medical Wheelchair",
         category: "Mobility & Care",
         price: 135,
-        icon: "fa-wheelchair"
+        icon: "fa-wheelchair",
+        image: "icons/wheelchair.PNG"
     },
 
     {
@@ -137,7 +143,8 @@ const products = [
         name: "Examination Lamp",
         category: "Hospital Equipment",
         price: 70,
-        icon: "fa-lightbulb"
+        icon: "fa-lightbulb",
+        image: "icons/hospital-light.PNG"
     },
 
     {
@@ -145,7 +152,8 @@ const products = [
         name: "Professional Stethoscope",
         category: "Diagnostic Equipment",
         price: 35,
-        icon: "fa-stethoscope"
+        icon: "fa-stethoscope",
+        image: "icons/professional-stethoscope.PNG"
     }
 
 ];
@@ -388,7 +396,12 @@ function displayProducts(list) {
 
             <div class="product-image-placeholder">
 
-                <i class="fa-solid ${product.icon}"></i>
+                <img
+                    src="${product.image}"
+                    alt="${product.name}"
+                    class="product-image"
+                    loading="lazy"
+                >
 
             </div>
 
